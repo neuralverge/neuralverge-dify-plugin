@@ -1,0 +1,75 @@
+identity:
+  name: run_producthunt_leaderboards
+  author: neuralverge
+  label:
+    en_US: "Product Hunt leaderboards"
+description:
+  human:
+    en_US: "Launches of a Product Hunt leaderboard (day, week, month or year): rank, name, tagline, votes, comments, topics and product link, beyond the first page. 1 point per returned record."
+  llm: "Launches of a Product Hunt leaderboard (day, week, month or year): rank, name, tagline, votes, comments, topics and product link, beyond the first page. 1 point per returned record."
+parameters:
+  - name: period
+    type: select
+    required: false
+    label:
+      en_US: "Period"
+    human_description:
+      en_US: "Period. Options: daily = Daily, weekly = Weekly, monthly = Monthly, yearly = Yearly"
+    llm_description: "Period. Options: daily = Daily, weekly = Weekly, monthly = Monthly, yearly = Yearly"
+    form: llm
+    options:
+      - value: "daily"
+        label:
+          en_US: "daily"
+      - value: "weekly"
+        label:
+          en_US: "weekly"
+      - value: "monthly"
+        label:
+          en_US: "monthly"
+      - value: "yearly"
+        label:
+          en_US: "yearly"
+  - name: date
+    type: string
+    required: true
+    label:
+      en_US: "Date"
+    human_description:
+      en_US: "Date (daily 2024/1/15, weekly 2024/3, monthly 2024/3, yearly 2024). e.g. 2024/1/15"
+    llm_description: "Date (daily 2024/1/15, weekly 2024/3, monthly 2024/3, yearly 2024). e.g. 2024/1/15"
+    form: llm
+  - name: featured
+    type: boolean
+    required: false
+    label:
+      en_US: "Featured"
+    human_description:
+      en_US: "Featured only"
+    llm_description: "Featured only"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_producthunt_leaderboards.py

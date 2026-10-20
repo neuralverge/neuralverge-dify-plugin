@@ -1,0 +1,58 @@
+identity:
+  name: run_owler_companies_news
+  author: neuralverge
+  label:
+    en_US: "Owler company news"
+description:
+  human:
+    en_US: "Latest news about one Owler company (slug or URL): title, summary, publisher, date and link. 1 point per returned record."
+  llm: "Latest news about one Owler company (slug or URL): title, summary, publisher, date and link. 1 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "Company slug or Owler URL. e.g. stripe"
+    llm_description: "Company slug or Owler URL. e.g. stripe"
+    form: llm
+  - name: news_type
+    type: select
+    required: false
+    label:
+      en_US: "News type"
+    human_description:
+      en_US: "News type. Options: all = All (latest 10), news = News (latest 3), blog = Blog (latest 3), videos = Videos (latest 3), press = Press releases (latest 3)"
+    llm_description: "News type. Options: all = All (latest 10), news = News (latest 3), blog = Blog (latest 3), videos = Videos (latest 3), press = Press releases (latest 3)"
+    form: llm
+    options:
+      - value: "all"
+        label:
+          en_US: "all"
+      - value: "news"
+        label:
+          en_US: "news"
+      - value: "blog"
+        label:
+          en_US: "blog"
+      - value: "videos"
+        label:
+          en_US: "videos"
+      - value: "press"
+        label:
+          en_US: "press"
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 10) Default: 10."
+    llm_description: "Max items (up to 10) Default: 10."
+    form: llm
+    min: 1
+    max: 10
+extra:
+  python:
+    source: tools/run_owler_companies_news.py

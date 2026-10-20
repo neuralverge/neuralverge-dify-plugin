@@ -1,0 +1,22 @@
+identity:
+  name: run_email_enrichment
+  author: neuralverge
+  label:
+    en_US: "Email Enrichment"
+description:
+  human:
+    en_US: "Enriches a known email address with associated profile data (name, phone, company, position, LinkedIn/X profiles) when available."
+  llm: "Enriches a known email address with associated profile data (name, phone, company, position, LinkedIn/X profiles) when available."
+parameters:
+  - name: email
+    type: string
+    required: true
+    label:
+      en_US: "Email"
+    human_description:
+      en_US: "Email address to enrich."
+    llm_description: "Email address to enrich."
+    form: llm
+extra:
+  python:
+    source: tools/run_email_enrichment.py

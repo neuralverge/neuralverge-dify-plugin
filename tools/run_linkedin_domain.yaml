@@ -1,0 +1,31 @@
+identity:
+  name: run_linkedin_domain
+  author: neuralverge
+  label:
+    en_US: "LinkedIn Profile by Name + Domain"
+description:
+  human:
+    en_US: "Finds a LinkedIn profile matching a company name or domain plus a full name."
+  llm: "Finds a LinkedIn profile matching a company name or domain plus a full name."
+parameters:
+  - name: company_or_domain
+    type: string
+    required: true
+    label:
+      en_US: "Company or domain"
+    human_description:
+      en_US: "Company name or domain, e.g. openai.com"
+    llm_description: "Company name or domain, e.g. openai.com"
+    form: llm
+  - name: full_name
+    type: string
+    required: true
+    label:
+      en_US: "Full name"
+    human_description:
+      en_US: "Full name of the person to find."
+    llm_description: "Full name of the person to find."
+    form: llm
+extra:
+  python:
+    source: tools/run_linkedin_domain.py

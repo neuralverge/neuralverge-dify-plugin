@@ -1,0 +1,22 @@
+identity:
+  name: run_ge_companies
+  author: neuralverge
+  label:
+    en_US: "Georgia company"
+description:
+  human:
+    en_US: "Get one company from the Georgia registry (NAPR) by identification code: name, status and legal form. 5 point per returned record."
+  llm: "Get one company from the Georgia registry (NAPR) by identification code: name, status and legal form. 5 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "Identification code or registry URL. e.g. 204854595"
+    llm_description: "Identification code or registry URL. e.g. 204854595"
+    form: llm
+extra:
+  python:
+    source: tools/run_ge_companies.py

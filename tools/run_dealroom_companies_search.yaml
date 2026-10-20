@@ -1,0 +1,173 @@
+identity:
+  name: run_dealroom_companies_search
+  author: neuralverge
+  label:
+    en_US: "Dealroom companies search"
+description:
+  human:
+    en_US: "Search Dealroom companies by keyword and/or tier, sector and country: name, tier, sector, HQ, founding year, numeric valuation and range, logo and link. At least one of keyword / tier / sector / country is required. 1 point per returned record."
+  llm: "Search Dealroom companies by keyword and/or tier, sector and country: name, tier, sector, HQ, founding year, numeric valuation and range, logo and link. At least one of keyword / tier / sector / country is required. 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: false
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Keyword. e.g. revolut"
+    llm_description: "Keyword. e.g. revolut"
+    form: llm
+  - name: tier
+    type: select
+    required: false
+    label:
+      en_US: "Tier"
+    human_description:
+      en_US: "Tier. Options: Centicorn = Centicorn, Colt = Colt, Decacorn = Decacorn, Gigacorn = Gigacorn, Listed = Listed, Mag 7 = Mag 7, Thoroughbred = Thoroughbred, Titan = Titan, Unicorn = Unicorn"
+    llm_description: "Tier. Options: Centicorn = Centicorn, Colt = Colt, Decacorn = Decacorn, Gigacorn = Gigacorn, Listed = Listed, Mag 7 = Mag 7, Thoroughbred = Thoroughbred, Titan = Titan, Unicorn = Unicorn"
+    form: llm
+    options:
+      - value: "Centicorn"
+        label:
+          en_US: "Centicorn"
+      - value: "Colt"
+        label:
+          en_US: "Colt"
+      - value: "Decacorn"
+        label:
+          en_US: "Decacorn"
+      - value: "Gigacorn"
+        label:
+          en_US: "Gigacorn"
+      - value: "Listed"
+        label:
+          en_US: "Listed"
+      - value: "Mag 7"
+        label:
+          en_US: "Mag 7"
+      - value: "Thoroughbred"
+        label:
+          en_US: "Thoroughbred"
+      - value: "Titan"
+        label:
+          en_US: "Titan"
+      - value: "Unicorn"
+        label:
+          en_US: "Unicorn"
+  - name: sector
+    type: select
+    required: false
+    label:
+      en_US: "Sector"
+    human_description:
+      en_US: "Sector. Options: Fintech = Fintech, Biotech & Life Sciences = Biotech & Life Sciences, eCommerce & Marketplaces = eCommerce & Marketplaces, Health Tech & Medtech = Health Tech & Medtech, Other B2B Software = Other B2B Software, Energy = Energy, Consumer Services = Consumer Services, Transportation = Transportation, Marketing = Marketing, AI = AI, Cybersecurity = Cybersecurity, Food = Food, Semiconductors = Semiconductors, Edtech = Edtech, Robotics = Robotics, Space = Space, Defence = Defence, Aviation = Aviation"
+    llm_description: "Sector. Options: Fintech = Fintech, Biotech & Life Sciences = Biotech & Life Sciences, eCommerce & Marketplaces = eCommerce & Marketplaces, Health Tech & Medtech = Health Tech & Medtech, Other B2B Software = Other B2B Software, Energy = Energy, Consumer Services = Consumer Services, Transportation = Transportation, Marketing = Marketing, AI = AI, Cybersecurity = Cybersecurity, Food = Food, Semiconductors = Semiconductors, Edtech = Edtech, Robotics = Robotics, Space = Space, Defence = Defence, Aviation = Aviation"
+    form: llm
+    options:
+      - value: "Fintech"
+        label:
+          en_US: "Fintech"
+      - value: "Biotech & Life Sciences"
+        label:
+          en_US: "Biotech & Life Sciences"
+      - value: "eCommerce & Marketplaces"
+        label:
+          en_US: "eCommerce & Marketplaces"
+      - value: "Health Tech & Medtech"
+        label:
+          en_US: "Health Tech & Medtech"
+      - value: "Other B2B Software"
+        label:
+          en_US: "Other B2B Software"
+      - value: "Energy"
+        label:
+          en_US: "Energy"
+      - value: "Consumer Services"
+        label:
+          en_US: "Consumer Services"
+      - value: "Transportation"
+        label:
+          en_US: "Transportation"
+      - value: "Marketing"
+        label:
+          en_US: "Marketing"
+      - value: "AI"
+        label:
+          en_US: "AI"
+      - value: "Cybersecurity"
+        label:
+          en_US: "Cybersecurity"
+      - value: "Food"
+        label:
+          en_US: "Food"
+      - value: "Semiconductors"
+        label:
+          en_US: "Semiconductors"
+      - value: "Edtech"
+        label:
+          en_US: "Edtech"
+      - value: "Robotics"
+        label:
+          en_US: "Robotics"
+      - value: "Space"
+        label:
+          en_US: "Space"
+      - value: "Defence"
+        label:
+          en_US: "Defence"
+      - value: "Aviation"
+        label:
+          en_US: "Aviation"
+  - name: country
+    type: string
+    required: false
+    label:
+      en_US: "Country"
+    human_description:
+      en_US: "Country. e.g. Germany"
+    llm_description: "Country. e.g. Germany"
+    form: llm
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: valuation = Valuation, alphabetical = Alphabetical, founded = Founding year"
+    llm_description: "Sort by. Options: valuation = Valuation, alphabetical = Alphabetical, founded = Founding year"
+    form: llm
+    options:
+      - value: "valuation"
+        label:
+          en_US: "valuation"
+      - value: "alphabetical"
+        label:
+          en_US: "alphabetical"
+      - value: "founded"
+        label:
+          en_US: "founded"
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page (60 per page)"
+    llm_description: "Starting page (60 per page)"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_dealroom_companies_search.py

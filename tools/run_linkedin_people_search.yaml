@@ -1,0 +1,166 @@
+identity:
+  name: run_linkedin_people_search
+  author: neuralverge
+  label:
+    en_US: "LinkedIn People Search"
+description:
+  human:
+    en_US: "Searches LinkedIn people using an optional free-text query and a rich set of advanced filters (company, title, seniority, location, experience, industry)."
+  llm: "Searches LinkedIn people using an optional free-text query and a rich set of advanced filters (company, title, seniority, location, experience, industry)."
+parameters:
+  - name: searchQuery
+    type: string
+    required: false
+    label:
+      en_US: "Searchquery"
+    human_description:
+      en_US: "Free-text people search query."
+    llm_description: "Free-text people search query."
+    form: llm
+  - name: maxResults
+    type: number
+    required: false
+    label:
+      en_US: "Maxresults"
+    human_description:
+      en_US: "Maximum number of results to return."
+    llm_description: "Maximum number of results to return."
+    form: llm
+  - name: startPage
+    type: number
+    required: false
+    label:
+      en_US: "Startpage"
+    human_description:
+      en_US: "Page offset to start from."
+    llm_description: "Page offset to start from."
+    form: llm
+  - name: scraperMode
+    type: string
+    required: false
+    label:
+      en_US: "Scrapermode"
+    human_description:
+      en_US: "Scraper depth mode, e.g. 'short' or 'full'."
+    llm_description: "Scraper depth mode, e.g. 'short' or 'full'."
+    form: llm
+  - name: locations
+    type: string
+    required: false
+    label:
+      en_US: "Locations"
+    human_description:
+      en_US: "Comma-separated list."
+    llm_description: "Comma-separated list."
+    form: llm
+  - name: currentCompany
+    type: string
+    required: false
+    label:
+      en_US: "Currentcompany"
+    human_description:
+      en_US: "Comma-separated list."
+    llm_description: "Comma-separated list."
+    form: llm
+  - name: pastCompany
+    type: string
+    required: false
+    label:
+      en_US: "Pastcompany"
+    human_description:
+      en_US: "Comma-separated list."
+    llm_description: "Comma-separated list."
+    form: llm
+  - name: currentJobTitleFilter
+    type: string
+    required: false
+    label:
+      en_US: "Currentjobtitlefilter"
+    human_description:
+      en_US: "Comma-separated list."
+    llm_description: "Comma-separated list."
+    form: llm
+  - name: pastJobTitle
+    type: string
+    required: false
+    label:
+      en_US: "Pastjobtitle"
+    human_description:
+      en_US: "Comma-separated list."
+    llm_description: "Comma-separated list."
+    form: llm
+  - name: yearsOfExperienceFilter
+    type: string
+    required: false
+    label:
+      en_US: "Yearsofexperiencefilter"
+    human_description:
+      en_US: "Comma-separated list."
+    llm_description: "Comma-separated list."
+    form: llm
+  - name: yearsAtCurrentCompanyFilter
+    type: string
+    required: false
+    label:
+      en_US: "Yearsatcurrentcompanyfilter"
+    human_description:
+      en_US: "Comma-separated list."
+    llm_description: "Comma-separated list."
+    form: llm
+  - name: seniorityLevelFilter
+    type: string
+    required: false
+    label:
+      en_US: "Senioritylevelfilter"
+    human_description:
+      en_US: "Comma-separated list."
+    llm_description: "Comma-separated list."
+    form: llm
+  - name: functionFilter
+    type: string
+    required: false
+    label:
+      en_US: "Functionfilter"
+    human_description:
+      en_US: "Comma-separated list."
+    llm_description: "Comma-separated list."
+    form: llm
+  - name: industryIds
+    type: string
+    required: false
+    label:
+      en_US: "Industryids"
+    human_description:
+      en_US: "Comma-separated list."
+    llm_description: "Comma-separated list."
+    form: llm
+  - name: firstNames
+    type: string
+    required: false
+    label:
+      en_US: "Firstnames"
+    human_description:
+      en_US: "Comma-separated list."
+    llm_description: "Comma-separated list."
+    form: llm
+  - name: lastNames
+    type: string
+    required: false
+    label:
+      en_US: "Lastnames"
+    human_description:
+      en_US: "Comma-separated list."
+    llm_description: "Comma-separated list."
+    form: llm
+  - name: companyHeadcountFilter
+    type: string
+    required: false
+    label:
+      en_US: "Companyheadcountfilter"
+    human_description:
+      en_US: "Comma-separated list."
+    llm_description: "Comma-separated list."
+    form: llm
+extra:
+  python:
+    source: tools/run_linkedin_people_search.py

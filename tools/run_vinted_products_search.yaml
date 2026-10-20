@@ -1,0 +1,177 @@
+identity:
+  name: run_vinted_products_search
+  author: neuralverge
+  label:
+    en_US: "Vinted products search"
+description:
+  human:
+    en_US: "Search live Vinted items by keyword on any Vinted market, with category, brand, size, condition, color, material and price filters. 1 point per returned record."
+  llm: "Search live Vinted items by keyword on any Vinted market, with category, brand, size, condition, color, material and price filters. 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: true
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Search term. e.g. nike"
+    llm_description: "Search term. e.g. nike"
+    form: llm
+  - name: domain
+    type: select
+    required: false
+    label:
+      en_US: "Domain"
+    human_description:
+      en_US: "Domain. Options: vinted.de = vinted.de, vinted.fr = vinted.fr, vinted.es = vinted.es, vinted.it = vinted.it, vinted.nl = vinted.nl, vinted.pl = vinted.pl, vinted.co.uk = vinted.co.uk Default: vinted.de."
+    llm_description: "Domain. Options: vinted.de = vinted.de, vinted.fr = vinted.fr, vinted.es = vinted.es, vinted.it = vinted.it, vinted.nl = vinted.nl, vinted.pl = vinted.pl, vinted.co.uk = vinted.co.uk Default: vinted.de."
+    form: llm
+    options:
+      - value: "vinted.de"
+        label:
+          en_US: "vinted.de"
+      - value: "vinted.fr"
+        label:
+          en_US: "vinted.fr"
+      - value: "vinted.es"
+        label:
+          en_US: "vinted.es"
+      - value: "vinted.it"
+        label:
+          en_US: "vinted.it"
+      - value: "vinted.nl"
+        label:
+          en_US: "vinted.nl"
+      - value: "vinted.pl"
+        label:
+          en_US: "vinted.pl"
+      - value: "vinted.co.uk"
+        label:
+          en_US: "vinted.co.uk"
+  - name: order
+    type: select
+    required: false
+    label:
+      en_US: "Order"
+    human_description:
+      en_US: "Order. Options: newest_first = Newest first, price_high_to_low = Price: high to low, price_low_to_high = Price: low to high"
+    llm_description: "Order. Options: newest_first = Newest first, price_high_to_low = Price: high to low, price_low_to_high = Price: low to high"
+    form: llm
+    options:
+      - value: "newest_first"
+        label:
+          en_US: "newest_first"
+      - value: "price_high_to_low"
+        label:
+          en_US: "price_high_to_low"
+      - value: "price_low_to_high"
+        label:
+          en_US: "price_low_to_high"
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 25."
+    llm_description: "Max items (up to 500) Default: 25."
+    form: llm
+    min: 1
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page Default: 1."
+    llm_description: "Starting page Default: 1."
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: price_from
+    type: number
+    required: false
+    label:
+      en_US: "Price from"
+    human_description:
+      en_US: "Min price"
+    llm_description: "Min price"
+    form: llm
+    min: 0
+  - name: price_to
+    type: number
+    required: false
+    label:
+      en_US: "Price to"
+    human_description:
+      en_US: "Max price"
+    llm_description: "Max price"
+    form: llm
+    min: 0
+  - name: currency
+    type: string
+    required: false
+    label:
+      en_US: "Currency"
+    human_description:
+      en_US: "Currency. e.g. EUR"
+    llm_description: "Currency. e.g. EUR"
+    form: llm
+  - name: catalog_ids
+    type: string
+    required: false
+    label:
+      en_US: "Catalog ids"
+    human_description:
+      en_US: "Catalog (category) IDs. e.g. 1904"
+    llm_description: "Catalog (category) IDs. e.g. 1904"
+    form: llm
+  - name: brand_ids
+    type: string
+    required: false
+    label:
+      en_US: "Brand ids"
+    human_description:
+      en_US: "Brand IDs. e.g. 53, 88"
+    llm_description: "Brand IDs. e.g. 53, 88"
+    form: llm
+  - name: size_ids
+    type: string
+    required: false
+    label:
+      en_US: "Size ids"
+    human_description:
+      en_US: "Size IDs. e.g. 207"
+    llm_description: "Size IDs. e.g. 207"
+    form: llm
+  - name: status_ids
+    type: string
+    required: false
+    label:
+      en_US: "Status ids"
+    human_description:
+      en_US: "Condition (status) IDs. e.g. 6"
+    llm_description: "Condition (status) IDs. e.g. 6"
+    form: llm
+  - name: color_ids
+    type: string
+    required: false
+    label:
+      en_US: "Color ids"
+    human_description:
+      en_US: "Color IDs. e.g. 9"
+    llm_description: "Color IDs. e.g. 9"
+    form: llm
+  - name: material_ids
+    type: string
+    required: false
+    label:
+      en_US: "Material ids"
+    human_description:
+      en_US: "Material IDs. e.g. 44"
+    llm_description: "Material IDs. e.g. 44"
+    form: llm
+extra:
+  python:
+    source: tools/run_vinted_products_search.py

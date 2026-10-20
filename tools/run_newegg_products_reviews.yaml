@@ -1,0 +1,44 @@
+identity:
+  name: run_newegg_products_reviews
+  author: neuralverge
+  label:
+    en_US: "Newegg product reviews"
+description:
+  human:
+    en_US: "Owner reviews for a Newegg product: rating, title, text, pros, cons, author, date and helpful votes. 1 point per returned record."
+  llm: "Owner reviews for a Newegg product: rating, title, text, pros, cons, author, date and helpful votes. 1 point per returned record."
+parameters:
+  - name: product
+    type: string
+    required: true
+    label:
+      en_US: "Product"
+    human_description:
+      en_US: "Item number or URL. e.g. N82E16820147903"
+    llm_description: "Item number or URL. e.g. N82E16820147903"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 10."
+    llm_description: "Max items (up to 500) Default: 10."
+    form: llm
+    min: 1
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page Default: 1."
+    llm_description: "Starting page Default: 1."
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_newegg_products_reviews.py

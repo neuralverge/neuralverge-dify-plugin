@@ -1,0 +1,31 @@
+identity:
+  name: run_shopify_collections
+  author: neuralverge
+  label:
+    en_US: "Shopify collection"
+description:
+  human:
+    en_US: "Get one Shopify collection by store domain and handle: title, description, image, product count and timestamps. 5 point per returned record."
+  llm: "Get one Shopify collection by store domain and handle: title, description, image, product count and timestamps. 5 point per returned record."
+parameters:
+  - name: store_domain
+    type: string
+    required: true
+    label:
+      en_US: "Store domain"
+    human_description:
+      en_US: "Store domain. e.g. gymshark.com"
+    llm_description: "Store domain. e.g. gymshark.com"
+    form: llm
+  - name: collection
+    type: string
+    required: true
+    label:
+      en_US: "Collection"
+    human_description:
+      en_US: "Collection handle or URL. e.g. mens"
+    llm_description: "Collection handle or URL. e.g. mens"
+    form: llm
+extra:
+  python:
+    source: tools/run_shopify_collections.py

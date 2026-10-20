@@ -1,0 +1,257 @@
+identity:
+  name: run_kickstarter_projects_search
+  author: neuralverge
+  label:
+    en_US: "Kickstarter projects search"
+description:
+  human:
+    en_US: "Search Kickstarter projects by keyword, category, state, staff picks, location and funding ranges: name, blurb, goal, pledged, backers, creator, category and link. 1 point per returned record."
+  llm: "Search Kickstarter projects by keyword, category, state, staff picks, location and funding ranges: name, blurb, goal, pledged, backers, creator, category and link. 1 point per returned record."
+parameters:
+  - name: term
+    type: string
+    required: false
+    label:
+      en_US: "Term"
+    human_description:
+      en_US: "Keyword. e.g. board game"
+    llm_description: "Keyword. e.g. board game"
+    form: llm
+  - name: category
+    type: select
+    required: false
+    label:
+      en_US: "Category"
+    human_description:
+      en_US: "Category. Options: art = Art, comics = Comics, crafts = Crafts, dance = Dance, design = Design, fashion = Fashion, film-and-video = Film & Video, food = Food, games = Games, journalism = Journalism, music = Music, photography = Photography, publishing = Publishing, technology = Technology, theater = Theater"
+    llm_description: "Category. Options: art = Art, comics = Comics, crafts = Crafts, dance = Dance, design = Design, fashion = Fashion, film-and-video = Film & Video, food = Food, games = Games, journalism = Journalism, music = Music, photography = Photography, publishing = Publishing, technology = Technology, theater = Theater"
+    form: llm
+    options:
+      - value: "art"
+        label:
+          en_US: "art"
+      - value: "comics"
+        label:
+          en_US: "comics"
+      - value: "crafts"
+        label:
+          en_US: "crafts"
+      - value: "dance"
+        label:
+          en_US: "dance"
+      - value: "design"
+        label:
+          en_US: "design"
+      - value: "fashion"
+        label:
+          en_US: "fashion"
+      - value: "film-and-video"
+        label:
+          en_US: "film-and-video"
+      - value: "food"
+        label:
+          en_US: "food"
+      - value: "games"
+        label:
+          en_US: "games"
+      - value: "journalism"
+        label:
+          en_US: "journalism"
+      - value: "music"
+        label:
+          en_US: "music"
+      - value: "photography"
+        label:
+          en_US: "photography"
+      - value: "publishing"
+        label:
+          en_US: "publishing"
+      - value: "technology"
+        label:
+          en_US: "technology"
+      - value: "theater"
+        label:
+          en_US: "theater"
+  - name: state
+    type: select
+    required: false
+    label:
+      en_US: "State"
+    human_description:
+      en_US: "State. Options: live = Live, successful = Successful, failed = Failed, canceled = Canceled, upcoming = Upcoming"
+    llm_description: "State. Options: live = Live, successful = Successful, failed = Failed, canceled = Canceled, upcoming = Upcoming"
+    form: llm
+    options:
+      - value: "live"
+        label:
+          en_US: "live"
+      - value: "successful"
+        label:
+          en_US: "successful"
+      - value: "failed"
+        label:
+          en_US: "failed"
+      - value: "canceled"
+        label:
+          en_US: "canceled"
+      - value: "upcoming"
+        label:
+          en_US: "upcoming"
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort. Options: magic = Magic, popularity = Popularity, newest = Newest, end_date = End date, most_funded = Most funded, most_backed = Most backed"
+    llm_description: "Sort. Options: magic = Magic, popularity = Popularity, newest = Newest, end_date = End date, most_funded = Most funded, most_backed = Most backed"
+    form: llm
+    options:
+      - value: "magic"
+        label:
+          en_US: "magic"
+      - value: "popularity"
+        label:
+          en_US: "popularity"
+      - value: "newest"
+        label:
+          en_US: "newest"
+      - value: "end_date"
+        label:
+          en_US: "end_date"
+      - value: "most_funded"
+        label:
+          en_US: "most_funded"
+      - value: "most_backed"
+        label:
+          en_US: "most_backed"
+  - name: raised
+    type: select
+    required: false
+    label:
+      en_US: "Raised"
+    human_description:
+      en_US: "Raised. Options: 0 = Less than 75%, 1 = 75% to 100%, 2 = More than 100%"
+    llm_description: "Raised. Options: 0 = Less than 75%, 1 = 75% to 100%, 2 = More than 100%"
+    form: llm
+    options:
+      - value: "0"
+        label:
+          en_US: "0"
+      - value: "1"
+        label:
+          en_US: "1"
+      - value: "2"
+        label:
+          en_US: "2"
+  - name: staff_picks
+    type: boolean
+    required: false
+    label:
+      en_US: "Staff picks"
+    human_description:
+      en_US: "Projects We Love (staff picks)"
+    llm_description: "Projects We Love (staff picks)"
+    form: llm
+  - name: location_id
+    type: number
+    required: false
+    label:
+      en_US: "Location id"
+    human_description:
+      en_US: "Location id (woe_id, e.g. 23424977 = USA)"
+    llm_description: "Location id (woe_id, e.g. 23424977 = USA)"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: goal_min
+    type: number
+    required: false
+    label:
+      en_US: "Goal min"
+    human_description:
+      en_US: "Goal min (USD)"
+    llm_description: "Goal min (USD)"
+    form: llm
+    min: 0
+    max: 9007199254740991
+  - name: goal_max
+    type: number
+    required: false
+    label:
+      en_US: "Goal max"
+    human_description:
+      en_US: "Goal max (USD)"
+    llm_description: "Goal max (USD)"
+    form: llm
+    min: 0
+    max: 9007199254740991
+  - name: pledged_min
+    type: number
+    required: false
+    label:
+      en_US: "Pledged min"
+    human_description:
+      en_US: "Pledged min (USD)"
+    llm_description: "Pledged min (USD)"
+    form: llm
+    min: 0
+    max: 9007199254740991
+  - name: pledged_max
+    type: number
+    required: false
+    label:
+      en_US: "Pledged max"
+    human_description:
+      en_US: "Pledged max (USD)"
+    llm_description: "Pledged max (USD)"
+    form: llm
+    min: 0
+    max: 9007199254740991
+  - name: raised_min
+    type: number
+    required: false
+    label:
+      en_US: "Raised min"
+    human_description:
+      en_US: "Percent funded min"
+    llm_description: "Percent funded min"
+    form: llm
+    min: 0
+    max: 9007199254740991
+  - name: raised_max
+    type: number
+    required: false
+    label:
+      en_US: "Raised max"
+    human_description:
+      en_US: "Percent funded max"
+    llm_description: "Percent funded max"
+    form: llm
+    min: 0
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_kickstarter_projects_search.py

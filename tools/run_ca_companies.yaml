@@ -1,0 +1,22 @@
+identity:
+  name: run_ca_companies
+  author: neuralverge
+  label:
+    en_US: "Canada company"
+description:
+  human:
+    en_US: "Get one federal corporation from the Corporations Canada registry by corporation number or registry link: name, status, incorporation date, registered office address, governing legislation, directors, individuals with significant control, annual filings and name history. 5 point per returned record."
+  llm: "Get one federal corporation from the Corporations Canada registry by corporation number or registry link: name, status, incorporation date, registered office address, governing legislation, directors, individuals with significant control, annual filings and name history. 5 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "Corporation number or registry URL. e.g. 426160-7"
+    llm_description: "Corporation number or registry URL. e.g. 426160-7"
+    form: llm
+extra:
+  python:
+    source: tools/run_ca_companies.py

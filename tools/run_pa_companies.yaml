@@ -1,0 +1,22 @@
+identity:
+  name: run_pa_companies
+  author: neuralverge
+  label:
+    en_US: "Panama company"
+description:
+  human:
+    en_US: "Get one entity from the Panama Registro Público (Consulta de Folios Suspendidos) by folio or registry link: name, status, register type, incorporation date and status date. Covers suspended, dissolved, merged and closed entities. 5 point per returned record."
+  llm: "Get one entity from the Panama Registro Público (Consulta de Folios Suspendidos) by folio or registry link: name, status, register type, incorporation date and status date. Covers suspended, dissolved, merged and closed entities. 5 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "Folio or registry URL. e.g. 1070"
+    llm_description: "Folio or registry URL. e.g. 1070"
+    form: llm
+extra:
+  python:
+    source: tools/run_pa_companies.py

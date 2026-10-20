@@ -1,0 +1,22 @@
+identity:
+  name: run_email_validation
+  author: neuralverge
+  label:
+    en_US: "Email Validation"
+description:
+  human:
+    en_US: "Validates an email address and returns deliverability signals (valid/invalid/risky, catch-all detection, provider, confidence)."
+  llm: "Validates an email address and returns deliverability signals (valid/invalid/risky, catch-all detection, provider, confidence)."
+parameters:
+  - name: email
+    type: string
+    required: true
+    label:
+      en_US: "Email"
+    human_description:
+      en_US: "Email address to validate."
+    llm_description: "Email address to validate."
+    form: llm
+extra:
+  python:
+    source: tools/run_email_validation.py

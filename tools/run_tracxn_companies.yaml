@@ -1,0 +1,22 @@
+identity:
+  name: run_tracxn_companies
+  author: neuralverge
+  label:
+    en_US: "Tracxn company"
+description:
+  human:
+    en_US: "Get one company from Tracxn by profile URL or id token: description, website, founding year, location, stage, sectors, total funding, latest round, valuation, investors, revenue band, employee count, competitors, legal entities, board, the 3 latest funding rounds and news. Flat 5 points per successful run."
+  llm: "Get one company from Tracxn by profile URL or id token: description, website, founding year, location, stage, sectors, total funding, latest round, valuation, investors, revenue band, employee count, competitors, legal entities, board, the 3 latest funding rounds and news. Flat 5 points per successful run."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "Company URL or id token. e.g. https://tracxn.com/d/companies/bigbasket/__lgBEzK2HajAJWbmAO0CnrQYnIPr1qailEUYRD4zGXVU"
+    llm_description: "Company URL or id token. e.g. https://tracxn.com/d/companies/bigbasket/__lgBEzK2HajAJWbmAO0CnrQYnIPr1qailEUYRD4zGXVU"
+    form: llm
+extra:
+  python:
+    source: tools/run_tracxn_companies.py

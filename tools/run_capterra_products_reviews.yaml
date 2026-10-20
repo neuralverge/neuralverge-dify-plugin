@@ -1,0 +1,33 @@
+identity:
+  name: run_capterra_products_reviews
+  author: neuralverge
+  label:
+    en_US: "Capterra product reviews"
+description:
+  human:
+    en_US: "Get user reviews for a Capterra product by id or URL: rating, pros/cons, and author. 1 point per returned record."
+  llm: "Get user reviews for a Capterra product by id or URL: rating, pros/cons, and author. 1 point per returned record."
+parameters:
+  - name: product
+    type: string
+    required: true
+    label:
+      en_US: "Product"
+    human_description:
+      en_US: "Product id or URL. e.g. 176586"
+    llm_description: "Product id or URL. e.g. 176586"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 10."
+    llm_description: "Max items (up to 500) Default: 10."
+    form: llm
+    min: 1
+    max: 500
+extra:
+  python:
+    source: tools/run_capterra_products_reviews.py

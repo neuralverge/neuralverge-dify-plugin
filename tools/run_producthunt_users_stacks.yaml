@@ -1,0 +1,33 @@
+identity:
+  name: run_producthunt_users_stacks
+  author: neuralverge
+  label:
+    en_US: "Product Hunt user stacks"
+description:
+  human:
+    en_US: "Products in a Product Hunt user's stack with who recommended them. 1 point per returned record."
+  llm: "Products in a Product Hunt user's stack with who recommended them. 1 point per returned record."
+parameters:
+  - name: user
+    type: string
+    required: true
+    label:
+      en_US: "User"
+    human_description:
+      en_US: "Username or Product Hunt profile URL. e.g. kevin"
+    llm_description: "Username or Product Hunt profile URL. e.g. kevin"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+extra:
+  python:
+    source: tools/run_producthunt_users_stacks.py

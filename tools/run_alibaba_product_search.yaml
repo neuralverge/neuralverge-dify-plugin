@@ -1,0 +1,33 @@
+identity:
+  name: run_alibaba_product_search
+  author: neuralverge
+  label:
+    en_US: "Alibaba product search"
+description:
+  human:
+    en_US: "Search Alibaba products by keyword: price, MOQ, supplier, and certifications. 1 point per returned record."
+  llm: "Search Alibaba products by keyword: price, MOQ, supplier, and certifications. 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: true
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Search term. e.g. phone case"
+    llm_description: "Search term. e.g. phone case"
+    form: llm
+  - name: count
+    type: number
+    required: false
+    label:
+      en_US: "Count"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+extra:
+  python:
+    source: tools/run_alibaba_product_search.py

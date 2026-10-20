@@ -1,0 +1,22 @@
+identity:
+  name: run_ar_companies
+  author: neuralverge
+  label:
+    en_US: "Argentina company"
+description:
+  human:
+    en_US: "Get one company from the Argentina registry of legal entities (Registro Nacional de Sociedades, IGJ) by CUIT or registry link: name, company type, contract date, legal and fiscal address, activities and last update. 5 point per returned record."
+  llm: "Get one company from the Argentina registry of legal entities (Registro Nacional de Sociedades, IGJ) by CUIT or registry link: name, company type, contract date, legal and fiscal address, activities and last update. 5 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "CUIT or registry URL. e.g. 30-54668997-9"
+    llm_description: "CUIT or registry URL. e.g. 30-54668997-9"
+    form: llm
+extra:
+  python:
+    source: tools/run_ar_companies.py

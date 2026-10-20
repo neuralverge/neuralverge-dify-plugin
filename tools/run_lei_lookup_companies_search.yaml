@@ -1,0 +1,103 @@
+identity:
+  name: run_lei_lookup_companies_search
+  author: neuralverge
+  label:
+    en_US: "LEI Lookup companies search"
+description:
+  human:
+    en_US: "Search the public register of Legal Entity Identifiers by company name or LEI code: LEI, name, country, entity status, LEI registration status and link. Filter by entity status (active or inactive), LEI registration status and country. 1 point per returned record."
+  llm: "Search the public register of Legal Entity Identifiers by company name or LEI code: LEI, name, country, entity status, LEI registration status and link. Filter by entity status (active or inactive), LEI registration status and country. 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: true
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Company name or LEI. e.g. Apple"
+    llm_description: "Company name or LEI. e.g. Apple"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: status
+    type: select
+    required: false
+    label:
+      en_US: "Status"
+    human_description:
+      en_US: "Entity status. Options: active = Active, inactive = Inactive / dissolved"
+    llm_description: "Entity status. Options: active = Active, inactive = Inactive / dissolved"
+    form: llm
+    options:
+      - value: "active"
+        label:
+          en_US: "active"
+      - value: "inactive"
+        label:
+          en_US: "inactive"
+  - name: reg_status
+    type: select
+    required: false
+    label:
+      en_US: "Reg status"
+    human_description:
+      en_US: "LEI status. Options: ISSUED = Issued, LAPSED = Lapsed, ANNULLED = Annulled, MERGED = Merged, RETIRED = Retired, DUPLICATE = Duplicate, PENDING_TRANSFER = Pending transfer, PENDING_ARCHIVAL = Pending archival"
+    llm_description: "LEI status. Options: ISSUED = Issued, LAPSED = Lapsed, ANNULLED = Annulled, MERGED = Merged, RETIRED = Retired, DUPLICATE = Duplicate, PENDING_TRANSFER = Pending transfer, PENDING_ARCHIVAL = Pending archival"
+    form: llm
+    options:
+      - value: "ISSUED"
+        label:
+          en_US: "ISSUED"
+      - value: "LAPSED"
+        label:
+          en_US: "LAPSED"
+      - value: "ANNULLED"
+        label:
+          en_US: "ANNULLED"
+      - value: "MERGED"
+        label:
+          en_US: "MERGED"
+      - value: "RETIRED"
+        label:
+          en_US: "RETIRED"
+      - value: "DUPLICATE"
+        label:
+          en_US: "DUPLICATE"
+      - value: "PENDING_TRANSFER"
+        label:
+          en_US: "PENDING_TRANSFER"
+      - value: "PENDING_ARCHIVAL"
+        label:
+          en_US: "PENDING_ARCHIVAL"
+  - name: country
+    type: string
+    required: false
+    label:
+      en_US: "Country"
+    human_description:
+      en_US: "Country (2-letter code). e.g. DE"
+    llm_description: "Country (2-letter code). e.g. DE"
+    form: llm
+extra:
+  python:
+    source: tools/run_lei_lookup_companies_search.py

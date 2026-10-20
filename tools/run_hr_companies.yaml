@@ -1,0 +1,22 @@
+identity:
+  name: run_hr_companies
+  author: neuralverge
+  label:
+    en_US: "Croatia company"
+description:
+  human:
+    en_US: "Get one company from the Croatia registry (Sudski registar) by MBS, OIB or registry link: name, status, registration date, address, legal form, capital, activities, members, supervisory board, representatives, legal relations and the list of filed financial reports. 5 point per returned record."
+  llm: "Get one company from the Croatia registry (Sudski registar) by MBS, OIB or registry link: name, status, registration date, address, legal form, capital, activities, members, supervisory board, representatives, legal relations and the list of filed financial reports. 5 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "MBS, OIB or registry URL. e.g. 010006549"
+    llm_description: "MBS, OIB or registry URL. e.g. 010006549"
+    form: llm
+extra:
+  python:
+    source: tools/run_hr_companies.py

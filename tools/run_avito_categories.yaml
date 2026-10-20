@@ -1,0 +1,13 @@
+identity:
+  name: run_avito_categories
+  author: neuralverge
+  label:
+    en_US: "Avito Categories"
+description:
+  human:
+    en_US: "Get the Avito category tree: departments and sub-categories with id, name, alias (URL slug for the category filter), parent id, level and browse URL. 5 point per returned record."
+  llm: "Get the Avito category tree: departments and sub-categories with id, name, alias (URL slug for the category filter), parent id, level and browse URL. 5 point per returned record."
+parameters: []
+extra:
+  python:
+    source: tools/run_avito_categories.py

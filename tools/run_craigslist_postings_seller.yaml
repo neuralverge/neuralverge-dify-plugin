@@ -1,0 +1,81 @@
+identity:
+  name: run_craigslist_postings_seller
+  author: neuralverge
+  label:
+    en_US: "Craigslist Seller Postings"
+description:
+  human:
+    en_US: "All postings published by the seller of a given Craigslist posting (a dealer's, landlord's or shop's full inventory). 1 point per returned record."
+  llm: "All postings published by the seller of a given Craigslist posting (a dealer's, landlord's or shop's full inventory). 1 point per returned record."
+parameters:
+  - name: posting
+    type: string
+    required: true
+    label:
+      en_US: "Posting"
+    human_description:
+      en_US: "Posting ID or URL. e.g. 22-character posting id or a posting URL"
+    llm_description: "Posting ID or URL. e.g. 22-character posting id or a posting URL"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 25."
+    llm_description: "Max items (up to 500) Default: 25."
+    form: llm
+    min: 1
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page Default: 1."
+    llm_description: "Starting page Default: 1."
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: category
+    type: string
+    required: false
+    label:
+      en_US: "Category"
+    human_description:
+      en_US: "Category (optional). e.g. sss"
+    llm_description: "Category (optional). e.g. sss"
+    form: llm
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: oldest = Oldest, price_asc = Price: low to high, price_desc = Price: high to low, distance = Distance, relevance = Relevance, upcoming = Upcoming"
+    llm_description: "Sort by. Options: oldest = Oldest, price_asc = Price: low to high, price_desc = Price: high to low, distance = Distance, relevance = Relevance, upcoming = Upcoming"
+    form: llm
+    options:
+      - value: "oldest"
+        label:
+          en_US: "oldest"
+      - value: "price_asc"
+        label:
+          en_US: "price_asc"
+      - value: "price_desc"
+        label:
+          en_US: "price_desc"
+      - value: "distance"
+        label:
+          en_US: "distance"
+      - value: "relevance"
+        label:
+          en_US: "relevance"
+      - value: "upcoming"
+        label:
+          en_US: "upcoming"
+extra:
+  python:
+    source: tools/run_craigslist_postings_seller.py

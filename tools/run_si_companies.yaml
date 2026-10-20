@@ -1,0 +1,22 @@
+identity:
+  name: run_si_companies
+  author: neuralverge
+  label:
+    en_US: "Slovenia company"
+description:
+  human:
+    en_US: "Get one company from the Slovenia registry (AJPES PRS) by registration number (matična številka) or registry link: name, short name, status (active/deleted), address, tax and VAT number, number of business units and the list of those units. 10 point per returned record."
+  llm: "Get one company from the Slovenia registry (AJPES PRS) by registration number (matična številka) or registry link: name, short name, status (active/deleted), address, tax and VAT number, number of business units and the list of those units. 10 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "Registration number (matična številka) or registry URL. e.g. 5043611000"
+    llm_description: "Registration number (matična številka) or registry URL. e.g. 5043611000"
+    form: llm
+extra:
+  python:
+    source: tools/run_si_companies.py

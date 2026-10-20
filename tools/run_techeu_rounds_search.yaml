@@ -1,0 +1,227 @@
+identity:
+  name: run_techeu_rounds_search
+  author: neuralverge
+  label:
+    en_US: "Tech.eu funding rounds search"
+description:
+  human:
+    en_US: "Search European startup funding rounds (Tech.eu Funding Explorer, CC BY 4.0), newest first: company, amount in EUR, stage, investors, date and source. Filter by country, stage, sector, minimum amount and dates. 1 point per returned record."
+  llm: "Search European startup funding rounds (Tech.eu Funding Explorer, CC BY 4.0), newest first: company, amount in EUR, stage, investors, date and source. Filter by country, stage, sector, minimum amount and dates. 1 point per returned record."
+parameters:
+  - name: country
+    type: string
+    required: false
+    label:
+      en_US: "Country"
+    human_description:
+      en_US: "Country (e.g. Germany, UK, France). e.g. Germany"
+    llm_description: "Country (e.g. Germany, UK, France). e.g. Germany"
+    form: llm
+  - name: stage
+    type: select
+    required: false
+    label:
+      en_US: "Stage"
+    human_description:
+      en_US: "Stage. Options: Pre-Seed = Pre-Seed, Seed = Seed, Series A = Series A, Series B = Series B, Series C = Series C, Series D+ = Series D+, Early VC = Early VC, Growth/Late = Growth/Late, Debt = Debt, Grant = Grant, Crowdfunding = Crowdfunding, ICO = ICO, Other = Other"
+    llm_description: "Stage. Options: Pre-Seed = Pre-Seed, Seed = Seed, Series A = Series A, Series B = Series B, Series C = Series C, Series D+ = Series D+, Early VC = Early VC, Growth/Late = Growth/Late, Debt = Debt, Grant = Grant, Crowdfunding = Crowdfunding, ICO = ICO, Other = Other"
+    form: llm
+    options:
+      - value: "Pre-Seed"
+        label:
+          en_US: "Pre-Seed"
+      - value: "Seed"
+        label:
+          en_US: "Seed"
+      - value: "Series A"
+        label:
+          en_US: "Series A"
+      - value: "Series B"
+        label:
+          en_US: "Series B"
+      - value: "Series C"
+        label:
+          en_US: "Series C"
+      - value: "Series D+"
+        label:
+          en_US: "Series D+"
+      - value: "Early VC"
+        label:
+          en_US: "Early VC"
+      - value: "Growth/Late"
+        label:
+          en_US: "Growth/Late"
+      - value: "Debt"
+        label:
+          en_US: "Debt"
+      - value: "Grant"
+        label:
+          en_US: "Grant"
+      - value: "Crowdfunding"
+        label:
+          en_US: "Crowdfunding"
+      - value: "ICO"
+        label:
+          en_US: "ICO"
+      - value: "Other"
+        label:
+          en_US: "Other"
+  - name: sector
+    type: select
+    required: false
+    label:
+      en_US: "Sector"
+    human_description:
+      en_US: "Sector. Options: Agritech = Agritech, AI = AI, Blockchain = Blockchain, Cleantech = Cleantech, Cloud = Cloud, Consumer = Consumer, Cybersecurity = Cybersecurity, Deeptech = Deeptech, Defence = Defence, E-commerce = E-commerce, Edtech = Edtech, Energy = Energy, Fashion = Fashion, Fintech = Fintech, Foodtech = Foodtech, Gaming = Gaming, Hardware = Hardware, Healthtech = Healthtech, HRtech = HRtech, Legaltech = Legaltech, Marketing = Marketing, Media = Media, Proptech = Proptech, Robotics = Robotics, Semiconductors = Semiconductors, Software = Software, Space = Space, Sports = Sports, Telecom = Telecom, Transportation = Transportation, Travel = Travel, Wellness & Beauty = Wellness & Beauty"
+    llm_description: "Sector. Options: Agritech = Agritech, AI = AI, Blockchain = Blockchain, Cleantech = Cleantech, Cloud = Cloud, Consumer = Consumer, Cybersecurity = Cybersecurity, Deeptech = Deeptech, Defence = Defence, E-commerce = E-commerce, Edtech = Edtech, Energy = Energy, Fashion = Fashion, Fintech = Fintech, Foodtech = Foodtech, Gaming = Gaming, Hardware = Hardware, Healthtech = Healthtech, HRtech = HRtech, Legaltech = Legaltech, Marketing = Marketing, Media = Media, Proptech = Proptech, Robotics = Robotics, Semiconductors = Semiconductors, Software = Software, Space = Space, Sports = Sports, Telecom = Telecom, Transportation = Transportation, Travel = Travel, Wellness & Beauty = Wellness & Beauty"
+    form: llm
+    options:
+      - value: "Agritech"
+        label:
+          en_US: "Agritech"
+      - value: "AI"
+        label:
+          en_US: "AI"
+      - value: "Blockchain"
+        label:
+          en_US: "Blockchain"
+      - value: "Cleantech"
+        label:
+          en_US: "Cleantech"
+      - value: "Cloud"
+        label:
+          en_US: "Cloud"
+      - value: "Consumer"
+        label:
+          en_US: "Consumer"
+      - value: "Cybersecurity"
+        label:
+          en_US: "Cybersecurity"
+      - value: "Deeptech"
+        label:
+          en_US: "Deeptech"
+      - value: "Defence"
+        label:
+          en_US: "Defence"
+      - value: "E-commerce"
+        label:
+          en_US: "E-commerce"
+      - value: "Edtech"
+        label:
+          en_US: "Edtech"
+      - value: "Energy"
+        label:
+          en_US: "Energy"
+      - value: "Fashion"
+        label:
+          en_US: "Fashion"
+      - value: "Fintech"
+        label:
+          en_US: "Fintech"
+      - value: "Foodtech"
+        label:
+          en_US: "Foodtech"
+      - value: "Gaming"
+        label:
+          en_US: "Gaming"
+      - value: "Hardware"
+        label:
+          en_US: "Hardware"
+      - value: "Healthtech"
+        label:
+          en_US: "Healthtech"
+      - value: "HRtech"
+        label:
+          en_US: "HRtech"
+      - value: "Legaltech"
+        label:
+          en_US: "Legaltech"
+      - value: "Marketing"
+        label:
+          en_US: "Marketing"
+      - value: "Media"
+        label:
+          en_US: "Media"
+      - value: "Proptech"
+        label:
+          en_US: "Proptech"
+      - value: "Robotics"
+        label:
+          en_US: "Robotics"
+      - value: "Semiconductors"
+        label:
+          en_US: "Semiconductors"
+      - value: "Software"
+        label:
+          en_US: "Software"
+      - value: "Space"
+        label:
+          en_US: "Space"
+      - value: "Sports"
+        label:
+          en_US: "Sports"
+      - value: "Telecom"
+        label:
+          en_US: "Telecom"
+      - value: "Transportation"
+        label:
+          en_US: "Transportation"
+      - value: "Travel"
+        label:
+          en_US: "Travel"
+      - value: "Wellness & Beauty"
+        label:
+          en_US: "Wellness & Beauty"
+  - name: minAmount
+    type: number
+    required: false
+    label:
+      en_US: "Minamount"
+    human_description:
+      en_US: "Min amount (EUR)"
+    llm_description: "Min amount (EUR)"
+    form: llm
+    min: 0
+  - name: from
+    type: string
+    required: false
+    label:
+      en_US: "From"
+    human_description:
+      en_US: "From date (YYYY-MM-DD). e.g. 2026-01-01"
+    llm_description: "From date (YYYY-MM-DD). e.g. 2026-01-01"
+    form: llm
+  - name: to
+    type: string
+    required: false
+    label:
+      en_US: "To"
+    human_description:
+      en_US: "To date (YYYY-MM-DD). e.g. 2026-01-01"
+    llm_description: "To date (YYYY-MM-DD). e.g. 2026-01-01"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_techeu_rounds_search.py

@@ -1,0 +1,66 @@
+identity:
+  name: run_olx_regions
+  author: neuralverge
+  label:
+    en_US: "OLX regions"
+description:
+  human:
+    en_US: "OLX geography: top-level regions or the cities of one region, with ids and coordinates for offers search. 5 point per returned record."
+  llm: "OLX geography: top-level regions or the cities of one region, with ids and coordinates for offers search. 5 point per returned record."
+parameters:
+  - name: domain
+    type: select
+    required: false
+    label:
+      en_US: "Domain"
+    human_description:
+      en_US: "Marketplace. Options: olx.pl = olx.pl (Poland), olx.ua = olx.ua (Ukraine), olx.ro = olx.ro (Romania), olx.bg = olx.bg (Bulgaria), olx.pt = olx.pt (Portugal), olx.kz = olx.kz (Kazakhstan), olx.uz = olx.uz (Uzbekistan) Default: olx.pl."
+    llm_description: "Marketplace. Options: olx.pl = olx.pl (Poland), olx.ua = olx.ua (Ukraine), olx.ro = olx.ro (Romania), olx.bg = olx.bg (Bulgaria), olx.pt = olx.pt (Portugal), olx.kz = olx.kz (Kazakhstan), olx.uz = olx.uz (Uzbekistan) Default: olx.pl."
+    form: llm
+    options:
+      - value: "olx.pl"
+        label:
+          en_US: "olx.pl"
+      - value: "olx.ua"
+        label:
+          en_US: "olx.ua"
+      - value: "olx.ro"
+        label:
+          en_US: "olx.ro"
+      - value: "olx.bg"
+        label:
+          en_US: "olx.bg"
+      - value: "olx.pt"
+        label:
+          en_US: "olx.pt"
+      - value: "olx.kz"
+        label:
+          en_US: "olx.kz"
+      - value: "olx.uz"
+        label:
+          en_US: "olx.uz"
+  - name: region_id
+    type: number
+    required: false
+    label:
+      en_US: "Region id"
+    human_description:
+      en_US: "Region ID"
+    llm_description: "Region ID"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 100."
+    llm_description: "Max items (up to 500) Default: 100."
+    form: llm
+    min: 1
+    max: 500
+extra:
+  python:
+    source: tools/run_olx_regions.py

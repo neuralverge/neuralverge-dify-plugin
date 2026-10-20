@@ -1,0 +1,44 @@
+identity:
+  name: run_flipkart_product_reviews
+  author: neuralverge
+  label:
+    en_US: "Flipkart Product Reviews"
+description:
+  human:
+    en_US: "Get customer reviews for a Flipkart product: rating, title, text, author, date, location, certified-buyer flag, helpful/downvote counts and photos. 1 point per returned record."
+  llm: "Get customer reviews for a Flipkart product: rating, title, text, author, date, location, certified-buyer flag, helpful/downvote counts and photos. 1 point per returned record."
+parameters:
+  - name: product
+    type: string
+    required: true
+    label:
+      en_US: "Product"
+    human_description:
+      en_US: "Item ID or product URL. e.g. itm235cd318bde73"
+    llm_description: "Item ID or product URL. e.g. itm235cd318bde73"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 10."
+    llm_description: "Max items (up to 500) Default: 10."
+    form: llm
+    min: 1
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page Default: 1."
+    llm_description: "Starting page Default: 1."
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_flipkart_product_reviews.py

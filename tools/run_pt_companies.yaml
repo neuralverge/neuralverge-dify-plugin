@@ -1,0 +1,22 @@
+identity:
+  name: run_pt_companies
+  author: neuralverge
+  label:
+    en_US: "Portugal company"
+description:
+  human:
+    en_US: "Get one company from the Portugal registry (Registo Comercial publications portal) by NIF/NIPC or registry link: name, legal form, registered seat (street, postal code, locality, parish, municipality, district), number of publications and the newest publication. 15 point per returned record."
+  llm: "Get one company from the Portugal registry (Registo Comercial publications portal) by NIF/NIPC or registry link: name, legal form, registered seat (street, postal code, locality, parish, municipality, district), number of publications and the newest publication. 15 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "NIF/NIPC or registry URL. e.g. 500697256"
+    llm_description: "NIF/NIPC or registry URL. e.g. 500697256"
+    form: llm
+extra:
+  python:
+    source: tools/run_pt_companies.py

@@ -1,0 +1,31 @@
+identity:
+  name: run_shopify_products
+  author: neuralverge
+  label:
+    en_US: "Shopify product"
+description:
+  human:
+    en_US: "Get one Shopify product by store domain and handle: brand, type, tags, images, options and all variants with price, SKU, barcode, availability and stock. 5 point per returned record."
+  llm: "Get one Shopify product by store domain and handle: brand, type, tags, images, options and all variants with price, SKU, barcode, availability and stock. 5 point per returned record."
+parameters:
+  - name: store_domain
+    type: string
+    required: true
+    label:
+      en_US: "Store domain"
+    human_description:
+      en_US: "Store domain. e.g. gymshark.com"
+    llm_description: "Store domain. e.g. gymshark.com"
+    form: llm
+  - name: product
+    type: string
+    required: true
+    label:
+      en_US: "Product"
+    human_description:
+      en_US: "Product handle or URL. e.g. mens-tree-runners"
+    llm_description: "Product handle or URL. e.g. mens-tree-runners"
+    form: llm
+extra:
+  python:
+    source: tools/run_shopify_products.py

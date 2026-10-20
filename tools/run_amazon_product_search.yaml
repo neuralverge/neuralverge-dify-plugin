@@ -1,0 +1,111 @@
+identity:
+  name: run_amazon_product_search
+  author: neuralverge
+  label:
+    en_US: "Amazon product search"
+description:
+  human:
+    en_US: "Search Amazon and extract product listings (title, URL, price, rating) across paginated results. 1 point per returned record."
+  llm: "Search Amazon and extract product listings (title, URL, price, rating) across paginated results. 1 point per returned record."
+parameters:
+  - name: query
+    type: string
+    required: true
+    label:
+      en_US: "Query"
+    human_description:
+      en_US: "Search term. e.g. wireless mouse"
+    llm_description: "Search term. e.g. wireless mouse"
+    form: llm
+  - name: domain
+    type: select
+    required: false
+    label:
+      en_US: "Domain"
+    human_description:
+      en_US: "Domain. Options: amazon.com = amazon.com, amazon.co.uk = amazon.co.uk, amazon.de = amazon.de, amazon.fr = amazon.fr, amazon.it = amazon.it, amazon.es = amazon.es, amazon.ca = amazon.ca, amazon.co.jp = amazon.co.jp, amazon.com.mx = amazon.com.mx, amazon.com.br = amazon.com.br, amazon.in = amazon.in, amazon.com.au = amazon.com.au, amazon.nl = amazon.nl, amazon.se = amazon.se, amazon.pl = amazon.pl, amazon.com.tr = amazon.com.tr, amazon.ae = amazon.ae, amazon.sa = amazon.sa, amazon.sg = amazon.sg Default: amazon.com."
+    llm_description: "Domain. Options: amazon.com = amazon.com, amazon.co.uk = amazon.co.uk, amazon.de = amazon.de, amazon.fr = amazon.fr, amazon.it = amazon.it, amazon.es = amazon.es, amazon.ca = amazon.ca, amazon.co.jp = amazon.co.jp, amazon.com.mx = amazon.com.mx, amazon.com.br = amazon.com.br, amazon.in = amazon.in, amazon.com.au = amazon.com.au, amazon.nl = amazon.nl, amazon.se = amazon.se, amazon.pl = amazon.pl, amazon.com.tr = amazon.com.tr, amazon.ae = amazon.ae, amazon.sa = amazon.sa, amazon.sg = amazon.sg Default: amazon.com."
+    form: llm
+    options:
+      - value: "amazon.com"
+        label:
+          en_US: "amazon.com"
+      - value: "amazon.co.uk"
+        label:
+          en_US: "amazon.co.uk"
+      - value: "amazon.de"
+        label:
+          en_US: "amazon.de"
+      - value: "amazon.fr"
+        label:
+          en_US: "amazon.fr"
+      - value: "amazon.it"
+        label:
+          en_US: "amazon.it"
+      - value: "amazon.es"
+        label:
+          en_US: "amazon.es"
+      - value: "amazon.ca"
+        label:
+          en_US: "amazon.ca"
+      - value: "amazon.co.jp"
+        label:
+          en_US: "amazon.co.jp"
+      - value: "amazon.com.mx"
+        label:
+          en_US: "amazon.com.mx"
+      - value: "amazon.com.br"
+        label:
+          en_US: "amazon.com.br"
+      - value: "amazon.in"
+        label:
+          en_US: "amazon.in"
+      - value: "amazon.com.au"
+        label:
+          en_US: "amazon.com.au"
+      - value: "amazon.nl"
+        label:
+          en_US: "amazon.nl"
+      - value: "amazon.se"
+        label:
+          en_US: "amazon.se"
+      - value: "amazon.pl"
+        label:
+          en_US: "amazon.pl"
+      - value: "amazon.com.tr"
+        label:
+          en_US: "amazon.com.tr"
+      - value: "amazon.ae"
+        label:
+          en_US: "amazon.ae"
+      - value: "amazon.sa"
+        label:
+          en_US: "amazon.sa"
+      - value: "amazon.sg"
+        label:
+          en_US: "amazon.sg"
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page Default: 1."
+    llm_description: "Starting page Default: 1."
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_amazon_product_search.py

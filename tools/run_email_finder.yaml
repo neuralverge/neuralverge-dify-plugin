@@ -1,0 +1,40 @@
+identity:
+  name: run_email_finder
+  author: neuralverge
+  label:
+    en_US: "Email Finder"
+description:
+  human:
+    en_US: "Finds a professional email address for a person given their company domain, first name, and last name."
+  llm: "Finds a professional email address for a person given their company domain, first name, and last name."
+parameters:
+  - name: domain
+    type: string
+    required: true
+    label:
+      en_US: "Domain"
+    human_description:
+      en_US: "Company domain, e.g. openai.com"
+    llm_description: "Company domain, e.g. openai.com"
+    form: llm
+  - name: first_name
+    type: string
+    required: true
+    label:
+      en_US: "First name"
+    human_description:
+      en_US: "Person's first name."
+    llm_description: "Person's first name."
+    form: llm
+  - name: last_name
+    type: string
+    required: true
+    label:
+      en_US: "Last name"
+    human_description:
+      en_US: "Person's last name."
+    llm_description: "Person's last name."
+    form: llm
+extra:
+  python:
+    source: tools/run_email_finder.py

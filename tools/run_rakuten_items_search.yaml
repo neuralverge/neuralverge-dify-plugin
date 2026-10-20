@@ -1,0 +1,118 @@
+identity:
+  name: run_rakuten_items_search
+  author: neuralverge
+  label:
+    en_US: "Rakuten items search"
+description:
+  human:
+    en_US: "Search live Rakuten Ichiba items by keyword with sort, condition, price range and genre filters. 1 point per returned record."
+  llm: "Search live Rakuten Ichiba items by keyword with sort, condition, price range and genre filters. 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: true
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Search term. e.g. コーヒー豆"
+    llm_description: "Search term. e.g. コーヒー豆"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 25."
+    llm_description: "Max items (up to 500) Default: 25."
+    form: llm
+    min: 1
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page Default: 1."
+    llm_description: "Starting page Default: 1."
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: relevancy = Relevancy, price_low_to_high = Price: low to high, price_high_to_low = Price: high to low, newest = Newest, review_count = Most reviews, review_score = Best review score"
+    llm_description: "Sort by. Options: relevancy = Relevancy, price_low_to_high = Price: low to high, price_high_to_low = Price: high to low, newest = Newest, review_count = Most reviews, review_score = Best review score"
+    form: llm
+    options:
+      - value: "relevancy"
+        label:
+          en_US: "relevancy"
+      - value: "price_low_to_high"
+        label:
+          en_US: "price_low_to_high"
+      - value: "price_high_to_low"
+        label:
+          en_US: "price_high_to_low"
+      - value: "newest"
+        label:
+          en_US: "newest"
+      - value: "review_count"
+        label:
+          en_US: "review_count"
+      - value: "review_score"
+        label:
+          en_US: "review_score"
+  - name: condition
+    type: select
+    required: false
+    label:
+      en_US: "Condition"
+    human_description:
+      en_US: "Condition. Options: new = New, used = Used"
+    llm_description: "Condition. Options: new = New, used = Used"
+    form: llm
+    options:
+      - value: "new"
+        label:
+          en_US: "new"
+      - value: "used"
+        label:
+          en_US: "used"
+  - name: price_min
+    type: number
+    required: false
+    label:
+      en_US: "Price min"
+    human_description:
+      en_US: "Min price (JPY)"
+    llm_description: "Min price (JPY)"
+    form: llm
+    min: 0
+  - name: price_max
+    type: number
+    required: false
+    label:
+      en_US: "Price max"
+    human_description:
+      en_US: "Max price (JPY)"
+    llm_description: "Max price (JPY)"
+    form: llm
+    min: 0
+  - name: genre_id
+    type: number
+    required: false
+    label:
+      en_US: "Genre id"
+    human_description:
+      en_US: "Genre ID"
+    llm_description: "Genre ID"
+    form: llm
+    min: 1
+extra:
+  python:
+    source: tools/run_rakuten_items_search.py

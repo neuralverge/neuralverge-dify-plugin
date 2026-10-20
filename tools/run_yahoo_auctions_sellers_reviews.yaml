@@ -1,0 +1,79 @@
+identity:
+  name: run_yahoo_auctions_sellers_reviews
+  author: neuralverge
+  label:
+    en_US: "Yahoo! Auctions seller reviews"
+description:
+  human:
+    en_US: "Feedback comments left for a Yahoo! Auctions Japan seller: verdict, author, auction, comment text and relative date; filter by role and verdict. 1 point per returned record."
+  llm: "Feedback comments left for a Yahoo! Auctions Japan seller: verdict, author, auction, comment text and relative date; filter by role and verdict. 1 point per returned record."
+parameters:
+  - name: seller
+    type: string
+    required: true
+    label:
+      en_US: "Seller"
+    human_description:
+      en_US: "Seller ID or seller page URL. e.g. 8bdaxRiVapnRAmjjt2iWjM9wQzLXU (the token in /seller/{id})"
+    llm_description: "Seller ID or seller page URL. e.g. 8bdaxRiVapnRAmjjt2iWjM9wQzLXU (the token in /seller/{id})"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 25."
+    llm_description: "Max items (up to 500) Default: 25."
+    form: llm
+    min: 0
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page Default: 1."
+    llm_description: "Starting page Default: 1."
+    form: llm
+    min: 0
+    max: 9007199254740991
+  - name: role
+    type: select
+    required: false
+    label:
+      en_US: "Role"
+    human_description:
+      en_US: "Role. Options: as_seller = Received while selling, as_buyer = Received while buying"
+    llm_description: "Role. Options: as_seller = Received while selling, as_buyer = Received while buying"
+    form: llm
+    options:
+      - value: "as_seller"
+        label:
+          en_US: "as_seller"
+      - value: "as_buyer"
+        label:
+          en_US: "as_buyer"
+  - name: rating
+    type: select
+    required: false
+    label:
+      en_US: "Rating"
+    human_description:
+      en_US: "Verdict. Options: positive = Positive, neutral = Neutral, negative = Negative"
+    llm_description: "Verdict. Options: positive = Positive, neutral = Neutral, negative = Negative"
+    form: llm
+    options:
+      - value: "positive"
+        label:
+          en_US: "positive"
+      - value: "neutral"
+        label:
+          en_US: "neutral"
+      - value: "negative"
+        label:
+          en_US: "negative"
+extra:
+  python:
+    source: tools/run_yahoo_auctions_sellers_reviews.py

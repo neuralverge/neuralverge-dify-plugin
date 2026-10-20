@@ -1,0 +1,49 @@
+identity:
+  name: run_extract
+  author: neuralverge
+  label:
+    en_US: "Run AI Extract"
+description:
+  human:
+    en_US: "Loads a webpage by URL and extracts structured data from it according to natural-language instructions and/or a JSON schema. Synchronous — returns the result immediately."
+  llm: "Loads a webpage by URL and extracts structured data from it according to natural-language instructions and/or a JSON schema. Synchronous — returns the result immediately."
+parameters:
+  - name: url
+    type: string
+    required: true
+    label:
+      en_US: "Url"
+    human_description:
+      en_US: "URL of the page to load and extract data from."
+    llm_description: "URL of the page to load and extract data from."
+    form: llm
+  - name: instructions
+    type: string
+    required: true
+    label:
+      en_US: "Instructions"
+    human_description:
+      en_US: "Natural-language description of what to extract."
+    llm_description: "Natural-language description of what to extract."
+    form: llm
+  - name: settings_country_code
+    type: string
+    required: false
+    label:
+      en_US: "Settings country code"
+    human_description:
+      en_US: "Extraction settings: country code."
+    llm_description: "Extraction settings: country code."
+    form: llm
+  - name: settings_extract_schema_json
+    type: string
+    required: false
+    label:
+      en_US: "Settings extract schema json"
+    human_description:
+      en_US: "JSON-encoded schema string for the extraction shape."
+    llm_description: "JSON-encoded schema string for the extraction shape."
+    form: llm
+extra:
+  python:
+    source: tools/run_extract.py

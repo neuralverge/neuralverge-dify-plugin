@@ -1,0 +1,22 @@
+identity:
+  name: run_yahoo_auctions_sellers
+  author: neuralverge
+  label:
+    en_US: "Yahoo! Auctions seller"
+description:
+  human:
+    en_US: "Get a Yahoo! Auctions Japan seller profile by seller id or URL: display name, rating count, positive-feedback percentage, store/verification badges and profile message. Flat 5 points per successful run."
+  llm: "Get a Yahoo! Auctions Japan seller profile by seller id or URL: display name, rating count, positive-feedback percentage, store/verification badges and profile message. Flat 5 points per successful run."
+parameters:
+  - name: seller
+    type: string
+    required: true
+    label:
+      en_US: "Seller"
+    human_description:
+      en_US: "Seller ID or URL. e.g. 8bdaxRiVapnRAmjjt2iWjM9wQzLXU"
+    llm_description: "Seller ID or URL. e.g. 8bdaxRiVapnRAmjjt2iWjM9wQzLXU"
+    form: llm
+extra:
+  python:
+    source: tools/run_yahoo_auctions_sellers.py

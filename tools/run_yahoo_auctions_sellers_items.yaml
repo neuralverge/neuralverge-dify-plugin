@@ -1,0 +1,352 @@
+identity:
+  name: run_yahoo_auctions_sellers_items
+  author: neuralverge
+  label:
+    en_US: "Yahoo! Auctions seller items"
+description:
+  human:
+    en_US: "A seller's live Yahoo! Auctions Japan listings by seller id or URL, with keyword, category, price, condition, region and sort filters. 1 point per returned record."
+  llm: "A seller's live Yahoo! Auctions Japan listings by seller id or URL, with keyword, category, price, condition, region and sort filters. 1 point per returned record."
+parameters:
+  - name: seller
+    type: string
+    required: true
+    label:
+      en_US: "Seller"
+    human_description:
+      en_US: "Seller ID or seller page URL. e.g. 8bdaxRiVapnRAmjjt2iWjM9wQzLXU (the token in /seller/{id})"
+    llm_description: "Seller ID or seller page URL. e.g. 8bdaxRiVapnRAmjjt2iWjM9wQzLXU (the token in /seller/{id})"
+    form: llm
+  - name: keyword
+    type: string
+    required: false
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Search within the seller's listings. e.g. Keyword"
+    llm_description: "Search within the seller's listings. e.g. Keyword"
+    form: llm
+  - name: keyword_exclude
+    type: string
+    required: false
+    label:
+      en_US: "Keyword exclude"
+    human_description:
+      en_US: "Excluded words (needs a keyword). e.g. box case"
+    llm_description: "Excluded words (needs a keyword). e.g. box case"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 25."
+    llm_description: "Max items (up to 500) Default: 25."
+    form: llm
+    min: 0
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page Default: 1."
+    llm_description: "Starting page Default: 1."
+    form: llm
+    min: 0
+    max: 9007199254740991
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: newest = Newest, ending_soonest = Ending soonest, ending_latest = Ending latest, price_asc = Price: low to high, price_desc = Price: high to low, buy_now_price_asc = Buy-it-now: low to high, buy_now_price_desc = Buy-it-now: high to low, bids_desc = Most bids, bids_asc = Fewest bids, popular = Popular, featured = Featured"
+    llm_description: "Sort by. Options: newest = Newest, ending_soonest = Ending soonest, ending_latest = Ending latest, price_asc = Price: low to high, price_desc = Price: high to low, buy_now_price_asc = Buy-it-now: low to high, buy_now_price_desc = Buy-it-now: high to low, bids_desc = Most bids, bids_asc = Fewest bids, popular = Popular, featured = Featured"
+    form: llm
+    options:
+      - value: "newest"
+        label:
+          en_US: "newest"
+      - value: "ending_soonest"
+        label:
+          en_US: "ending_soonest"
+      - value: "ending_latest"
+        label:
+          en_US: "ending_latest"
+      - value: "price_asc"
+        label:
+          en_US: "price_asc"
+      - value: "price_desc"
+        label:
+          en_US: "price_desc"
+      - value: "buy_now_price_asc"
+        label:
+          en_US: "buy_now_price_asc"
+      - value: "buy_now_price_desc"
+        label:
+          en_US: "buy_now_price_desc"
+      - value: "bids_desc"
+        label:
+          en_US: "bids_desc"
+      - value: "bids_asc"
+        label:
+          en_US: "bids_asc"
+      - value: "popular"
+        label:
+          en_US: "popular"
+      - value: "featured"
+        label:
+          en_US: "featured"
+  - name: condition
+    type: select
+    required: false
+    label:
+      en_US: "Condition"
+    human_description:
+      en_US: "Condition. Options: new = New, used = Used (any), like_new = Like new, no_visible_damage = No visible damage, slight_damage = Slight damage, damaged = Damaged, poor = Poor condition"
+    llm_description: "Condition. Options: new = New, used = Used (any), like_new = Like new, no_visible_damage = No visible damage, slight_damage = Slight damage, damaged = Damaged, poor = Poor condition"
+    form: llm
+    options:
+      - value: "new"
+        label:
+          en_US: "new"
+      - value: "used"
+        label:
+          en_US: "used"
+      - value: "like_new"
+        label:
+          en_US: "like_new"
+      - value: "no_visible_damage"
+        label:
+          en_US: "no_visible_damage"
+      - value: "slight_damage"
+        label:
+          en_US: "slight_damage"
+      - value: "damaged"
+        label:
+          en_US: "damaged"
+      - value: "poor"
+        label:
+          en_US: "poor"
+  - name: price_min
+    type: number
+    required: false
+    label:
+      en_US: "Price min"
+    human_description:
+      en_US: "Min price (JPY)"
+    llm_description: "Min price (JPY)"
+    form: llm
+    min: 0
+    max: 9007199254740991
+  - name: price_max
+    type: number
+    required: false
+    label:
+      en_US: "Price max"
+    human_description:
+      en_US: "Max price (JPY)"
+    llm_description: "Max price (JPY)"
+    form: llm
+    min: 0
+    max: 9007199254740991
+  - name: category
+    type: number
+    required: false
+    label:
+      en_US: "Category"
+    human_description:
+      en_US: "Category ID"
+    llm_description: "Category ID"
+    form: llm
+    min: 0
+    max: 9007199254740991
+  - name: brand_id
+    type: number
+    required: false
+    label:
+      en_US: "Brand id"
+    human_description:
+      en_US: "Brand ID"
+    llm_description: "Brand ID"
+    form: llm
+    min: 0
+    max: 9007199254740991
+  - name: region
+    type: select
+    required: false
+    label:
+      en_US: "Region"
+    human_description:
+      en_US: "Shipped from. Options: hokkaido = Hokkaido, aomori = Aomori, iwate = Iwate, miyagi = Miyagi, akita = Akita, yamagata = Yamagata, fukushima = Fukushima, ibaraki = Ibaraki, tochigi = Tochigi, gunma = Gunma, saitama = Saitama, chiba = Chiba, tokyo = Tokyo, kanagawa = Kanagawa, yamanashi = Yamanashi, nagano = Nagano, niigata = Niigata, toyama = Toyama, ishikawa = Ishikawa, fukui = Fukui, gifu = Gifu, shizuoka = Shizuoka, aichi = Aichi, mie = Mie, shiga = Shiga, kyoto = Kyoto, osaka = Osaka, hyogo = Hyogo, nara = Nara, wakayama = Wakayama, tottori = Tottori, shimane = Shimane, okayama = Okayama, hiroshima = Hiroshima, yamaguchi = Yamaguchi, tokushima = Tokushima, kagawa = Kagawa, ehime = Ehime, kochi = Kochi, fukuoka = Fukuoka, saga = Saga, nagasaki = Nagasaki, kumamoto = Kumamoto, oita = Oita, miyazaki = Miyazaki, kagoshima = Kagoshima, okinawa = Okinawa, overseas = Overseas"
+    llm_description: "Shipped from. Options: hokkaido = Hokkaido, aomori = Aomori, iwate = Iwate, miyagi = Miyagi, akita = Akita, yamagata = Yamagata, fukushima = Fukushima, ibaraki = Ibaraki, tochigi = Tochigi, gunma = Gunma, saitama = Saitama, chiba = Chiba, tokyo = Tokyo, kanagawa = Kanagawa, yamanashi = Yamanashi, nagano = Nagano, niigata = Niigata, toyama = Toyama, ishikawa = Ishikawa, fukui = Fukui, gifu = Gifu, shizuoka = Shizuoka, aichi = Aichi, mie = Mie, shiga = Shiga, kyoto = Kyoto, osaka = Osaka, hyogo = Hyogo, nara = Nara, wakayama = Wakayama, tottori = Tottori, shimane = Shimane, okayama = Okayama, hiroshima = Hiroshima, yamaguchi = Yamaguchi, tokushima = Tokushima, kagawa = Kagawa, ehime = Ehime, kochi = Kochi, fukuoka = Fukuoka, saga = Saga, nagasaki = Nagasaki, kumamoto = Kumamoto, oita = Oita, miyazaki = Miyazaki, kagoshima = Kagoshima, okinawa = Okinawa, overseas = Overseas"
+    form: llm
+    options:
+      - value: "hokkaido"
+        label:
+          en_US: "hokkaido"
+      - value: "aomori"
+        label:
+          en_US: "aomori"
+      - value: "iwate"
+        label:
+          en_US: "iwate"
+      - value: "miyagi"
+        label:
+          en_US: "miyagi"
+      - value: "akita"
+        label:
+          en_US: "akita"
+      - value: "yamagata"
+        label:
+          en_US: "yamagata"
+      - value: "fukushima"
+        label:
+          en_US: "fukushima"
+      - value: "ibaraki"
+        label:
+          en_US: "ibaraki"
+      - value: "tochigi"
+        label:
+          en_US: "tochigi"
+      - value: "gunma"
+        label:
+          en_US: "gunma"
+      - value: "saitama"
+        label:
+          en_US: "saitama"
+      - value: "chiba"
+        label:
+          en_US: "chiba"
+      - value: "tokyo"
+        label:
+          en_US: "tokyo"
+      - value: "kanagawa"
+        label:
+          en_US: "kanagawa"
+      - value: "yamanashi"
+        label:
+          en_US: "yamanashi"
+      - value: "nagano"
+        label:
+          en_US: "nagano"
+      - value: "niigata"
+        label:
+          en_US: "niigata"
+      - value: "toyama"
+        label:
+          en_US: "toyama"
+      - value: "ishikawa"
+        label:
+          en_US: "ishikawa"
+      - value: "fukui"
+        label:
+          en_US: "fukui"
+      - value: "gifu"
+        label:
+          en_US: "gifu"
+      - value: "shizuoka"
+        label:
+          en_US: "shizuoka"
+      - value: "aichi"
+        label:
+          en_US: "aichi"
+      - value: "mie"
+        label:
+          en_US: "mie"
+      - value: "shiga"
+        label:
+          en_US: "shiga"
+      - value: "kyoto"
+        label:
+          en_US: "kyoto"
+      - value: "osaka"
+        label:
+          en_US: "osaka"
+      - value: "hyogo"
+        label:
+          en_US: "hyogo"
+      - value: "nara"
+        label:
+          en_US: "nara"
+      - value: "wakayama"
+        label:
+          en_US: "wakayama"
+      - value: "tottori"
+        label:
+          en_US: "tottori"
+      - value: "shimane"
+        label:
+          en_US: "shimane"
+      - value: "okayama"
+        label:
+          en_US: "okayama"
+      - value: "hiroshima"
+        label:
+          en_US: "hiroshima"
+      - value: "yamaguchi"
+        label:
+          en_US: "yamaguchi"
+      - value: "tokushima"
+        label:
+          en_US: "tokushima"
+      - value: "kagawa"
+        label:
+          en_US: "kagawa"
+      - value: "ehime"
+        label:
+          en_US: "ehime"
+      - value: "kochi"
+        label:
+          en_US: "kochi"
+      - value: "fukuoka"
+        label:
+          en_US: "fukuoka"
+      - value: "saga"
+        label:
+          en_US: "saga"
+      - value: "nagasaki"
+        label:
+          en_US: "nagasaki"
+      - value: "kumamoto"
+        label:
+          en_US: "kumamoto"
+      - value: "oita"
+        label:
+          en_US: "oita"
+      - value: "miyazaki"
+        label:
+          en_US: "miyazaki"
+      - value: "kagoshima"
+        label:
+          en_US: "kagoshima"
+      - value: "okinawa"
+        label:
+          en_US: "okinawa"
+      - value: "overseas"
+        label:
+          en_US: "overseas"
+  - name: free_shipping
+    type: boolean
+    required: false
+    label:
+      en_US: "Free shipping"
+    human_description:
+      en_US: "Free shipping only"
+    llm_description: "Free shipping only"
+    form: llm
+  - name: has_image
+    type: boolean
+    required: false
+    label:
+      en_US: "Has image"
+    human_description:
+      en_US: "With photo only"
+    llm_description: "With photo only"
+    form: llm
+extra:
+  python:
+    source: tools/run_yahoo_auctions_sellers_items.py

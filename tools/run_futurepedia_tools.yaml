@@ -1,0 +1,22 @@
+identity:
+  name: run_futurepedia_tools
+  author: neuralverge
+  label:
+    en_US: "Futurepedia tool"
+description:
+  human:
+    en_US: "Get one AI tool from Futurepedia by slug or URL: description, rating and review count, categories, pricing, key features, pros and cons, use cases, pricing plans, rating breakdown and social links. Flat 5 points per successful run."
+  llm: "Get one AI tool from Futurepedia by slug or URL: description, rating and review count, categories, pricing, key features, pros and cons, use cases, pricing plans, rating breakdown and social links. Flat 5 points per successful run."
+parameters:
+  - name: tool
+    type: string
+    required: true
+    label:
+      en_US: "Tool"
+    human_description:
+      en_US: "Tool slug or Futurepedia URL. e.g. midjourney"
+    llm_description: "Tool slug or Futurepedia URL. e.g. midjourney"
+    form: llm
+extra:
+  python:
+    source: tools/run_futurepedia_tools.py

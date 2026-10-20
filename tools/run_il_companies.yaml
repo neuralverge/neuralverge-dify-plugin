@@ -1,0 +1,22 @@
+identity:
+  name: run_il_companies
+  author: neuralverge
+  label:
+    en_US: "Israel company"
+description:
+  human:
+    en_US: "Get one company from the Israel registry (Corporations Authority) by company number: Hebrew and English name, status, registration date, address, company type, liability, purpose and last annual report year. 5 point per returned record."
+  llm: "Get one company from the Israel registry (Corporations Authority) by company number: Hebrew and English name, status, registration date, address, company type, liability, purpose and last annual report year. 5 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "Company number (מספר חברה). e.g. 520013954"
+    llm_description: "Company number (מספר חברה). e.g. 520013954"
+    form: llm
+extra:
+  python:
+    source: tools/run_il_companies.py

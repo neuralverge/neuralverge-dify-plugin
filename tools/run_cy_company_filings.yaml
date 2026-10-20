@@ -1,0 +1,69 @@
+identity:
+  name: run_cy_company_filings
+  author: neuralverge
+  label:
+    en_US: "Cyprus company filings"
+description:
+  human:
+    en_US: "List the filings of one Cyprus organisation (Registrar of Companies, DRCOR) by registration number or registry link: file documents, charges and mortgages, translations, annual returns (HE32) or pending services, with form, date and page number. 1 point per returned record."
+  llm: "List the filings of one Cyprus organisation (Registrar of Companies, DRCOR) by registration number or registry link: file documents, charges and mortgages, translations, annual returns (HE32) or pending services, with form, date and page number. 1 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "Registration number or registry URL. e.g. HE 165"
+    llm_description: "Registration number or registry URL. e.g. HE 165"
+    form: llm
+  - name: list
+    type: select
+    required: false
+    label:
+      en_US: "List"
+    human_description:
+      en_US: "List. Options: documents = File documents (main), charges = Charges and mortgages documents, translations = Translations, he32 = Annual returns (HE32 archive), pending = Pending services"
+    llm_description: "List. Options: documents = File documents (main), charges = Charges and mortgages documents, translations = Translations, he32 = Annual returns (HE32 archive), pending = Pending services"
+    form: llm
+    options:
+      - value: "documents"
+        label:
+          en_US: "documents"
+      - value: "charges"
+        label:
+          en_US: "charges"
+      - value: "translations"
+        label:
+          en_US: "translations"
+      - value: "he32"
+        label:
+          en_US: "he32"
+      - value: "pending"
+        label:
+          en_US: "pending"
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_cy_company_filings.py

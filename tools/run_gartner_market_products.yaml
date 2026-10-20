@@ -1,0 +1,33 @@
+identity:
+  name: run_gartner_market_products
+  author: neuralverge
+  label:
+    en_US: "Gartner market products"
+description:
+  human:
+    en_US: "List ranked Gartner Peer Insights products within a market, with ratings and vendors. 1 point per returned record."
+  llm: "List ranked Gartner Peer Insights products within a market, with ratings and vendors. 1 point per returned record."
+parameters:
+  - name: market
+    type: string
+    required: true
+    label:
+      en_US: "Market"
+    human_description:
+      en_US: "Market alias or URL. e.g. data-loss-prevention"
+    llm_description: "Market alias or URL. e.g. data-loss-prevention"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 10."
+    llm_description: "Max items (up to 250) Default: 10."
+    form: llm
+    min: 1
+    max: 250
+extra:
+  python:
+    source: tools/run_gartner_market_products.py

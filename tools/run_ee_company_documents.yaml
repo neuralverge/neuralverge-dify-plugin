@@ -1,0 +1,44 @@
+identity:
+  name: run_ee_company_documents
+  author: neuralverge
+  label:
+    en_US: "Estonia company documents"
+description:
+  human:
+    en_US: "Annual reports and documents of one Estonian company (e-Business Register): date, type, title and download links. 1 point per returned record."
+  llm: "Annual reports and documents of one Estonian company (e-Business Register): date, type, title and download links. 1 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "Registration number or registry URL. e.g. 12417834"
+    llm_description: "Registration number or registry URL. e.g. 12417834"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_ee_company_documents.py

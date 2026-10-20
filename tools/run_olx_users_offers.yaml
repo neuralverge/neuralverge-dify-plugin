@@ -1,0 +1,111 @@
+identity:
+  name: run_olx_users_offers
+  author: neuralverge
+  label:
+    en_US: "OLX user offers"
+description:
+  human:
+    en_US: "A seller's active OLX offers by user id, uuid or profile URL, with category filter and sort. 1 point per returned record."
+  llm: "A seller's active OLX offers by user id, uuid or profile URL, with category filter and sort. 1 point per returned record."
+parameters:
+  - name: domain
+    type: select
+    required: false
+    label:
+      en_US: "Domain"
+    human_description:
+      en_US: "Marketplace. Options: olx.pl = olx.pl (Poland), olx.ua = olx.ua (Ukraine), olx.ro = olx.ro (Romania), olx.bg = olx.bg (Bulgaria), olx.pt = olx.pt (Portugal), olx.kz = olx.kz (Kazakhstan), olx.uz = olx.uz (Uzbekistan) Default: olx.pl."
+    llm_description: "Marketplace. Options: olx.pl = olx.pl (Poland), olx.ua = olx.ua (Ukraine), olx.ro = olx.ro (Romania), olx.bg = olx.bg (Bulgaria), olx.pt = olx.pt (Portugal), olx.kz = olx.kz (Kazakhstan), olx.uz = olx.uz (Uzbekistan) Default: olx.pl."
+    form: llm
+    options:
+      - value: "olx.pl"
+        label:
+          en_US: "olx.pl"
+      - value: "olx.ua"
+        label:
+          en_US: "olx.ua"
+      - value: "olx.ro"
+        label:
+          en_US: "olx.ro"
+      - value: "olx.bg"
+        label:
+          en_US: "olx.bg"
+      - value: "olx.pt"
+        label:
+          en_US: "olx.pt"
+      - value: "olx.kz"
+        label:
+          en_US: "olx.kz"
+      - value: "olx.uz"
+        label:
+          en_US: "olx.uz"
+  - name: user
+    type: string
+    required: true
+    label:
+      en_US: "User"
+    human_description:
+      en_US: "User. e.g. User id, uuid or profile URL, e.g. 888517085"
+    llm_description: "User. e.g. User id, uuid or profile URL, e.g. 888517085"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 25."
+    llm_description: "Max items (up to 500) Default: 25."
+    form: llm
+    min: 1
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page (50 offers per page, up to 20)"
+    llm_description: "Starting page (50 offers per page, up to 20)"
+    form: llm
+    min: 1
+    max: 20
+  - name: category_id
+    type: number
+    required: false
+    label:
+      en_US: "Category id"
+    human_description:
+      en_US: "Category ID"
+    llm_description: "Category ID"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: relevance = Relevance, newest = Newest, oldest = Oldest, price_asc = Price: low to high, price_desc = Price: high to low"
+    llm_description: "Sort by. Options: relevance = Relevance, newest = Newest, oldest = Oldest, price_asc = Price: low to high, price_desc = Price: high to low"
+    form: llm
+    options:
+      - value: "relevance"
+        label:
+          en_US: "relevance"
+      - value: "newest"
+        label:
+          en_US: "newest"
+      - value: "oldest"
+        label:
+          en_US: "oldest"
+      - value: "price_asc"
+        label:
+          en_US: "price_asc"
+      - value: "price_desc"
+        label:
+          en_US: "price_desc"
+extra:
+  python:
+    source: tools/run_olx_users_offers.py

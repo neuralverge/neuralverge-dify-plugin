@@ -1,0 +1,68 @@
+identity:
+  name: run_indiehackers_posts_search
+  author: neuralverge
+  label:
+    en_US: "Indie Hackers posts search"
+description:
+  human:
+    en_US: "Indie Hackers post feeds: the top posts of a week, month or all time, or the newest posts, with author, upvotes and comment counts. 1 point per returned record."
+  llm: "Indie Hackers post feeds: the top posts of a week, month or all time, or the newest posts, with author, upvotes and comment counts. 1 point per returned record."
+parameters:
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort. Options: top = Top (most upvoted), newest = Newest"
+    llm_description: "Sort. Options: top = Top (most upvoted), newest = Newest"
+    form: llm
+    options:
+      - value: "top"
+        label:
+          en_US: "top"
+      - value: "newest"
+        label:
+          en_US: "newest"
+  - name: period
+    type: select
+    required: false
+    label:
+      en_US: "Period"
+    human_description:
+      en_US: "Period (for Top). Options: week = Week, month = Month, all-time = All time"
+    llm_description: "Period (for Top). Options: week = Week, month = Month, all-time = All time"
+    form: llm
+    options:
+      - value: "week"
+        label:
+          en_US: "week"
+      - value: "month"
+        label:
+          en_US: "month"
+      - value: "all-time"
+        label:
+          en_US: "all-time"
+  - name: date
+    type: string
+    required: false
+    label:
+      en_US: "Date"
+    human_description:
+      en_US: "A date inside the week or month (YYYY-MM-DD). e.g. 2026-09-02"
+    llm_description: "A date inside the week or month (YYYY-MM-DD). e.g. 2026-09-02"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 20) Default: 20."
+    llm_description: "Max items (up to 20) Default: 20."
+    form: llm
+    min: 1
+    max: 20
+extra:
+  python:
+    source: tools/run_indiehackers_posts_search.py

@@ -1,0 +1,87 @@
+identity:
+  name: run_walmart_product_search
+  author: neuralverge
+  label:
+    en_US: "Walmart product search"
+description:
+  human:
+    en_US: "Search Walmart products by keyword: title, price, rating, and seller. 1 point per returned record."
+  llm: "Search Walmart products by keyword: title, price, rating, and seller. 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: true
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Search term. e.g. wireless mouse"
+    llm_description: "Search term. e.g. wireless mouse"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page Default: 1."
+    llm_description: "Starting page Default: 1."
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: price_low = Price: low to high, price_high = Price: high to low, best_seller = Best seller, new = New arrivals, rating_high = Highest rated"
+    llm_description: "Sort by. Options: price_low = Price: low to high, price_high = Price: high to low, best_seller = Best seller, new = New arrivals, rating_high = Highest rated"
+    form: llm
+    options:
+      - value: "price_low"
+        label:
+          en_US: "price_low"
+      - value: "price_high"
+        label:
+          en_US: "price_high"
+      - value: "best_seller"
+        label:
+          en_US: "best_seller"
+      - value: "new"
+        label:
+          en_US: "new"
+      - value: "rating_high"
+        label:
+          en_US: "rating_high"
+  - name: min_price
+    type: number
+    required: false
+    label:
+      en_US: "Min price"
+    human_description:
+      en_US: "Min price"
+    llm_description: "Min price"
+    form: llm
+  - name: max_price
+    type: number
+    required: false
+    label:
+      en_US: "Max price"
+    human_description:
+      en_US: "Max price"
+    llm_description: "Max price"
+    form: llm
+extra:
+  python:
+    source: tools/run_walmart_product_search.py

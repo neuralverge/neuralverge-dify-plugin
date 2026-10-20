@@ -1,0 +1,154 @@
+identity:
+  name: run_seedrs_campaigns_search
+  author: neuralverge
+  label:
+    en_US: "Seedrs / Republic Europe campaigns search"
+description:
+  human:
+    en_US: "Search the live Republic Europe (Seedrs) campaigns by campaign-name word and sector, impact tag, business type, tax relief and pitch type filters: raised and target amounts, valuation, investors, type, status and link. 1 point per returned record."
+  llm: "Search the live Republic Europe (Seedrs) campaigns by campaign-name word and sector, impact tag, business type, tax relief and pitch type filters: raised and target amounts, valuation, investors, type, status and link. 1 point per returned record."
+parameters:
+  - name: search
+    type: string
+    required: false
+    label:
+      en_US: "Search"
+    human_description:
+      en_US: "Campaign name word. e.g. skytree"
+    llm_description: "Campaign name word. e.g. skytree"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: trending_desc = Trending (default), trending_asc = Trending (least first), most_recent_desc = Most recent, most_recent_asc = Oldest, percentage_raised_desc = Most raised (%), percentage_raised_asc = Least raised (%), closing_date_asc = Closing soonest, closing_date_desc = Closing latest, business_name_asc = Name A-Z, business_name_desc = Name Z-A, valuation_desc = Valuation (high first), valuation_asc = Valuation (low first), investment_sought_desc = Target (high first), investment_sought_asc = Target (low first), investors_count_desc = Investors (most first), investors_count_asc = Investors (least first)"
+    llm_description: "Sort by. Options: trending_desc = Trending (default), trending_asc = Trending (least first), most_recent_desc = Most recent, most_recent_asc = Oldest, percentage_raised_desc = Most raised (%), percentage_raised_asc = Least raised (%), closing_date_asc = Closing soonest, closing_date_desc = Closing latest, business_name_asc = Name A-Z, business_name_desc = Name Z-A, valuation_desc = Valuation (high first), valuation_asc = Valuation (low first), investment_sought_desc = Target (high first), investment_sought_asc = Target (low first), investors_count_desc = Investors (most first), investors_count_asc = Investors (least first)"
+    form: llm
+    options:
+      - value: "trending_desc"
+        label:
+          en_US: "trending_desc"
+      - value: "trending_asc"
+        label:
+          en_US: "trending_asc"
+      - value: "most_recent_desc"
+        label:
+          en_US: "most_recent_desc"
+      - value: "most_recent_asc"
+        label:
+          en_US: "most_recent_asc"
+      - value: "percentage_raised_desc"
+        label:
+          en_US: "percentage_raised_desc"
+      - value: "percentage_raised_asc"
+        label:
+          en_US: "percentage_raised_asc"
+      - value: "closing_date_asc"
+        label:
+          en_US: "closing_date_asc"
+      - value: "closing_date_desc"
+        label:
+          en_US: "closing_date_desc"
+      - value: "business_name_asc"
+        label:
+          en_US: "business_name_asc"
+      - value: "business_name_desc"
+        label:
+          en_US: "business_name_desc"
+      - value: "valuation_desc"
+        label:
+          en_US: "valuation_desc"
+      - value: "valuation_asc"
+        label:
+          en_US: "valuation_asc"
+      - value: "investment_sought_desc"
+        label:
+          en_US: "investment_sought_desc"
+      - value: "investment_sought_asc"
+        label:
+          en_US: "investment_sought_asc"
+      - value: "investors_count_desc"
+        label:
+          en_US: "investors_count_desc"
+      - value: "investors_count_asc"
+        label:
+          en_US: "investors_count_asc"
+  - name: trending_in
+    type: string
+    required: false
+    label:
+      en_US: "Trending in"
+    human_description:
+      en_US: "Trending in (country code). e.g. GB"
+    llm_description: "Trending in (country code). e.g. GB"
+    form: llm
+  - name: include_prereg
+    type: boolean
+    required: false
+    label:
+      en_US: "Include prereg"
+    human_description:
+      en_US: "Include pre-registration pages"
+    llm_description: "Include pre-registration pages"
+    form: llm
+  - name: types
+    type: string
+    required: false
+    label:
+      en_US: "Types"
+    human_description:
+      en_US: "Pitch type Comma-separated list (values: equity, convertible, secondary, limited_partnership_fund, cohort)."
+    llm_description: "Pitch type Comma-separated list (values: equity, convertible, secondary, limited_partnership_fund, cohort)."
+    form: llm
+  - name: tax_eligibilities
+    type: string
+    required: false
+    label:
+      en_US: "Tax eligibilities"
+    human_description:
+      en_US: "Tax relief Comma-separated list (values: eis, seis, none)."
+    llm_description: "Tax relief Comma-separated list (values: eis, seis, none)."
+    form: llm
+  - name: sectors
+    type: string
+    required: false
+    label:
+      en_US: "Sectors"
+    human_description:
+      en_US: "Sectors Comma-separated list (values: advertising-and-marketing, automotive-and-transport, clothing-and-accessories, content-and-information, data-and-analytics, energy, entertainment, finance-and-payments, food-and-beverage, games, healthcare, home-and-personal, property, programming-and-security, recruitment-and-procurement, saas-paas, travel-leisure-and-sport)."
+    llm_description: "Sectors Comma-separated list (values: advertising-and-marketing, automotive-and-transport, clothing-and-accessories, content-and-information, data-and-analytics, energy, entertainment, finance-and-payments, food-and-beverage, games, healthcare, home-and-personal, property, programming-and-security, recruitment-and-procurement, saas-paas, travel-leisure-and-sport)."
+    form: llm
+  - name: business_types
+    type: string
+    required: false
+    label:
+      en_US: "Business types"
+    human_description:
+      en_US: "Business type Comma-separated list (values: b2b, b2c, mixed-b2b-b2c, digital, non-digital, mixed-digital-non-digital)."
+    llm_description: "Business type Comma-separated list (values: b2b, b2c, mixed-b2b-b2c, digital, non-digital, mixed-digital-non-digital)."
+    form: llm
+  - name: tags
+    type: string
+    required: false
+    label:
+      en_US: "Tags"
+    human_description:
+      en_US: "Impact Comma-separated list (values: european, female-founder, sustainability, crypto, b-corp, cbd, social-impact)."
+    llm_description: "Impact Comma-separated list (values: european, female-founder, sustainability, crypto, b-corp, cbd, social-impact)."
+    form: llm
+extra:
+  python:
+    source: tools/run_seedrs_campaigns_search.py

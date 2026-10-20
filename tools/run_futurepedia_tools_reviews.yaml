@@ -1,0 +1,33 @@
+identity:
+  name: run_futurepedia_tools_reviews
+  author: neuralverge
+  label:
+    en_US: "Futurepedia tool reviews"
+description:
+  human:
+    en_US: "User reviews of one Futurepedia AI tool (slug or URL): rating, review text and reviewer name. 1 point per returned record."
+  llm: "User reviews of one Futurepedia AI tool (slug or URL): rating, review text and reviewer name. 1 point per returned record."
+parameters:
+  - name: tool
+    type: string
+    required: true
+    label:
+      en_US: "Tool"
+    human_description:
+      en_US: "Tool slug or Futurepedia URL. e.g. midjourney"
+    llm_description: "Tool slug or Futurepedia URL. e.g. midjourney"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+extra:
+  python:
+    source: tools/run_futurepedia_tools_reviews.py

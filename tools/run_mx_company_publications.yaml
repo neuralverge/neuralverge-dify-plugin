@@ -1,0 +1,44 @@
+identity:
+  name: run_mx_company_publications
+  author: neuralverge
+  label:
+    en_US: "Mexico company publications"
+description:
+  human:
+    en_US: "All published notices of one company in the Mexican Registro Público de Comercio publications (PSM): assemblies, balances, capital and structure changes, with date, type, title and a link to the published text. 1 point per returned record."
+  llm: "All published notices of one company in the Mexican Registro Público de Comercio publications (PSM): assemblies, balances, capital and structure changes, with date, type, title and a link to the published text. 1 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "Company name or publication number. e.g. Cemex, S.A.B. de C.V."
+    llm_description: "Company name or publication number. e.g. Cemex, S.A.B. de C.V."
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_mx_company_publications.py

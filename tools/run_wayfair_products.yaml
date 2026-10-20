@@ -1,0 +1,22 @@
+identity:
+  name: run_wayfair_products
+  author: neuralverge
+  label:
+    en_US: "Wayfair Product"
+description:
+  human:
+    en_US: "Get full Wayfair product details by SKU (or product URL): title, brand, price, list price, discount, rating with per-star breakdown, images, variants, verified status, availability and category. Flat 5 points per successful run."
+  llm: "Get full Wayfair product details by SKU (or product URL): title, brand, price, list price, discount, rating with per-star breakdown, images, variants, verified status, availability and category. Flat 5 points per successful run."
+parameters:
+  - name: product
+    type: string
+    required: true
+    label:
+      en_US: "Product"
+    human_description:
+      en_US: "SKU or product URL. e.g. W114765796"
+    llm_description: "SKU or product URL. e.g. W114765796"
+    form: llm
+extra:
+  python:
+    source: tools/run_wayfair_products.py

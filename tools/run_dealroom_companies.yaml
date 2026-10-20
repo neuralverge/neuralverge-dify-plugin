@@ -1,0 +1,22 @@
+identity:
+  name: run_dealroom_companies
+  author: neuralverge
+  label:
+    en_US: "Dealroom company"
+description:
+  human:
+    en_US: "Get one company from Dealroom by slug or URL: tagline, HQ, founding year, sector, tier, valuation / revenue / headcount ranges, investors by round, ownership, funding events, alumni founders, footprint and investments. Dealroom shows ranges, not exact values, without a login. Flat 5 points per successful run."
+  llm: "Get one company from Dealroom by slug or URL: tagline, HQ, founding year, sector, tier, valuation / revenue / headcount ranges, investors by round, ownership, funding events, alumni founders, footprint and investments. Dealroom shows ranges, not exact values, without a login. Flat 5 points per successful run."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "Company slug or Dealroom URL. e.g. revolut"
+    llm_description: "Company slug or Dealroom URL. e.g. revolut"
+    form: llm
+extra:
+  python:
+    source: tools/run_dealroom_companies.py

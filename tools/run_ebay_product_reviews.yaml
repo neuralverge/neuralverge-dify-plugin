@@ -1,0 +1,44 @@
+identity:
+  name: run_ebay_product_reviews
+  author: neuralverge
+  label:
+    en_US: "eBay product reviews"
+description:
+  human:
+    en_US: "Get buyer reviews for an eBay catalog product by ePID: rating, text, and author. 1 point per returned record."
+  llm: "Get buyer reviews for an eBay catalog product by ePID: rating, text, and author. 1 point per returned record."
+parameters:
+  - name: product
+    type: string
+    required: true
+    label:
+      en_US: "Product"
+    human_description:
+      en_US: "ePID or URL. e.g. 1234567890"
+    llm_description: "ePID or URL. e.g. 1234567890"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 10."
+    llm_description: "Max items (up to 500) Default: 10."
+    form: llm
+    min: 1
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page Default: 1."
+    llm_description: "Starting page Default: 1."
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_ebay_product_reviews.py

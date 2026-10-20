@@ -1,0 +1,136 @@
+identity:
+  name: run_yc_companies_search
+  author: neuralverge
+  label:
+    en_US: "Y Combinator companies search"
+description:
+  human:
+    en_US: "Search the Y Combinator directory by keyword and filters (batch, industry, region, hiring, top company, nonprofit, team size): name, one-liner, batch, status, industries, regions, team size and website. 1 point per returned record."
+  llm: "Search the Y Combinator directory by keyword and filters (batch, industry, region, hiring, top company, nonprofit, team size): name, one-liner, batch, status, industries, regions, team size and website. 1 point per returned record."
+parameters:
+  - name: query
+    type: string
+    required: false
+    label:
+      en_US: "Query"
+    human_description:
+      en_US: "Keyword (optional). e.g. ai"
+    llm_description: "Keyword (optional). e.g. ai"
+    form: llm
+  - name: batches
+    type: string
+    required: false
+    label:
+      en_US: "Batches"
+    human_description:
+      en_US: "Batches (comma-separated). e.g. Winter 2024, Summer 2024"
+    llm_description: "Batches (comma-separated). e.g. Winter 2024, Summer 2024"
+    form: llm
+  - name: industries
+    type: string
+    required: false
+    label:
+      en_US: "Industries"
+    human_description:
+      en_US: "Industries (comma-separated). e.g. Fintech, B2B"
+    llm_description: "Industries (comma-separated). e.g. Fintech, B2B"
+    form: llm
+  - name: regions
+    type: string
+    required: false
+    label:
+      en_US: "Regions"
+    human_description:
+      en_US: "Regions (comma-separated). e.g. Europe, India"
+    llm_description: "Regions (comma-separated). e.g. Europe, India"
+    form: llm
+  - name: team_size_min
+    type: number
+    required: false
+    label:
+      en_US: "Team size min"
+    human_description:
+      en_US: "Team size from"
+    llm_description: "Team size from"
+    form: llm
+    min: 0
+    max: 9007199254740991
+  - name: team_size_max
+    type: number
+    required: false
+    label:
+      en_US: "Team size max"
+    human_description:
+      en_US: "Team size to"
+    llm_description: "Team size to"
+    form: llm
+    min: 0
+    max: 9007199254740991
+  - name: sort_by
+    type: select
+    required: false
+    label:
+      en_US: "Sort by"
+    human_description:
+      en_US: "Sort by. Options: relevance = Relevance, launch_date = Newest first"
+    llm_description: "Sort by. Options: relevance = Relevance, launch_date = Newest first"
+    form: llm
+    options:
+      - value: "relevance"
+        label:
+          en_US: "relevance"
+      - value: "launch_date"
+        label:
+          en_US: "launch_date"
+  - name: is_hiring
+    type: boolean
+    required: false
+    label:
+      en_US: "Is hiring"
+    human_description:
+      en_US: "Hiring"
+    llm_description: "Hiring"
+    form: llm
+  - name: top_company
+    type: boolean
+    required: false
+    label:
+      en_US: "Top company"
+    human_description:
+      en_US: "Top companies"
+    llm_description: "Top companies"
+    form: llm
+  - name: nonprofit
+    type: boolean
+    required: false
+    label:
+      en_US: "Nonprofit"
+    human_description:
+      en_US: "Nonprofit"
+    llm_description: "Nonprofit"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_yc_companies_search.py

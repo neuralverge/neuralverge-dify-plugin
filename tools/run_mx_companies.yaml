@@ -1,0 +1,22 @@
+identity:
+  name: run_mx_companies
+  author: neuralverge
+  label:
+    en_US: "Mexico company"
+description:
+  human:
+    en_US: "Get one company notice from the Mexican Registro Público de Comercio publications (PSM) by publication number: company name, legal form, publication type, title and date, a link to the published text and the publication history. 5 point per returned record."
+  llm: "Get one company notice from the Mexican Registro Público de Comercio publications (PSM) by publication number: company name, legal form, publication type, title and date, a link to the published text and the publication history. 5 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "Publication number. e.g. 2026-0000001606"
+    llm_description: "Publication number. e.g. 2026-0000001606"
+    form: llm
+extra:
+  python:
+    source: tools/run_mx_companies.py

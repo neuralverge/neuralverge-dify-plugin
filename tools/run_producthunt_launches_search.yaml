@@ -1,0 +1,44 @@
+identity:
+  name: run_producthunt_launches_search
+  author: neuralverge
+  label:
+    en_US: "Product Hunt launches search"
+description:
+  human:
+    en_US: "Search Product Hunt launches by keyword: name, date and the product behind each launch. 1 point per returned record."
+  llm: "Search Product Hunt launches by keyword: name, date and the product behind each launch. 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: true
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Keyword. e.g. crm"
+    llm_description: "Keyword. e.g. crm"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_producthunt_launches_search.py

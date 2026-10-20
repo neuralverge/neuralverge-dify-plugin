@@ -1,0 +1,38 @@
+identity:
+  name: run_poshmark_users
+  author: neuralverge
+  label:
+    en_US: "Poshmark user"
+description:
+  human:
+    en_US: "Get a Poshmark seller's public closet profile by username or URL: bio, location, followers/following/listing counts, items sold and activity. Flat 5 points per successful run."
+  llm: "Get a Poshmark seller's public closet profile by username or URL: bio, location, followers/following/listing counts, items sold and activity. Flat 5 points per successful run."
+parameters:
+  - name: user
+    type: string
+    required: true
+    label:
+      en_US: "User"
+    human_description:
+      en_US: "Username or closet URL. e.g. Username or closet URL, e.g. najescloset"
+    llm_description: "Username or closet URL. e.g. Username or closet URL, e.g. najescloset"
+    form: llm
+  - name: domain
+    type: select
+    required: false
+    label:
+      en_US: "Domain"
+    human_description:
+      en_US: "Domain. Options: poshmark.com = poshmark.com, poshmark.ca = poshmark.ca Default: poshmark.com."
+    llm_description: "Domain. Options: poshmark.com = poshmark.com, poshmark.ca = poshmark.ca Default: poshmark.com."
+    form: llm
+    options:
+      - value: "poshmark.com"
+        label:
+          en_US: "poshmark.com"
+      - value: "poshmark.ca"
+        label:
+          en_US: "poshmark.ca"
+extra:
+  python:
+    source: tools/run_poshmark_users.py

@@ -1,0 +1,22 @@
+identity:
+  name: run_phone_enrichment_us
+  author: neuralverge
+  label:
+    en_US: "US Phone Enrichment"
+description:
+  human:
+    en_US: "Validates and enriches a US phone number with carrier, line type, activity score, litigator risk, and owner details."
+  llm: "Validates and enriches a US phone number with carrier, line type, activity score, litigator risk, and owner details."
+parameters:
+  - name: phone
+    type: string
+    required: true
+    label:
+      en_US: "Phone"
+    human_description:
+      en_US: "US phone number, e.g. 12069735100"
+    llm_description: "US phone number, e.g. 12069735100"
+    form: llm
+extra:
+  python:
+    source: tools/run_phone_enrichment_us.py

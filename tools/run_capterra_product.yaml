@@ -1,0 +1,22 @@
+identity:
+  name: run_capterra_product
+  author: neuralverge
+  label:
+    en_US: "Capterra product"
+description:
+  human:
+    en_US: "Get full Capterra product details by id or URL: vendor, pricing, ratings, and features. Flat 5 points per successful run."
+  llm: "Get full Capterra product details by id or URL: vendor, pricing, ratings, and features. Flat 5 points per successful run."
+parameters:
+  - name: product
+    type: string
+    required: true
+    label:
+      en_US: "Product"
+    human_description:
+      en_US: "Product id or URL. e.g. 176586"
+    llm_description: "Product id or URL. e.g. 176586"
+    form: llm
+extra:
+  python:
+    source: tools/run_capterra_product.py

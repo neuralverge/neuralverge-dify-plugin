@@ -1,0 +1,44 @@
+identity:
+  name: run_no_companies_search
+  author: neuralverge
+  label:
+    en_US: "Norway companies search"
+description:
+  human:
+    en_US: "Search the Norway company registry (Brønnøysundregistrene, Enhetsregisteret) by company name: name, organisation number, postal code and place, and link. 1 point per returned record."
+  llm: "Search the Norway company registry (Brønnøysundregistrene, Enhetsregisteret) by company name: name, organisation number, postal code and place, and link. 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: true
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Company name. e.g. equinor"
+    llm_description: "Company name. e.g. equinor"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_no_companies_search.py

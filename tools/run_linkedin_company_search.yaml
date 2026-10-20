@@ -1,0 +1,76 @@
+identity:
+  name: run_linkedin_company_search
+  author: neuralverge
+  label:
+    en_US: "LinkedIn Company Search"
+description:
+  human:
+    en_US: "Searches LinkedIn companies by a text query with optional filters (size, industry, location)."
+  llm: "Searches LinkedIn companies by a text query with optional filters (size, industry, location)."
+parameters:
+  - name: searchQuery
+    type: string
+    required: true
+    label:
+      en_US: "Searchquery"
+    human_description:
+      en_US: "Free-text company search query."
+    llm_description: "Free-text company search query."
+    form: llm
+  - name: companySize
+    type: string
+    required: false
+    label:
+      en_US: "Companysize"
+    human_description:
+      en_US: "Company size buckets, e.g. ['51-200']. Comma-separated list."
+    llm_description: "Company size buckets, e.g. ['51-200']. Comma-separated list."
+    form: llm
+  - name: industryIds
+    type: string
+    required: false
+    label:
+      en_US: "Industryids"
+    human_description:
+      en_US: "Industry filters. Comma-separated list."
+    llm_description: "Industry filters. Comma-separated list."
+    form: llm
+  - name: locations
+    type: string
+    required: false
+    label:
+      en_US: "Locations"
+    human_description:
+      en_US: "Location filters. Comma-separated list."
+    llm_description: "Location filters. Comma-separated list."
+    form: llm
+  - name: maxItems
+    type: number
+    required: false
+    label:
+      en_US: "Maxitems"
+    human_description:
+      en_US: "Maximum number of results to return."
+    llm_description: "Maximum number of results to return."
+    form: llm
+  - name: scraperMode
+    type: string
+    required: false
+    label:
+      en_US: "Scrapermode"
+    human_description:
+      en_US: "Scraper depth mode, e.g. 'short' or 'full'."
+    llm_description: "Scraper depth mode, e.g. 'short' or 'full'."
+    form: llm
+  - name: startPage
+    type: number
+    required: false
+    label:
+      en_US: "Startpage"
+    human_description:
+      en_US: "Page offset to start from."
+    llm_description: "Page offset to start from."
+    form: llm
+extra:
+  python:
+    source: tools/run_linkedin_company_search.py

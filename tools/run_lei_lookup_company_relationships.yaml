@@ -1,0 +1,44 @@
+identity:
+  name: run_lei_lookup_company_relationships
+  author: neuralverge
+  label:
+    en_US: "LEI Lookup company subsidiaries"
+description:
+  human:
+    en_US: "Subsidiaries of one legal entity in the LEI register (direct and ultimate children): LEI, name, type of relationship and link. 1 point per returned record."
+  llm: "Subsidiaries of one legal entity in the LEI register (direct and ultimate children): LEI, name, type of relationship and link. 1 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "LEI or lei-lookup.com link. e.g. 7LTWFZYICNSX8D621K86"
+    llm_description: "LEI or lei-lookup.com link. e.g. 7LTWFZYICNSX8D621K86"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_lei_lookup_company_relationships.py

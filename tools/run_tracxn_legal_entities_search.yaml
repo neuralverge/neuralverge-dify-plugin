@@ -1,0 +1,82 @@
+identity:
+  name: run_tracxn_legal_entities_search
+  author: neuralverge
+  label:
+    en_US: "Tracxn legal entities search"
+description:
+  human:
+    en_US: "Search 21.9M registered legal entities in Tracxn by name or CIN in one of 13 countries (default India): name, CIN, incorporation date, status, associated brands and link. 1 point per returned record."
+  llm: "Search 21.9M registered legal entities in Tracxn by name or CIN in one of 13 countries (default India): name, CIN, incorporation date, status, associated brands and link. 1 point per returned record."
+parameters:
+  - name: query
+    type: string
+    required: true
+    label:
+      en_US: "Query"
+    human_description:
+      en_US: "Name or CIN. e.g. supermarket grocery"
+    llm_description: "Name or CIN. e.g. supermarket grocery"
+    form: llm
+  - name: country
+    type: select
+    required: false
+    label:
+      en_US: "Country"
+    human_description:
+      en_US: "Country. Options: india = India, australia = Australia, croatia = Croatia, czech-republic = Czech Republic, denmark = Denmark, estonia = Estonia, germany = Germany, new-zealand = New Zealand, norway = Norway, poland = Poland, singapore = Singapore, thailand = Thailand, united-kingdom = United Kingdom"
+    llm_description: "Country. Options: india = India, australia = Australia, croatia = Croatia, czech-republic = Czech Republic, denmark = Denmark, estonia = Estonia, germany = Germany, new-zealand = New Zealand, norway = Norway, poland = Poland, singapore = Singapore, thailand = Thailand, united-kingdom = United Kingdom"
+    form: llm
+    options:
+      - value: "india"
+        label:
+          en_US: "india"
+      - value: "australia"
+        label:
+          en_US: "australia"
+      - value: "croatia"
+        label:
+          en_US: "croatia"
+      - value: "czech-republic"
+        label:
+          en_US: "czech-republic"
+      - value: "denmark"
+        label:
+          en_US: "denmark"
+      - value: "estonia"
+        label:
+          en_US: "estonia"
+      - value: "germany"
+        label:
+          en_US: "germany"
+      - value: "new-zealand"
+        label:
+          en_US: "new-zealand"
+      - value: "norway"
+        label:
+          en_US: "norway"
+      - value: "poland"
+        label:
+          en_US: "poland"
+      - value: "singapore"
+        label:
+          en_US: "singapore"
+      - value: "thailand"
+        label:
+          en_US: "thailand"
+      - value: "united-kingdom"
+        label:
+          en_US: "united-kingdom"
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 20) Default: 20."
+    llm_description: "Max items (up to 20) Default: 20."
+    form: llm
+    min: 1
+    max: 20
+extra:
+  python:
+    source: tools/run_tracxn_legal_entities_search.py

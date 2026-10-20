@@ -1,0 +1,22 @@
+identity:
+  name: run_au_companies
+  author: neuralverge
+  label:
+    en_US: "Australia company"
+description:
+  human:
+    en_US: "Get one company from the Australia registry (ASIC / ABN) by registration number or registry URL: name, status, registration date, address and legal form. Flat 10 points per successful run."
+  llm: "Get one company from the Australia registry (ASIC / ABN) by registration number or registry URL: name, status, registration date, address and legal form. Flat 10 points per successful run."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "Registration number or registry URL. e.g. 88000014675"
+    llm_description: "Registration number or registry URL. e.g. 88000014675"
+    form: llm
+extra:
+  python:
+    source: tools/run_au_companies.py

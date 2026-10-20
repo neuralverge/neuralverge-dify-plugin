@@ -1,0 +1,22 @@
+identity:
+  name: run_wefunder_companies
+  author: neuralverge
+  label:
+    en_US: "WeFunder company"
+description:
+  human:
+    en_US: "Get one WeFunder company by slug or URL: tagline, location, total raised and investors, current round (valuation, minimum investment, closing date), highlights, team, featured investors, memos, perks, FAQ and the latest updates and questions. Flat 5 points per successful run."
+  llm: "Get one WeFunder company by slug or URL: tagline, location, total raised and investors, current round (valuation, minimum investment, closing date), highlights, team, featured investors, memos, perks, FAQ and the latest updates and questions. Flat 5 points per successful run."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "Company slug or WeFunder URL. e.g. riserobotics"
+    llm_description: "Company slug or WeFunder URL. e.g. riserobotics"
+    form: llm
+extra:
+  python:
+    source: tools/run_wefunder_companies.py

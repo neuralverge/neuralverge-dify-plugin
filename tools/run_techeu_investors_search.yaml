@@ -1,0 +1,72 @@
+identity:
+  name: run_techeu_investors_search
+  author: neuralverge
+  label:
+    en_US: "Tech.eu investors search"
+description:
+  human:
+    en_US: "Search the Tech.eu investor directory by name: type, number of deals and companies, top sector and active years. 1 point per returned record."
+  llm: "Search the Tech.eu investor directory by name: type, number of deals and companies, top sector and active years. 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: false
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Investor name. e.g. sequoia"
+    llm_description: "Investor name. e.g. sequoia"
+    form: llm
+  - name: type
+    type: string
+    required: false
+    label:
+      en_US: "Type"
+    human_description:
+      en_US: "Type (e.g. Venture capital). e.g. Venture capital"
+    llm_description: "Type (e.g. Venture capital). e.g. Venture capital"
+    form: llm
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: deals_desc = Most deals, companies_desc = Most companies, name = Name"
+    llm_description: "Sort by. Options: deals_desc = Most deals, companies_desc = Most companies, name = Name"
+    form: llm
+    options:
+      - value: "deals_desc"
+        label:
+          en_US: "deals_desc"
+      - value: "companies_desc"
+        label:
+          en_US: "companies_desc"
+      - value: "name"
+        label:
+          en_US: "name"
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_techeu_investors_search.py

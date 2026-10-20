@@ -1,0 +1,669 @@
+identity:
+  name: run_craigslist_postings_search
+  author: neuralverge
+  label:
+    en_US: "Craigslist Postings Search"
+description:
+  human:
+    en_US: "Search live Craigslist postings in any regional site by keyword, category, area/sub-area/postal/coordinates and 60+ vehicle, motorcycle, boat, housing, job, gig and event filters; returns title, price, date, location, images and category facets. 1 point per returned record."
+  llm: "Search live Craigslist postings in any regional site by keyword, category, area/sub-area/postal/coordinates and 60+ vehicle, motorcycle, boat, housing, job, gig and event filters; returns title, price, date, location, images and category facets. 1 point per returned record."
+parameters:
+  - name: area
+    type: string
+    required: true
+    label:
+      en_US: "Area"
+    human_description:
+      en_US: "Area. e.g. sfbay"
+    llm_description: "Area. e.g. sfbay"
+    form: llm
+  - name: keyword
+    type: string
+    required: false
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Search term (optional). e.g. bike"
+    llm_description: "Search term (optional). e.g. bike"
+    form: llm
+  - name: category
+    type: string
+    required: false
+    label:
+      en_US: "Category"
+    human_description:
+      en_US: "Category (optional). e.g. sss"
+    llm_description: "Category (optional). e.g. sss"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 25."
+    llm_description: "Max items (up to 500) Default: 25."
+    form: llm
+    min: 1
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page Default: 1."
+    llm_description: "Starting page Default: 1."
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: subarea
+    type: string
+    required: false
+    label:
+      en_US: "Subarea"
+    human_description:
+      en_US: "Sub-area. e.g. sfc"
+    llm_description: "Sub-area. e.g. sfc"
+    form: llm
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: oldest = Oldest, price_asc = Price: low to high, price_desc = Price: high to low, distance = Distance, relevance = Relevance, upcoming = Upcoming"
+    llm_description: "Sort by. Options: oldest = Oldest, price_asc = Price: low to high, price_desc = Price: high to low, distance = Distance, relevance = Relevance, upcoming = Upcoming"
+    form: llm
+    options:
+      - value: "oldest"
+        label:
+          en_US: "oldest"
+      - value: "price_asc"
+        label:
+          en_US: "price_asc"
+      - value: "price_desc"
+        label:
+          en_US: "price_desc"
+      - value: "distance"
+        label:
+          en_US: "distance"
+      - value: "relevance"
+        label:
+          en_US: "relevance"
+      - value: "upcoming"
+        label:
+          en_US: "upcoming"
+  - name: purveyor
+    type: select
+    required: false
+    label:
+      en_US: "Purveyor"
+    human_description:
+      en_US: "Sold by. Options: all = All, owner = Owner, dealer = Dealer"
+    llm_description: "Sold by. Options: all = All, owner = Owner, dealer = Dealer"
+    form: llm
+    options:
+      - value: "all"
+        label:
+          en_US: "all"
+      - value: "owner"
+        label:
+          en_US: "owner"
+      - value: "dealer"
+        label:
+          en_US: "dealer"
+  - name: min_price
+    type: number
+    required: false
+    label:
+      en_US: "Min price"
+    human_description:
+      en_US: "Price (min)"
+    llm_description: "Price (min)"
+    form: llm
+  - name: max_price
+    type: number
+    required: false
+    label:
+      en_US: "Max price"
+    human_description:
+      en_US: "Price (max)"
+    llm_description: "Price (max)"
+    form: llm
+  - name: condition
+    type: string
+    required: false
+    label:
+      en_US: "Condition"
+    human_description:
+      en_US: "Condition Comma-separated list (values: new, like new, excellent, good, fair, salvage)."
+    llm_description: "Condition Comma-separated list (values: new, like new, excellent, good, fair, salvage)."
+    form: llm
+  - name: language
+    type: string
+    required: false
+    label:
+      en_US: "Language"
+    human_description:
+      en_US: "Posting language Comma-separated list (values: afrikaans, català, dansk, deutsch, english, español, suomi, français, italiano, nederlands, norsk, português, svenska, filipino, türkçe, 中文, العربية, 日本語, 한국말, русский, tiếng việt)."
+    llm_description: "Posting language Comma-separated list (values: afrikaans, català, dansk, deutsch, english, español, suomi, français, italiano, nederlands, norsk, português, svenska, filipino, türkçe, 中文, العربية, 日本語, 한국말, русский, tiếng việt)."
+    form: llm
+  - name: free
+    type: boolean
+    required: false
+    label:
+      en_US: "Free"
+    human_description:
+      en_US: "Free items only"
+    llm_description: "Free items only"
+    form: llm
+  - name: titles_only
+    type: boolean
+    required: false
+    label:
+      en_US: "Titles only"
+    human_description:
+      en_US: "Search titles only"
+    llm_description: "Search titles only"
+    form: llm
+  - name: has_image
+    type: boolean
+    required: false
+    label:
+      en_US: "Has image"
+    human_description:
+      en_US: "Has image"
+    llm_description: "Has image"
+    form: llm
+  - name: posted_today
+    type: boolean
+    required: false
+    label:
+      en_US: "Posted today"
+    human_description:
+      en_US: "Posted today"
+    llm_description: "Posted today"
+    form: llm
+  - name: hide_duplicates
+    type: boolean
+    required: false
+    label:
+      en_US: "Hide duplicates"
+    human_description:
+      en_US: "Hide duplicates"
+    llm_description: "Hide duplicates"
+    form: llm
+  - name: crypto_ok
+    type: boolean
+    required: false
+    label:
+      en_US: "Crypto ok"
+    human_description:
+      en_US: "Crypto accepted"
+    llm_description: "Crypto accepted"
+    form: llm
+  - name: delivery_available
+    type: boolean
+    required: false
+    label:
+      en_US: "Delivery available"
+    human_description:
+      en_US: "Delivery available"
+    llm_description: "Delivery available"
+    form: llm
+  - name: postal
+    type: string
+    required: false
+    label:
+      en_US: "Postal"
+    human_description:
+      en_US: "Postal code. e.g. 94103"
+    llm_description: "Postal code. e.g. 94103"
+    form: llm
+  - name: lat
+    type: number
+    required: false
+    label:
+      en_US: "Lat"
+    human_description:
+      en_US: "Latitude"
+    llm_description: "Latitude"
+    form: llm
+  - name: lon
+    type: number
+    required: false
+    label:
+      en_US: "Lon"
+    human_description:
+      en_US: "Longitude"
+    llm_description: "Longitude"
+    form: llm
+  - name: radius
+    type: number
+    required: false
+    label:
+      en_US: "Radius"
+    human_description:
+      en_US: "Radius (miles)"
+    llm_description: "Radius (miles)"
+    form: llm
+  - name: make_model
+    type: string
+    required: false
+    label:
+      en_US: "Make model"
+    human_description:
+      en_US: "Make and model. e.g. honda civic"
+    llm_description: "Make and model. e.g. honda civic"
+    form: llm
+  - name: min_auto_year
+    type: number
+    required: false
+    label:
+      en_US: "Min auto year"
+    human_description:
+      en_US: "Model year (min)"
+    llm_description: "Model year (min)"
+    form: llm
+  - name: max_auto_year
+    type: number
+    required: false
+    label:
+      en_US: "Max auto year"
+    human_description:
+      en_US: "Model year (max)"
+    llm_description: "Model year (max)"
+    form: llm
+  - name: min_auto_miles
+    type: number
+    required: false
+    label:
+      en_US: "Min auto miles"
+    human_description:
+      en_US: "Odometer (min)"
+    llm_description: "Odometer (min)"
+    form: llm
+  - name: max_auto_miles
+    type: number
+    required: false
+    label:
+      en_US: "Max auto miles"
+    human_description:
+      en_US: "Odometer (max)"
+    llm_description: "Odometer (max)"
+    form: llm
+  - name: min_monthly_payment
+    type: number
+    required: false
+    label:
+      en_US: "Min monthly payment"
+    human_description:
+      en_US: "Monthly payment (min)"
+    llm_description: "Monthly payment (min)"
+    form: llm
+  - name: max_monthly_payment
+    type: number
+    required: false
+    label:
+      en_US: "Max monthly payment"
+    human_description:
+      en_US: "Monthly payment (max)"
+    llm_description: "Monthly payment (max)"
+    form: llm
+  - name: transmission
+    type: string
+    required: false
+    label:
+      en_US: "Transmission"
+    human_description:
+      en_US: "Transmission Comma-separated list (values: manual, automatic, other)."
+    llm_description: "Transmission Comma-separated list (values: manual, automatic, other)."
+    form: llm
+  - name: drivetrain
+    type: string
+    required: false
+    label:
+      en_US: "Drivetrain"
+    human_description:
+      en_US: "Drivetrain Comma-separated list (values: fwd, rwd, 4wd)."
+    llm_description: "Drivetrain Comma-separated list (values: fwd, rwd, 4wd)."
+    form: llm
+  - name: fuel_type
+    type: string
+    required: false
+    label:
+      en_US: "Fuel type"
+    human_description:
+      en_US: "Fuel Comma-separated list (values: gas, diesel, hybrid, electric, other)."
+    llm_description: "Fuel Comma-separated list (values: gas, diesel, hybrid, electric, other)."
+    form: llm
+  - name: title_status
+    type: string
+    required: false
+    label:
+      en_US: "Title status"
+    human_description:
+      en_US: "Title status Comma-separated list (values: clean, salvage, rebuilt, parts only, lien, missing)."
+    llm_description: "Title status Comma-separated list (values: clean, salvage, rebuilt, parts only, lien, missing)."
+    form: llm
+  - name: body_type
+    type: string
+    required: false
+    label:
+      en_US: "Body type"
+    human_description:
+      en_US: "Body type Comma-separated list (values: bus, convertible, coupe, hatchback, minivan, offroad, pickup, sedan, truck, SUV, wagon, van, other)."
+    llm_description: "Body type Comma-separated list (values: bus, convertible, coupe, hatchback, minivan, offroad, pickup, sedan, truck, SUV, wagon, van, other)."
+    form: llm
+  - name: paint
+    type: string
+    required: false
+    label:
+      en_US: "Paint"
+    human_description:
+      en_US: "Paint color Comma-separated list (values: black, blue, brown, green, grey, orange, purple, red, silver, white, yellow, custom)."
+    llm_description: "Paint color Comma-separated list (values: black, blue, brown, green, grey, orange, purple, red, silver, white, yellow, custom)."
+    form: llm
+  - name: cylinders
+    type: string
+    required: false
+    label:
+      en_US: "Cylinders"
+    human_description:
+      en_US: "Cylinders Comma-separated list (values: 3 cylinders, 4 cylinders, 5 cylinders, 6 cylinders, 8 cylinders, 10 cylinders, 12 cylinders, other)."
+    llm_description: "Cylinders Comma-separated list (values: 3 cylinders, 4 cylinders, 5 cylinders, 6 cylinders, 8 cylinders, 10 cylinders, 12 cylinders, other)."
+    form: llm
+  - name: min_engine_displacement_cc
+    type: number
+    required: false
+    label:
+      en_US: "Min engine displacement cc"
+    human_description:
+      en_US: "Engine displacement, cc (min)"
+    llm_description: "Engine displacement, cc (min)"
+    form: llm
+  - name: max_engine_displacement_cc
+    type: number
+    required: false
+    label:
+      en_US: "Max engine displacement cc"
+    human_description:
+      en_US: "Engine displacement, cc (max)"
+    llm_description: "Engine displacement, cc (max)"
+    form: llm
+  - name: street_legal
+    type: boolean
+    required: false
+    label:
+      en_US: "Street legal"
+    human_description:
+      en_US: "Street legal only"
+    llm_description: "Street legal only"
+    form: llm
+  - name: motorcycle_motor
+    type: string
+    required: false
+    label:
+      en_US: "Motorcycle motor"
+    human_description:
+      en_US: "Motor Comma-separated list (values: gas, electric, other)."
+    llm_description: "Motor Comma-separated list (values: gas, electric, other)."
+    form: llm
+  - name: motorcycle_type
+    type: string
+    required: false
+    label:
+      en_US: "Motorcycle type"
+    human_description:
+      en_US: "Type Comma-separated list (values: adventure, bobber, cafe racer, chopper, cruiser, dirtbike, dual-sport, scooter/moped, sport bike, sport touring, standard, touring, trike, other)."
+    llm_description: "Type Comma-separated list (values: adventure, bobber, cafe racer, chopper, cruiser, dirtbike, dual-sport, scooter/moped, sport bike, sport touring, standard, touring, trike, other)."
+    form: llm
+  - name: min_boat_length
+    type: number
+    required: false
+    label:
+      en_US: "Min boat length"
+    human_description:
+      en_US: "Length overall (min)"
+    llm_description: "Length overall (min)"
+    form: llm
+  - name: max_boat_length
+    type: number
+    required: false
+    label:
+      en_US: "Max boat length"
+    human_description:
+      en_US: "Length overall (max)"
+    llm_description: "Length overall (max)"
+    form: llm
+  - name: min_year_manufactured
+    type: number
+    required: false
+    label:
+      en_US: "Min year manufactured"
+    human_description:
+      en_US: "Year manufactured (min)"
+    llm_description: "Year manufactured (min)"
+    form: llm
+  - name: max_year_manufactured
+    type: number
+    required: false
+    label:
+      en_US: "Max year manufactured"
+    human_description:
+      en_US: "Year manufactured (max)"
+    llm_description: "Year manufactured (max)"
+    form: llm
+  - name: boat_propulsion
+    type: string
+    required: false
+    label:
+      en_US: "Boat propulsion"
+    human_description:
+      en_US: "Propulsion Comma-separated list (values: sail, power, human)."
+    llm_description: "Propulsion Comma-separated list (values: sail, power, human)."
+    form: llm
+  - name: boat_type
+    type: string
+    required: false
+    label:
+      en_US: "Boat type"
+    human_description:
+      en_US: "Boat type Comma-separated list (values: other, commercial boat, houseboat, kayak/canoe/SUP, luxury/classic yacht, personal watercraft (jet ski), pontoon boat, powerboat, rowboat, rowing shell, sailboat, ski boat, small outboard/fishing, trawler)."
+    llm_description: "Boat type Comma-separated list (values: other, commercial boat, houseboat, kayak/canoe/SUP, luxury/classic yacht, personal watercraft (jet ski), pontoon boat, powerboat, rowboat, rowing shell, sailboat, ski boat, small outboard/fishing, trawler)."
+    form: llm
+  - name: min_bedrooms
+    type: number
+    required: false
+    label:
+      en_US: "Min bedrooms"
+    human_description:
+      en_US: "Bedrooms (min)"
+    llm_description: "Bedrooms (min)"
+    form: llm
+  - name: max_bedrooms
+    type: number
+    required: false
+    label:
+      en_US: "Max bedrooms"
+    human_description:
+      en_US: "Bedrooms (max)"
+    llm_description: "Bedrooms (max)"
+    form: llm
+  - name: min_bathrooms
+    type: number
+    required: false
+    label:
+      en_US: "Min bathrooms"
+    human_description:
+      en_US: "Bathrooms (min)"
+    llm_description: "Bathrooms (min)"
+    form: llm
+  - name: max_bathrooms
+    type: number
+    required: false
+    label:
+      en_US: "Max bathrooms"
+    human_description:
+      en_US: "Bathrooms (max)"
+    llm_description: "Bathrooms (max)"
+    form: llm
+  - name: min_sqft
+    type: number
+    required: false
+    label:
+      en_US: "Min sqft"
+    human_description:
+      en_US: "Area, sq ft (min)"
+    llm_description: "Area, sq ft (min)"
+    form: llm
+  - name: max_sqft
+    type: number
+    required: false
+    label:
+      en_US: "Max sqft"
+    human_description:
+      en_US: "Area, sq ft (max)"
+    llm_description: "Area, sq ft (max)"
+    form: llm
+  - name: availability
+    type: select
+    required: false
+    label:
+      en_US: "Availability"
+    human_description:
+      en_US: "Move-in availability. Options: all = All dates, within_30_days = Within 30 days, beyond_30_days = Beyond 30 days"
+    llm_description: "Move-in availability. Options: all = All dates, within_30_days = Within 30 days, beyond_30_days = Beyond 30 days"
+    form: llm
+    options:
+      - value: "all"
+        label:
+          en_US: "all"
+      - value: "within_30_days"
+        label:
+          en_US: "within_30_days"
+      - value: "beyond_30_days"
+        label:
+          en_US: "beyond_30_days"
+  - name: rent_period
+    type: string
+    required: false
+    label:
+      en_US: "Rent period"
+    human_description:
+      en_US: "Rent period Comma-separated list (values: daily, weekly, monthly)."
+    llm_description: "Rent period Comma-separated list (values: daily, weekly, monthly)."
+    form: llm
+  - name: housing_type
+    type: string
+    required: false
+    label:
+      en_US: "Housing type"
+    human_description:
+      en_US: "Housing type Comma-separated list (values: apartment, condo, cottage/cabin, duplex, flat, house, in-law, loft, townhouse, manufactured, assisted living, land)."
+    llm_description: "Housing type Comma-separated list (values: apartment, condo, cottage/cabin, duplex, flat, house, in-law, loft, townhouse, manufactured, assisted living, land)."
+    form: llm
+  - name: laundry
+    type: string
+    required: false
+    label:
+      en_US: "Laundry"
+    human_description:
+      en_US: "Laundry Comma-separated list (values: w/d in unit, w/d hookups, laundry in bldg, laundry on site, no laundry on site)."
+    llm_description: "Laundry Comma-separated list (values: w/d in unit, w/d hookups, laundry in bldg, laundry on site, no laundry on site)."
+    form: llm
+  - name: parking
+    type: string
+    required: false
+    label:
+      en_US: "Parking"
+    human_description:
+      en_US: "Parking Comma-separated list (values: carport, attached garage, detached garage, off-street parking, street parking, valet parking, no parking)."
+    llm_description: "Parking Comma-separated list (values: carport, attached garage, detached garage, off-street parking, street parking, valet parking, no parking)."
+    form: llm
+  - name: housing_features
+    type: string
+    required: false
+    label:
+      en_US: "Housing features"
+    human_description:
+      en_US: "Required features Comma-separated list (values: cats ok, dogs ok, furnished, no smoking, wheelchair accessible, air conditioning, EV charging, no application fee, no broker fee)."
+    llm_description: "Required features Comma-separated list (values: cats ok, dogs ok, furnished, no smoking, wheelchair accessible, air conditioning, EV charging, no application fee, no broker fee)."
+    form: llm
+  - name: employment_type
+    type: string
+    required: false
+    label:
+      en_US: "Employment type"
+    human_description:
+      en_US: "Employment type Comma-separated list (values: full-time, part-time, contract, employee's choice)."
+    llm_description: "Employment type Comma-separated list (values: full-time, part-time, contract, employee's choice)."
+    form: llm
+  - name: is_internship
+    type: boolean
+    required: false
+    label:
+      en_US: "Is internship"
+    human_description:
+      en_US: "Internships only"
+    llm_description: "Internships only"
+    form: llm
+  - name: is_nonprofit
+    type: boolean
+    required: false
+    label:
+      en_US: "Is nonprofit"
+    human_description:
+      en_US: "Non-profit employers only"
+    llm_description: "Non-profit employers only"
+    form: llm
+  - name: is_telecommuting
+    type: boolean
+    required: false
+    label:
+      en_US: "Is telecommuting"
+    human_description:
+      en_US: "Telecommuting allowed"
+    llm_description: "Telecommuting allowed"
+    form: llm
+  - name: is_paid
+    type: select
+    required: false
+    label:
+      en_US: "Is paid"
+    human_description:
+      en_US: "Gig pay. Options: all = All, paid = Paid, unpaid = Unpaid"
+    llm_description: "Gig pay. Options: all = All, paid = Paid, unpaid = Unpaid"
+    form: llm
+    options:
+      - value: "all"
+        label:
+          en_US: "all"
+      - value: "paid"
+        label:
+          en_US: "paid"
+      - value: "unpaid"
+        label:
+          en_US: "unpaid"
+  - name: lost_or_found
+    type: string
+    required: false
+    label:
+      en_US: "Lost or found"
+    human_description:
+      en_US: "Lost or found Comma-separated list (values: lost, found)."
+    llm_description: "Lost or found Comma-separated list (values: lost, found)."
+    form: llm
+  - name: event_types
+    type: string
+    required: false
+    label:
+      en_US: "Event types"
+    human_description:
+      en_US: "Event types Comma-separated list (values: food/drink, art/film, career, tech, free, fitness/health, competition, fest/fair, kid friendly, singles, charitable, outdoor, dance, literary, sale, sustainability, music)."
+    llm_description: "Event types Comma-separated list (values: food/drink, art/film, career, tech, free, fitness/health, competition, fest/fair, kid friendly, singles, charitable, outdoor, dance, literary, sale, sustainability, music)."
+    form: llm
+extra:
+  python:
+    source: tools/run_craigslist_postings_search.py

@@ -1,0 +1,33 @@
+identity:
+  name: run_futurepedia_tools_alternatives
+  author: neuralverge
+  label:
+    en_US: "Futurepedia tool alternatives"
+description:
+  human:
+    en_US: "Alternatives to one Futurepedia AI tool (slug or URL): name, description, pricing, rating, categories and link. 1 point per returned record."
+  llm: "Alternatives to one Futurepedia AI tool (slug or URL): name, description, pricing, rating, categories and link. 1 point per returned record."
+parameters:
+  - name: tool
+    type: string
+    required: true
+    label:
+      en_US: "Tool"
+    human_description:
+      en_US: "Tool slug or Futurepedia URL. e.g. midjourney"
+    llm_description: "Tool slug or Futurepedia URL. e.g. midjourney"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 8) Default: 8."
+    llm_description: "Max items (up to 8) Default: 8."
+    form: llm
+    min: 1
+    max: 8
+extra:
+  python:
+    source: tools/run_futurepedia_tools_alternatives.py

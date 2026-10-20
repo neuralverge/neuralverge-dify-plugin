@@ -1,0 +1,258 @@
+identity:
+  name: run_aliexpress_product_reviews
+  author: neuralverge
+  label:
+    en_US: "AliExpress product reviews"
+description:
+  human:
+    en_US: "Get buyer reviews for an AliExpress product by ID: rating, text, and buyer details. 1 point per returned record."
+  llm: "Get buyer reviews for an AliExpress product by ID: rating, text, and buyer details. 1 point per returned record."
+parameters:
+  - name: product
+    type: string
+    required: true
+    label:
+      en_US: "Product"
+    human_description:
+      en_US: "Product ID or URL. e.g. 1005012791281455"
+    llm_description: "Product ID or URL. e.g. 1005012791281455"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 10."
+    llm_description: "Max items (up to 250) Default: 10."
+    form: llm
+    min: 1
+    max: 250
+  - name: language
+    type: select
+    required: false
+    label:
+      en_US: "Language"
+    human_description:
+      en_US: "Content language. Options: ar_MA = ar_MA, de_DE = de_DE, en_US = en_US, es_ES = es_ES, fr_FR = fr_FR, in_ID = in_ID, it_IT = it_IT, iw_IL = iw_IL, ja_JP = ja_JP, ko_KR = ko_KR, nl_NL = nl_NL, pl_PL = pl_PL, pt_BR = pt_BR, ru_RU = ru_RU, th_TH = th_TH, tr_TR = tr_TR, vi_VN = vi_VN"
+    llm_description: "Content language. Options: ar_MA = ar_MA, de_DE = de_DE, en_US = en_US, es_ES = es_ES, fr_FR = fr_FR, in_ID = in_ID, it_IT = it_IT, iw_IL = iw_IL, ja_JP = ja_JP, ko_KR = ko_KR, nl_NL = nl_NL, pl_PL = pl_PL, pt_BR = pt_BR, ru_RU = ru_RU, th_TH = th_TH, tr_TR = tr_TR, vi_VN = vi_VN"
+    form: llm
+    options:
+      - value: "ar_MA"
+        label:
+          en_US: "ar_MA"
+      - value: "de_DE"
+        label:
+          en_US: "de_DE"
+      - value: "en_US"
+        label:
+          en_US: "en_US"
+      - value: "es_ES"
+        label:
+          en_US: "es_ES"
+      - value: "fr_FR"
+        label:
+          en_US: "fr_FR"
+      - value: "in_ID"
+        label:
+          en_US: "in_ID"
+      - value: "it_IT"
+        label:
+          en_US: "it_IT"
+      - value: "iw_IL"
+        label:
+          en_US: "iw_IL"
+      - value: "ja_JP"
+        label:
+          en_US: "ja_JP"
+      - value: "ko_KR"
+        label:
+          en_US: "ko_KR"
+      - value: "nl_NL"
+        label:
+          en_US: "nl_NL"
+      - value: "pl_PL"
+        label:
+          en_US: "pl_PL"
+      - value: "pt_BR"
+        label:
+          en_US: "pt_BR"
+      - value: "ru_RU"
+        label:
+          en_US: "ru_RU"
+      - value: "th_TH"
+        label:
+          en_US: "th_TH"
+      - value: "tr_TR"
+        label:
+          en_US: "tr_TR"
+      - value: "vi_VN"
+        label:
+          en_US: "vi_VN"
+  - name: currency
+    type: select
+    required: false
+    label:
+      en_US: "Currency"
+    human_description:
+      en_US: "Currency. Options: USD = USD, EUR = EUR, GBP = GBP, CAD = CAD, AUD = AUD, RUB = RUB, BRL = BRL, CLP = CLP, JPY = JPY, KRW = KRW, CHF = CHF, SEK = SEK, PLN = PLN, ILS = ILS, NOK = NOK, DKK = DKK, NZD = NZD, MXN = MXN, COP = COP, TRY = TRY, THB = THB, SGD = SGD, MYR = MYR, PHP = PHP, IDR = IDR, INR = INR, VND = VND, HKD = HKD, TWD = TWD, AED = AED, SAR = SAR, CZK = CZK, HUF = HUF, RON = RON, BGN = BGN, UAH = UAH, KZT = KZT, ARS = ARS, EGP = EGP, ZAR = ZAR, CNY = CNY, PEN = PEN"
+    llm_description: "Currency. Options: USD = USD, EUR = EUR, GBP = GBP, CAD = CAD, AUD = AUD, RUB = RUB, BRL = BRL, CLP = CLP, JPY = JPY, KRW = KRW, CHF = CHF, SEK = SEK, PLN = PLN, ILS = ILS, NOK = NOK, DKK = DKK, NZD = NZD, MXN = MXN, COP = COP, TRY = TRY, THB = THB, SGD = SGD, MYR = MYR, PHP = PHP, IDR = IDR, INR = INR, VND = VND, HKD = HKD, TWD = TWD, AED = AED, SAR = SAR, CZK = CZK, HUF = HUF, RON = RON, BGN = BGN, UAH = UAH, KZT = KZT, ARS = ARS, EGP = EGP, ZAR = ZAR, CNY = CNY, PEN = PEN"
+    form: llm
+    options:
+      - value: "USD"
+        label:
+          en_US: "USD"
+      - value: "EUR"
+        label:
+          en_US: "EUR"
+      - value: "GBP"
+        label:
+          en_US: "GBP"
+      - value: "CAD"
+        label:
+          en_US: "CAD"
+      - value: "AUD"
+        label:
+          en_US: "AUD"
+      - value: "RUB"
+        label:
+          en_US: "RUB"
+      - value: "BRL"
+        label:
+          en_US: "BRL"
+      - value: "CLP"
+        label:
+          en_US: "CLP"
+      - value: "JPY"
+        label:
+          en_US: "JPY"
+      - value: "KRW"
+        label:
+          en_US: "KRW"
+      - value: "CHF"
+        label:
+          en_US: "CHF"
+      - value: "SEK"
+        label:
+          en_US: "SEK"
+      - value: "PLN"
+        label:
+          en_US: "PLN"
+      - value: "ILS"
+        label:
+          en_US: "ILS"
+      - value: "NOK"
+        label:
+          en_US: "NOK"
+      - value: "DKK"
+        label:
+          en_US: "DKK"
+      - value: "NZD"
+        label:
+          en_US: "NZD"
+      - value: "MXN"
+        label:
+          en_US: "MXN"
+      - value: "COP"
+        label:
+          en_US: "COP"
+      - value: "TRY"
+        label:
+          en_US: "TRY"
+      - value: "THB"
+        label:
+          en_US: "THB"
+      - value: "SGD"
+        label:
+          en_US: "SGD"
+      - value: "MYR"
+        label:
+          en_US: "MYR"
+      - value: "PHP"
+        label:
+          en_US: "PHP"
+      - value: "IDR"
+        label:
+          en_US: "IDR"
+      - value: "INR"
+        label:
+          en_US: "INR"
+      - value: "VND"
+        label:
+          en_US: "VND"
+      - value: "HKD"
+        label:
+          en_US: "HKD"
+      - value: "TWD"
+        label:
+          en_US: "TWD"
+      - value: "AED"
+        label:
+          en_US: "AED"
+      - value: "SAR"
+        label:
+          en_US: "SAR"
+      - value: "CZK"
+        label:
+          en_US: "CZK"
+      - value: "HUF"
+        label:
+          en_US: "HUF"
+      - value: "RON"
+        label:
+          en_US: "RON"
+      - value: "BGN"
+        label:
+          en_US: "BGN"
+      - value: "UAH"
+        label:
+          en_US: "UAH"
+      - value: "KZT"
+        label:
+          en_US: "KZT"
+      - value: "ARS"
+        label:
+          en_US: "ARS"
+      - value: "EGP"
+        label:
+          en_US: "EGP"
+      - value: "ZAR"
+        label:
+          en_US: "ZAR"
+      - value: "CNY"
+        label:
+          en_US: "CNY"
+      - value: "PEN"
+        label:
+          en_US: "PEN"
+  - name: filter
+    type: select
+    required: false
+    label:
+      en_US: "Filter"
+    human_description:
+      en_US: "Review filter. Options: image = With images, additional = Additional feedback, local = Local reviews"
+    llm_description: "Review filter. Options: image = With images, additional = Additional feedback, local = Local reviews"
+    form: llm
+    options:
+      - value: "image"
+        label:
+          en_US: "image"
+      - value: "additional"
+        label:
+          en_US: "additional"
+      - value: "local"
+        label:
+          en_US: "local"
+  - name: translate
+    type: boolean
+    required: false
+    label:
+      en_US: "Translate"
+    human_description:
+      en_US: "Translate to English"
+    llm_description: "Translate to English"
+    form: llm
+extra:
+  python:
+    source: tools/run_aliexpress_product_reviews.py

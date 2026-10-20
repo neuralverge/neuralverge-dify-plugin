@@ -1,0 +1,22 @@
+identity:
+  name: run_tw_companies
+  author: neuralverge
+  label:
+    en_US: "Taiwan company"
+description:
+  human:
+    en_US: "Get one company from the Taiwan registry (MOEA) by 統一編號 or registry link: name, status, registration date, address, company type, capital and shares, representative, business scope, directors, managers, branches, factories, warehouses, stock listing, trademarks and change history. 15 point per returned record."
+  llm: "Get one company from the Taiwan registry (MOEA) by 統一編號 or registry link: name, status, registration date, address, company type, capital and shares, representative, business scope, directors, managers, branches, factories, warehouses, stock listing, trademarks and change history. 15 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "統一編號 or registry URL. e.g. 22099131"
+    llm_description: "統一編號 or registry URL. e.g. 22099131"
+    form: llm
+extra:
+  python:
+    source: tools/run_tw_companies.py

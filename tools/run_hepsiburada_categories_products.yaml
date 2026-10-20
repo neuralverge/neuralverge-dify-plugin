@@ -1,0 +1,256 @@
+identity:
+  name: run_hepsiburada_categories_products
+  author: neuralverge
+  label:
+    en_US: "Hepsiburada Category Products"
+description:
+  human:
+    en_US: "List products in a Hepsiburada category with filters (brand, seller, color, price range, minimum rating, fast delivery, discounted, photo reviews, authorized sellers) and sorting. Returns id, name, brand, price, list price, discount, image, rating and seller. 1 point per returned record."
+  llm: "List products in a Hepsiburada category with filters (brand, seller, color, price range, minimum rating, fast delivery, discounted, photo reviews, authorized sellers) and sorting. Returns id, name, brand, price, list price, discount, image, rating and seller. 1 point per returned record."
+parameters:
+  - name: category
+    type: string
+    required: true
+    label:
+      en_US: "Category"
+    human_description:
+      en_US: "Category ID or URL. e.g. 371965"
+    llm_description: "Category ID or URL. e.g. 371965"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 25."
+    llm_description: "Max items (up to 500) Default: 25."
+    form: llm
+    min: 1
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: price_min
+    type: number
+    required: false
+    label:
+      en_US: "Price min"
+    human_description:
+      en_US: "Min price (TRY)"
+    llm_description: "Min price (TRY)"
+    form: llm
+    min: 0
+  - name: price_max
+    type: number
+    required: false
+    label:
+      en_US: "Price max"
+    human_description:
+      en_US: "Max price (TRY)"
+    llm_description: "Max price (TRY)"
+    form: llm
+    min: 0
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: artanfiyat = Price: low to high, azalanfiyat = Price: high to low, coksatan = Best sellers, yorumsayisi = Most reviewed, degerlendirmepuani = Top rated, indirimurunler = Biggest discount, enyeni = Newest"
+    llm_description: "Sort by. Options: artanfiyat = Price: low to high, azalanfiyat = Price: high to low, coksatan = Best sellers, yorumsayisi = Most reviewed, degerlendirmepuani = Top rated, indirimurunler = Biggest discount, enyeni = Newest"
+    form: llm
+    options:
+      - value: "artanfiyat"
+        label:
+          en_US: "artanfiyat"
+      - value: "azalanfiyat"
+        label:
+          en_US: "azalanfiyat"
+      - value: "coksatan"
+        label:
+          en_US: "coksatan"
+      - value: "yorumsayisi"
+        label:
+          en_US: "yorumsayisi"
+      - value: "degerlendirmepuani"
+        label:
+          en_US: "degerlendirmepuani"
+      - value: "indirimurunler"
+        label:
+          en_US: "indirimurunler"
+      - value: "enyeni"
+        label:
+          en_US: "enyeni"
+  - name: rating_min
+    type: select
+    required: false
+    label:
+      en_US: "Rating min"
+    human_description:
+      en_US: "Minimum rating. Options: 4.5-max = 4.5 and up, 4-max = 4 and up, 3-max = 3 and up"
+    llm_description: "Minimum rating. Options: 4.5-max = 4.5 and up, 4-max = 4 and up, 3-max = 3 and up"
+    form: llm
+    options:
+      - value: "4.5-max"
+        label:
+          en_US: "4.5-max"
+      - value: "4-max"
+        label:
+          en_US: "4-max"
+      - value: "3-max"
+        label:
+          en_US: "3-max"
+  - name: brand
+    type: string
+    required: false
+    label:
+      en_US: "Brand"
+    human_description:
+      en_US: "Brand (slug). e.g. apple, samsung"
+    llm_description: "Brand (slug). e.g. apple, samsung"
+    form: llm
+  - name: color
+    type: select
+    required: false
+    label:
+      en_US: "Color"
+    human_description:
+      en_US: "Color. Options: Siyah = Siyah, Beyaz = Beyaz, Mavi = Mavi, Lacivert = Lacivert, Mor = Mor, Kırmızı = Kırmızı, Yeşil = Yeşil, Sarı = Sarı, Pembe = Pembe, Gri = Gri, Gümüş = Gümüş, Kahverengi = Kahverengi, Turuncu = Turuncu, Bej = Bej, Krem = Krem, Altın = Altın, CokRenk = CokRenk"
+    llm_description: "Color. Options: Siyah = Siyah, Beyaz = Beyaz, Mavi = Mavi, Lacivert = Lacivert, Mor = Mor, Kırmızı = Kırmızı, Yeşil = Yeşil, Sarı = Sarı, Pembe = Pembe, Gri = Gri, Gümüş = Gümüş, Kahverengi = Kahverengi, Turuncu = Turuncu, Bej = Bej, Krem = Krem, Altın = Altın, CokRenk = CokRenk"
+    form: llm
+    options:
+      - value: "Siyah"
+        label:
+          en_US: "Siyah"
+      - value: "Beyaz"
+        label:
+          en_US: "Beyaz"
+      - value: "Mavi"
+        label:
+          en_US: "Mavi"
+      - value: "Lacivert"
+        label:
+          en_US: "Lacivert"
+      - value: "Mor"
+        label:
+          en_US: "Mor"
+      - value: "Kırmızı"
+        label:
+          en_US: "Kırmızı"
+      - value: "Yeşil"
+        label:
+          en_US: "Yeşil"
+      - value: "Sarı"
+        label:
+          en_US: "Sarı"
+      - value: "Pembe"
+        label:
+          en_US: "Pembe"
+      - value: "Gri"
+        label:
+          en_US: "Gri"
+      - value: "Gümüş"
+        label:
+          en_US: "Gümüş"
+      - value: "Kahverengi"
+        label:
+          en_US: "Kahverengi"
+      - value: "Turuncu"
+        label:
+          en_US: "Turuncu"
+      - value: "Bej"
+        label:
+          en_US: "Bej"
+      - value: "Krem"
+        label:
+          en_US: "Krem"
+      - value: "Altın"
+        label:
+          en_US: "Altın"
+      - value: "CokRenk"
+        label:
+          en_US: "CokRenk"
+  - name: merchant
+    type: string
+    required: false
+    label:
+      en_US: "Merchant"
+    human_description:
+      en_US: "Seller name (exact, case sensitive). e.g. Hepsiburada"
+    llm_description: "Seller name (exact, case sensitive). e.g. Hepsiburada"
+    form: llm
+  - name: product_type
+    type: string
+    required: false
+    label:
+      en_US: "Product type"
+    human_description:
+      en_US: "Main category code. e.g. 98 (laptops)"
+    llm_description: "Main category code. e.g. 98 (laptops)"
+    form: llm
+  - name: fast_delivery
+    type: boolean
+    required: false
+    label:
+      en_US: "Fast delivery"
+    human_description:
+      en_US: "Fast delivery"
+    llm_description: "Fast delivery"
+    form: llm
+  - name: discounted_only
+    type: boolean
+    required: false
+    label:
+      en_US: "Discounted only"
+    human_description:
+      en_US: "Discounted only"
+    llm_description: "Discounted only"
+    form: llm
+  - name: with_photo_reviews
+    type: boolean
+    required: false
+    label:
+      en_US: "With photo reviews"
+    human_description:
+      en_US: "With photo reviews"
+    llm_description: "With photo reviews"
+    form: llm
+  - name: authorized_seller
+    type: boolean
+    required: false
+    label:
+      en_US: "Authorized seller"
+    human_description:
+      en_US: "Authorized sellers"
+    llm_description: "Authorized sellers"
+    form: llm
+  - name: recently_reviewed
+    type: boolean
+    required: false
+    label:
+      en_US: "Recently reviewed"
+    human_description:
+      en_US: "Recently reviewed (last 10 days)"
+    llm_description: "Recently reviewed (last 10 days)"
+    form: llm
+  - name: advantageous_price
+    type: boolean
+    required: false
+    label:
+      en_US: "Advantageous price"
+    human_description:
+      en_US: "Advantageous price"
+    llm_description: "Advantageous price"
+    form: llm
+extra:
+  python:
+    source: tools/run_hepsiburada_categories_products.py

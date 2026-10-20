@@ -1,0 +1,44 @@
+identity:
+  name: run_betalist_topics_startups
+  author: neuralverge
+  label:
+    en_US: "BetaList topic startups"
+description:
+  human:
+    en_US: "Startups of one BetaList topic (slug like generative-ai, category/topic, or a BetaList topic URL): name, tagline, logo and link. 1 point per returned record."
+  llm: "Startups of one BetaList topic (slug like generative-ai, category/topic, or a BetaList topic URL): name, tagline, logo and link. 1 point per returned record."
+parameters:
+  - name: topic
+    type: string
+    required: true
+    label:
+      en_US: "Topic"
+    human_description:
+      en_US: "Topic slug or URL. e.g. generative-ai"
+    llm_description: "Topic slug or URL. e.g. generative-ai"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_betalist_topics_startups.py

@@ -1,0 +1,60 @@
+identity:
+  name: run_hepsiburada_products_reviews
+  author: neuralverge
+  label:
+    en_US: "Hepsiburada Product Reviews"
+description:
+  human:
+    en_US: "Get customer reviews for a Hepsiburada product (aggregated across its variants): rating, text, author, date, verified purchase, helpful count, per-feature ratings, keywords and photos. Sort by most helpful or most recent. 1 point per returned record."
+  llm: "Get customer reviews for a Hepsiburada product (aggregated across its variants): rating, text, author, date, verified purchase, helpful count, per-feature ratings, keywords and photos. Sort by most helpful or most recent. 1 point per returned record."
+parameters:
+  - name: product
+    type: string
+    required: true
+    label:
+      en_US: "Product"
+    human_description:
+      en_US: "SKU, product group ID or URL. e.g. HBCV00004X9ZCK"
+    llm_description: "SKU, product group ID or URL. e.g. HBCV00004X9ZCK"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max reviews (up to 490) Default: 20."
+    llm_description: "Max reviews (up to 490) Default: 20."
+    form: llm
+    min: 1
+    max: 490
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: MOSTHELPFUL = Most helpful, MOSTRECENT = Most recent"
+    llm_description: "Sort by. Options: MOSTHELPFUL = Most helpful, MOSTRECENT = Most recent"
+    form: llm
+    options:
+      - value: "MOSTHELPFUL"
+        label:
+          en_US: "MOSTHELPFUL"
+      - value: "MOSTRECENT"
+        label:
+          en_US: "MOSTRECENT"
+extra:
+  python:
+    source: tools/run_hepsiburada_products_reviews.py

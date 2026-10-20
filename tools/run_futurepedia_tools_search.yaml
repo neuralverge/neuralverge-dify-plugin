@@ -1,0 +1,90 @@
+identity:
+  name: run_futurepedia_tools_search
+  author: neuralverge
+  label:
+    en_US: "Futurepedia tools search"
+description:
+  human:
+    en_US: "List the AI tools of one Futurepedia category (slug like video-generators or a category URL) with sorting, pricing, feature and verified filters: name, description, pricing, rating, categories and link. 1 point per returned record."
+  llm: "List the AI tools of one Futurepedia category (slug like video-generators or a category URL) with sorting, pricing, feature and verified filters: name, description, pricing, rating, categories and link. 1 point per returned record."
+parameters:
+  - name: category
+    type: string
+    required: true
+    label:
+      en_US: "Category"
+    human_description:
+      en_US: "Category slug or URL. e.g. video-generators"
+    llm_description: "Category slug or URL. e.g. video-generators"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort. Options: trending = Trending, popular = Popular, new = New"
+    llm_description: "Sort. Options: trending = Trending, popular = Popular, new = New"
+    form: llm
+    options:
+      - value: "trending"
+        label:
+          en_US: "trending"
+      - value: "popular"
+        label:
+          en_US: "popular"
+      - value: "new"
+        label:
+          en_US: "new"
+  - name: pricing
+    type: string
+    required: false
+    label:
+      en_US: "Pricing"
+    human_description:
+      en_US: "Pricing Comma-separated list (values: Free, Freemium, Free Trial, Paid, Contact for Pricing, Deals)."
+    llm_description: "Pricing Comma-separated list (values: Free, Freemium, Free Trial, Paid, Contact for Pricing, Deals)."
+    form: llm
+  - name: feature
+    type: string
+    required: false
+    label:
+      en_US: "Feature"
+    human_description:
+      en_US: "Features Comma-separated list (values: Waitlist, Open Source, Mobile App, Discord Community, API, No Signup Required, Browser Extension)."
+    llm_description: "Features Comma-separated list (values: Waitlist, Open Source, Mobile App, Discord Community, API, No Signup Required, Browser Extension)."
+    form: llm
+  - name: verified_only
+    type: boolean
+    required: false
+    label:
+      en_US: "Verified only"
+    human_description:
+      en_US: "Verified tools only"
+    llm_description: "Verified tools only"
+    form: llm
+extra:
+  python:
+    source: tools/run_futurepedia_tools_search.py

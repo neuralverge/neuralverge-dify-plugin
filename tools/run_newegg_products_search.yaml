@@ -1,0 +1,69 @@
+identity:
+  name: run_newegg_products_search
+  author: neuralverge
+  label:
+    en_US: "Newegg products search"
+description:
+  human:
+    en_US: "Search Newegg products by keyword with sort: price, rating, seller and stock. 1 point per returned record."
+  llm: "Search Newegg products by keyword with sort: price, rating, seller and stock. 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: true
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Search term. e.g. logitech g502"
+    llm_description: "Search term. e.g. logitech g502"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 25."
+    llm_description: "Max items (up to 500) Default: 25."
+    form: llm
+    min: 1
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page Default: 1."
+    llm_description: "Starting page Default: 1."
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: 1 = Lowest price, 2 = Highest price, 3 = Best selling, 4 = Best rating, 5 = Most reviews"
+    llm_description: "Sort by. Options: 1 = Lowest price, 2 = Highest price, 3 = Best selling, 4 = Best rating, 5 = Most reviews"
+    form: llm
+    options:
+      - value: "1"
+        label:
+          en_US: "1"
+      - value: "2"
+        label:
+          en_US: "2"
+      - value: "3"
+        label:
+          en_US: "3"
+      - value: "4"
+        label:
+          en_US: "4"
+      - value: "5"
+        label:
+          en_US: "5"
+extra:
+  python:
+    source: tools/run_newegg_products_search.py

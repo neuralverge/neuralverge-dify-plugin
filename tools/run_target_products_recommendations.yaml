@@ -1,0 +1,75 @@
+identity:
+  name: run_target_products_recommendations
+  author: neuralverge
+  label:
+    en_US: "Target product recommendations"
+description:
+  human:
+    en_US: "Related products Target shows on a product page: alternatives, guests also viewed, complementary, deals, top performing, new arrivals, similar. 1 point per returned record."
+  llm: "Related products Target shows on a product page: alternatives, guests also viewed, complementary, deals, top performing, new arrivals, similar. 1 point per returned record."
+parameters:
+  - name: product
+    type: string
+    required: true
+    label:
+      en_US: "Product"
+    human_description:
+      en_US: "Product (TCIN or URL). e.g. 86216189"
+    llm_description: "Product (TCIN or URL). e.g. 86216189"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 25."
+    llm_description: "Max items (up to 500) Default: 25."
+    form: llm
+    min: 1
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: type
+    type: select
+    required: false
+    label:
+      en_US: "Type"
+    human_description:
+      en_US: "Recommendation type. Options: alternatives = Alternatives, also_viewed = Guests also viewed, complementary = Complementary, deals = Deals, top_performing = Top performing, newness = New arrivals, similar = Similar"
+    llm_description: "Recommendation type. Options: alternatives = Alternatives, also_viewed = Guests also viewed, complementary = Complementary, deals = Deals, top_performing = Top performing, newness = New arrivals, similar = Similar"
+    form: llm
+    options:
+      - value: "alternatives"
+        label:
+          en_US: "alternatives"
+      - value: "also_viewed"
+        label:
+          en_US: "also_viewed"
+      - value: "complementary"
+        label:
+          en_US: "complementary"
+      - value: "deals"
+        label:
+          en_US: "deals"
+      - value: "top_performing"
+        label:
+          en_US: "top_performing"
+      - value: "newness"
+        label:
+          en_US: "newness"
+      - value: "similar"
+        label:
+          en_US: "similar"
+extra:
+  python:
+    source: tools/run_target_products_recommendations.py

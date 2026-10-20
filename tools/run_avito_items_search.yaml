@@ -1,0 +1,141 @@
+identity:
+  name: run_avito_items_search
+  author: neuralverge
+  label:
+    en_US: "Avito Items Search"
+description:
+  human:
+    en_US: "Search Avito listings by keyword with region, category, price range, sort, seller type, Avito Delivery and attribute filters. Returns title, price, location, coordinates, image and seller for each listing. 1 point per returned record."
+  llm: "Search Avito listings by keyword with region, category, price range, sort, seller type, Avito Delivery and attribute filters. Returns title, price, location, coordinates, image and seller for each listing. 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: true
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Search term. e.g. iphone 13"
+    llm_description: "Search term. e.g. iphone 13"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 150) Default: 25."
+    llm_description: "Max items (up to 150) Default: 25."
+    form: llm
+    min: 1
+    max: 150
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page Default: 1."
+    llm_description: "Starting page Default: 1."
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: region
+    type: string
+    required: false
+    label:
+      en_US: "Region"
+    human_description:
+      en_US: "Region. e.g. all, moskva, sankt-peterburg"
+    llm_description: "Region. e.g. all, moskva, sankt-peterburg"
+    form: llm
+  - name: category
+    type: string
+    required: false
+    label:
+      en_US: "Category"
+    human_description:
+      en_US: "Category. e.g. telefony, avtomobili"
+    llm_description: "Category. e.g. telefony, avtomobili"
+    form: llm
+  - name: price_min
+    type: number
+    required: false
+    label:
+      en_US: "Price min"
+    human_description:
+      en_US: "Min price (RUB)"
+    llm_description: "Min price (RUB)"
+    form: llm
+    min: 0
+  - name: price_max
+    type: number
+    required: false
+    label:
+      en_US: "Price max"
+    human_description:
+      en_US: "Max price (RUB)"
+    llm_description: "Max price (RUB)"
+    form: llm
+    min: 0
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: default = Default, price_asc = Price: low to high, price_desc = Price: high to low, date = Newest"
+    llm_description: "Sort by. Options: default = Default, price_asc = Price: low to high, price_desc = Price: high to low, date = Newest"
+    form: llm
+    options:
+      - value: "default"
+        label:
+          en_US: "default"
+      - value: "price_asc"
+        label:
+          en_US: "price_asc"
+      - value: "price_desc"
+        label:
+          en_US: "price_desc"
+      - value: "date"
+        label:
+          en_US: "date"
+  - name: seller_type
+    type: select
+    required: false
+    label:
+      en_US: "Seller type"
+    human_description:
+      en_US: "Seller type. Options: any = Any, private = Private, company = Company"
+    llm_description: "Seller type. Options: any = Any, private = Private, company = Company"
+    form: llm
+    options:
+      - value: "any"
+        label:
+          en_US: "any"
+      - value: "private"
+        label:
+          en_US: "private"
+      - value: "company"
+        label:
+          en_US: "company"
+  - name: params
+    type: string
+    required: false
+    label:
+      en_US: "Params"
+    human_description:
+      en_US: "Attribute filters (JSON). e.g. {\"110395\": \"431241\"}"
+    llm_description: "Attribute filters (JSON). e.g. {\"110395\": \"431241\"}"
+    form: llm
+  - name: delivery
+    type: boolean
+    required: false
+    label:
+      en_US: "Delivery"
+    human_description:
+      en_US: "Avito Delivery"
+    llm_description: "Avito Delivery"
+    form: llm
+extra:
+  python:
+    source: tools/run_avito_items_search.py

@@ -1,0 +1,60 @@
+identity:
+  name: run_hr_company_filings
+  author: neuralverge
+  label:
+    en_US: "Croatia company filings"
+description:
+  human:
+    en_US: "List the announcements (Objave) or the document collection (Zbirka isprava) of one company in the Croatia registry (Sudski registar), newest first: date, type, topic, case number and file link. 1 point per returned record."
+  llm: "List the announcements (Objave) or the document collection (Zbirka isprava) of one company in the Croatia registry (Sudski registar), newest first: date, type, topic, case number and file link. 1 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "MBS, OIB or registry URL. e.g. 010006549"
+    llm_description: "MBS, OIB or registry URL. e.g. 010006549"
+    form: llm
+  - name: list
+    type: select
+    required: false
+    label:
+      en_US: "List"
+    human_description:
+      en_US: "List. Options: announcements = Announcements (Objave), documents = Documents (Zbirka isprava)"
+    llm_description: "List. Options: announcements = Announcements (Objave), documents = Documents (Zbirka isprava)"
+    form: llm
+    options:
+      - value: "announcements"
+        label:
+          en_US: "announcements"
+      - value: "documents"
+        label:
+          en_US: "documents"
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page (20 items per page)"
+    llm_description: "Starting page (20 items per page)"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_hr_company_filings.py

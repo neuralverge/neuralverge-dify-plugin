@@ -1,0 +1,22 @@
+identity:
+  name: run_ec_companies
+  author: neuralverge
+  label:
+    en_US: "Ecuador company"
+description:
+  human:
+    en_US: "Get one company from the Ecuador registry (Superintendencia de Compañías) by expediente number or RUC: expediente, RUC and registered name. 5 point per returned record."
+  llm: "Get one company from the Ecuador registry (Superintendencia de Compañías) by expediente number or RUC: expediente, RUC and registered name. 5 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "Expediente or RUC. e.g. 7154"
+    llm_description: "Expediente or RUC. e.g. 7154"
+    form: llm
+extra:
+  python:
+    source: tools/run_ec_companies.py

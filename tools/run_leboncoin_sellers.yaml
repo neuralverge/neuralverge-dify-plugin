@@ -1,0 +1,22 @@
+identity:
+  name: run_leboncoin_sellers
+  author: neuralverge
+  label:
+    en_US: "leboncoin Seller"
+description:
+  human:
+    en_US: "Get a leboncoin professional store by store ID, seller UUID or store URL: name, SIREN/SIRET, activity sector, description, opening hours, website, address, rating, services and team. Flat 5 points per successful run."
+  llm: "Get a leboncoin professional store by store ID, seller UUID or store URL: name, SIREN/SIRET, activity sector, description, opening hours, website, address, rating, services and team. Flat 5 points per successful run."
+parameters:
+  - name: seller
+    type: string
+    required: true
+    label:
+      en_US: "Seller"
+    human_description:
+      en_US: "Store ID, seller UUID or store URL. e.g. 1268824"
+    llm_description: "Store ID, seller UUID or store URL. e.g. 1268824"
+    form: llm
+extra:
+  python:
+    source: tools/run_leboncoin_sellers.py

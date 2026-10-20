@@ -1,0 +1,75 @@
+identity:
+  name: run_vinted_users_feedbacks
+  author: neuralverge
+  label:
+    en_US: "Vinted user feedbacks"
+description:
+  human:
+    en_US: "Feedback (reviews) a Vinted member has received: text, rating, reviewer, the seller's reply and date. 1 point per returned record."
+  llm: "Feedback (reviews) a Vinted member has received: text, rating, reviewer, the seller's reply and date. 1 point per returned record."
+parameters:
+  - name: user
+    type: string
+    required: true
+    label:
+      en_US: "User"
+    human_description:
+      en_US: "User ID or profile URL. e.g. 103792107 or https://www.vinted.de/member/103792107-katieronja"
+    llm_description: "User ID or profile URL. e.g. 103792107 or https://www.vinted.de/member/103792107-katieronja"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 25."
+    llm_description: "Max items (up to 500) Default: 25."
+    form: llm
+    min: 1
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page Default: 1."
+    llm_description: "Starting page Default: 1."
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: domain
+    type: select
+    required: false
+    label:
+      en_US: "Domain"
+    human_description:
+      en_US: "Domain. Options: vinted.de = vinted.de, vinted.fr = vinted.fr, vinted.es = vinted.es, vinted.it = vinted.it, vinted.nl = vinted.nl, vinted.pl = vinted.pl, vinted.co.uk = vinted.co.uk Default: vinted.de."
+    llm_description: "Domain. Options: vinted.de = vinted.de, vinted.fr = vinted.fr, vinted.es = vinted.es, vinted.it = vinted.it, vinted.nl = vinted.nl, vinted.pl = vinted.pl, vinted.co.uk = vinted.co.uk Default: vinted.de."
+    form: llm
+    options:
+      - value: "vinted.de"
+        label:
+          en_US: "vinted.de"
+      - value: "vinted.fr"
+        label:
+          en_US: "vinted.fr"
+      - value: "vinted.es"
+        label:
+          en_US: "vinted.es"
+      - value: "vinted.it"
+        label:
+          en_US: "vinted.it"
+      - value: "vinted.nl"
+        label:
+          en_US: "vinted.nl"
+      - value: "vinted.pl"
+        label:
+          en_US: "vinted.pl"
+      - value: "vinted.co.uk"
+        label:
+          en_US: "vinted.co.uk"
+extra:
+  python:
+    source: tools/run_vinted_users_feedbacks.py

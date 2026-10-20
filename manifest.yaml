@@ -1,0 +1,30 @@
+version: 1.0.0
+type: plugin
+author: neuralverge
+name: neuralverge
+label:
+  en_US: NeuralVerge
+description:
+  en_US: Structured, cited, real-world data from 300+ sources and the open web for your AI agents.
+icon: icon.svg
+icon_dark: icon-dark.svg
+resource:
+  memory: 268435456
+  permission: {}
+plugins:
+  tools:
+    - provider/neuralverge.yaml
+meta:
+  version: 1.0.0
+  arch:
+    - amd64
+    - arm64
+  runner:
+    language: python
+    version: "3.12"
+    entrypoint: main
+  minimum_dify_version: 1.0.0
+created_at: 2026-10-20T15:30:00+03:00
+privacy: PRIVACY.md
+repo: https://github.com/neuralverge/neuralverge-dify-plugin
+verified: false

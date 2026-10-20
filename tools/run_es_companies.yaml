@@ -1,0 +1,22 @@
+identity:
+  name: run_es_companies
+  author: neuralverge
+  label:
+    en_US: "Spain company"
+description:
+  human:
+    en_US: "Get one company from the Spain registry (Registro Mercantil, Registradores de España open-data directory) by NIF/CIF or registry link: name, status (Vigente / Liquidada / Concurso), address, legal form, registry office and sheet number, IRUS and EUID identifiers, CNAE/NACE activity, website, special situation, administrators and officers with their roles, and other registry entries under the same NIF such as branches. 10 point per returned record."
+  llm: "Get one company from the Spain registry (Registro Mercantil, Registradores de España open-data directory) by NIF/CIF or registry link: name, status (Vigente / Liquidada / Concurso), address, legal form, registry office and sheet number, IRUS and EUID identifiers, CNAE/NACE activity, website, special situation, administrators and officers with their roles, and other registry entries under the same NIF such as branches. 10 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "NIF/CIF or registry URL. e.g. A15075062"
+    llm_description: "NIF/CIF or registry URL. e.g. A15075062"
+    form: llm
+extra:
+  python:
+    source: tools/run_es_companies.py

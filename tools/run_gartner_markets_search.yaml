@@ -1,0 +1,33 @@
+identity:
+  name: run_gartner_markets_search
+  author: neuralverge
+  label:
+    en_US: "Gartner markets search"
+description:
+  human:
+    en_US: "Search Gartner Peer Insights markets (software categories) by keyword. 1 point per returned record."
+  llm: "Search Gartner Peer Insights markets (software categories) by keyword. 1 point per returned record."
+parameters:
+  - name: query
+    type: string
+    required: true
+    label:
+      en_US: "Query"
+    human_description:
+      en_US: "Search term. e.g. data loss prevention"
+    llm_description: "Search term. e.g. data loss prevention"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+extra:
+  python:
+    source: tools/run_gartner_markets_search.py

@@ -1,0 +1,109 @@
+identity:
+  name: run_theresanaiforthat_tools_search
+  author: neuralverge
+  label:
+    en_US: "There's An AI For That tools search"
+description:
+  human:
+    en_US: "Search AI tools on There's An AI For That by keyword or task name: name, short description, task, price, rating, views, saves and link. Sorting and tool type apply to task names (for example seo or video editing). Paid placements are skipped. 1 point per returned record."
+  llm: "Search AI tools on There's An AI For That by keyword or task name: name, short description, task, price, rating, views, saves and link. Sorting and tool type apply to task names (for example seo or video editing). Paid placements are skipped. 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: true
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Keyword or task. e.g. video editing"
+    llm_description: "Keyword or task. e.g. video editing"
+    form: llm
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort. Options: relevance = Relevance (site default), latest = Latest, top-rated = Top rated, most-saved = Most saved, popular = Popular, price = Price, sota = State of the art"
+    llm_description: "Sort. Options: relevance = Relevance (site default), latest = Latest, top-rated = Top rated, most-saved = Most saved, popular = Popular, price = Price, sota = State of the art"
+    form: llm
+    options:
+      - value: "relevance"
+        label:
+          en_US: "relevance"
+      - value: "latest"
+        label:
+          en_US: "latest"
+      - value: "top-rated"
+        label:
+          en_US: "top-rated"
+      - value: "most-saved"
+        label:
+          en_US: "most-saved"
+      - value: "popular"
+        label:
+          en_US: "popular"
+      - value: "price"
+        label:
+          en_US: "price"
+      - value: "sota"
+        label:
+          en_US: "sota"
+  - name: tool_type
+    type: select
+    required: false
+    label:
+      en_US: "Tool type"
+    human_description:
+      en_US: "Tool type. Options: apis = APIs, agents = Agents, gpts = GPTs, ios = iOS, mini-tools = Mini tools, android = Android, chrome = Chrome, telegram = Telegram"
+    llm_description: "Tool type. Options: apis = APIs, agents = Agents, gpts = GPTs, ios = iOS, mini-tools = Mini tools, android = Android, chrome = Chrome, telegram = Telegram"
+    form: llm
+    options:
+      - value: "apis"
+        label:
+          en_US: "apis"
+      - value: "agents"
+        label:
+          en_US: "agents"
+      - value: "gpts"
+        label:
+          en_US: "gpts"
+      - value: "ios"
+        label:
+          en_US: "ios"
+      - value: "mini-tools"
+        label:
+          en_US: "mini-tools"
+      - value: "android"
+        label:
+          en_US: "android"
+      - value: "chrome"
+        label:
+          en_US: "chrome"
+      - value: "telegram"
+        label:
+          en_US: "telegram"
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_theresanaiforthat_tools_search.py

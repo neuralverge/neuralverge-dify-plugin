@@ -1,0 +1,22 @@
+identity:
+  name: run_crunchbase_company
+  author: neuralverge
+  label:
+    en_US: "Crunchbase Company Lookup"
+description:
+  human:
+    en_US: "Fetches structured company data (website, location, founding year, employees, industries, funding, description) from a Crunchbase company URL."
+  llm: "Fetches structured company data (website, location, founding year, employees, industries, funding, description) from a Crunchbase company URL."
+parameters:
+  - name: url
+    type: string
+    required: true
+    label:
+      en_US: "Url"
+    human_description:
+      en_US: "Crunchbase organization URL, e.g. https://www.crunchbase.com/organization/openai"
+    llm_description: "Crunchbase organization URL, e.g. https://www.crunchbase.com/organization/openai"
+    form: llm
+extra:
+  python:
+    source: tools/run_crunchbase_company.py

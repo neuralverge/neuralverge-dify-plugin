@@ -1,0 +1,116 @@
+identity:
+  name: run_zalando_products_search
+  author: neuralverge
+  label:
+    en_US: "Zalando Products Search"
+description:
+  human:
+    en_US: "Search Zalando products by keyword with optional brand, size, colour, price range and sort filters. Returns name, brand, colour, gender, price, list price, 30-day lowest price, discount, image and sponsored flag. 1 point per returned record."
+  llm: "Search Zalando products by keyword with optional brand, size, colour, price range and sort filters. Returns name, brand, colour, gender, price, list price, 30-day lowest price, discount, image and sponsored flag. 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: true
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Search term. e.g. sneaker"
+    llm_description: "Search term. e.g. sneaker"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 300) Default: 25."
+    llm_description: "Max items (up to 300) Default: 25."
+    form: llm
+    min: 1
+    max: 300
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: brand
+    type: string
+    required: false
+    label:
+      en_US: "Brand"
+    human_description:
+      en_US: "Brand (Zalando slug). e.g. nike-sportswear"
+    llm_description: "Brand (Zalando slug). e.g. nike-sportswear"
+    form: llm
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: popularity = Popularity, activation_date = Newest, price_asc = Price: low to high, price_desc = Price: high to low, sale = Sale"
+    llm_description: "Sort by. Options: popularity = Popularity, activation_date = Newest, price_asc = Price: low to high, price_desc = Price: high to low, sale = Sale"
+    form: llm
+    options:
+      - value: "popularity"
+        label:
+          en_US: "popularity"
+      - value: "activation_date"
+        label:
+          en_US: "activation_date"
+      - value: "price_asc"
+        label:
+          en_US: "price_asc"
+      - value: "price_desc"
+        label:
+          en_US: "price_desc"
+      - value: "sale"
+        label:
+          en_US: "sale"
+  - name: size
+    type: string
+    required: false
+    label:
+      en_US: "Size"
+    human_description:
+      en_US: "Size. e.g. M, 42, XL"
+    llm_description: "Size. e.g. M, 42, XL"
+    form: llm
+  - name: color
+    type: string
+    required: false
+    label:
+      en_US: "Color"
+    human_description:
+      en_US: "Color (English). e.g. black"
+    llm_description: "Color (English). e.g. black"
+    form: llm
+  - name: min_price
+    type: number
+    required: false
+    label:
+      en_US: "Min price"
+    human_description:
+      en_US: "Min price (EUR)"
+    llm_description: "Min price (EUR)"
+    form: llm
+    min: 0
+  - name: max_price
+    type: number
+    required: false
+    label:
+      en_US: "Max price"
+    human_description:
+      en_US: "Max price (EUR)"
+    llm_description: "Max price (EUR)"
+    form: llm
+    min: 0
+extra:
+  python:
+    source: tools/run_zalando_products_search.py

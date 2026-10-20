@@ -1,0 +1,22 @@
+identity:
+  name: run_owler_companies
+  author: neuralverge
+  label:
+    en_US: "Owler company"
+description:
+  human:
+    en_US: "Get one company from Owler by slug or URL: description, founded year, headquarters, CEO, revenue and employee estimates, full funding rounds with investors, acquisitions, investments, competitors and latest news. Flat 10 points per successful run."
+  llm: "Get one company from Owler by slug or URL: description, founded year, headquarters, CEO, revenue and employee estimates, full funding rounds with investors, acquisitions, investments, competitors and latest news. Flat 10 points per successful run."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "Company slug or Owler URL. e.g. stripe"
+    llm_description: "Company slug or Owler URL. e.g. stripe"
+    form: llm
+extra:
+  python:
+    source: tools/run_owler_companies.py

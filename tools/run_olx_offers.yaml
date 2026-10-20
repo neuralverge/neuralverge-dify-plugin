@@ -1,0 +1,53 @@
+identity:
+  name: run_olx_offers
+  author: neuralverge
+  label:
+    en_US: "OLX offer"
+description:
+  human:
+    en_US: "Get one OLX ad by id or URL: price, description, location with coordinates, photos, attributes and seller. 5 point per returned record."
+  llm: "Get one OLX ad by id or URL: price, description, location with coordinates, photos, attributes and seller. 5 point per returned record."
+parameters:
+  - name: domain
+    type: select
+    required: false
+    label:
+      en_US: "Domain"
+    human_description:
+      en_US: "Marketplace. Options: olx.pl = olx.pl (Poland), olx.ua = olx.ua (Ukraine), olx.ro = olx.ro (Romania), olx.bg = olx.bg (Bulgaria), olx.pt = olx.pt (Portugal), olx.kz = olx.kz (Kazakhstan), olx.uz = olx.uz (Uzbekistan) Default: olx.pl."
+    llm_description: "Marketplace. Options: olx.pl = olx.pl (Poland), olx.ua = olx.ua (Ukraine), olx.ro = olx.ro (Romania), olx.bg = olx.bg (Bulgaria), olx.pt = olx.pt (Portugal), olx.kz = olx.kz (Kazakhstan), olx.uz = olx.uz (Uzbekistan) Default: olx.pl."
+    form: llm
+    options:
+      - value: "olx.pl"
+        label:
+          en_US: "olx.pl"
+      - value: "olx.ua"
+        label:
+          en_US: "olx.ua"
+      - value: "olx.ro"
+        label:
+          en_US: "olx.ro"
+      - value: "olx.bg"
+        label:
+          en_US: "olx.bg"
+      - value: "olx.pt"
+        label:
+          en_US: "olx.pt"
+      - value: "olx.kz"
+        label:
+          en_US: "olx.kz"
+      - value: "olx.uz"
+        label:
+          en_US: "olx.uz"
+  - name: offer
+    type: string
+    required: true
+    label:
+      en_US: "Offer"
+    human_description:
+      en_US: "Offer. e.g. Offer id or URL, e.g. 1101345925"
+    llm_description: "Offer. e.g. Offer id or URL, e.g. 1101345925"
+    form: llm
+extra:
+  python:
+    source: tools/run_olx_offers.py

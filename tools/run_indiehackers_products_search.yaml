@@ -1,0 +1,102 @@
+identity:
+  name: run_indiehackers_products_search
+  author: neuralverge
+  label:
+    en_US: "Indie Hackers products search"
+description:
+  human:
+    en_US: "Browse the Indie Hackers products directory by sort, category, business model and monthly revenue range: name, tagline and self-reported revenue. 1 point per returned record."
+  llm: "Browse the Indie Hackers products directory by sort, category, business model and monthly revenue range: name, tagline and self-reported revenue. 1 point per returned record."
+parameters:
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort. Options: recently-updated = Recently updated, recently-added = Recently added, highest-revenue = Revenue: high to low, lowest-revenue = Revenue: low to high"
+    llm_description: "Sort. Options: recently-updated = Recently updated, recently-added = Recently added, highest-revenue = Revenue: high to low, lowest-revenue = Revenue: low to high"
+    form: llm
+    options:
+      - value: "recently-updated"
+        label:
+          en_US: "recently-updated"
+      - value: "recently-added"
+        label:
+          en_US: "recently-added"
+      - value: "highest-revenue"
+        label:
+          en_US: "highest-revenue"
+      - value: "lowest-revenue"
+        label:
+          en_US: "lowest-revenue"
+  - name: category
+    type: string
+    required: false
+    label:
+      en_US: "Category"
+    human_description:
+      en_US: "Category slug. e.g. ai"
+    llm_description: "Category slug. e.g. ai"
+    form: llm
+  - name: business_model
+    type: select
+    required: false
+    label:
+      en_US: "Business model"
+    human_description:
+      en_US: "Business model. Options: free = Free, ads = Advertising, commission = Affiliate / commission, transactions = Transactional, subscriptions = Subscription-based"
+    llm_description: "Business model. Options: free = Free, ads = Advertising, commission = Affiliate / commission, transactions = Transactional, subscriptions = Subscription-based"
+    form: llm
+    options:
+      - value: "free"
+        label:
+          en_US: "free"
+      - value: "ads"
+        label:
+          en_US: "ads"
+      - value: "commission"
+        label:
+          en_US: "commission"
+      - value: "transactions"
+        label:
+          en_US: "transactions"
+      - value: "subscriptions"
+        label:
+          en_US: "subscriptions"
+  - name: monthly_revenue_min
+    type: number
+    required: false
+    label:
+      en_US: "Monthly revenue min"
+    human_description:
+      en_US: "Monthly revenue from (USD)"
+    llm_description: "Monthly revenue from (USD)"
+    form: llm
+    min: 0
+    max: 9007199254740991
+  - name: monthly_revenue_max
+    type: number
+    required: false
+    label:
+      en_US: "Monthly revenue max"
+    human_description:
+      en_US: "Monthly revenue to (USD)"
+    llm_description: "Monthly revenue to (USD)"
+    form: llm
+    min: 0
+    max: 9007199254740991
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 18) Default: 18."
+    llm_description: "Max items (up to 18) Default: 18."
+    form: llm
+    min: 1
+    max: 18
+extra:
+  python:
+    source: tools/run_indiehackers_products_search.py

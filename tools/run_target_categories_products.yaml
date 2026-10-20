@@ -1,0 +1,72 @@
+identity:
+  name: run_target_categories_products
+  author: neuralverge
+  label:
+    en_US: "Target category products"
+description:
+  human:
+    en_US: "List products of a Target category by browse node id or category URL with a sort order. 1 point per returned record."
+  llm: "List products of a Target category by browse node id or category URL with a sort order. 1 point per returned record."
+parameters:
+  - name: category
+    type: string
+    required: true
+    label:
+      en_US: "Category"
+    human_description:
+      en_US: "Category (N-id or category URL). e.g. N-5xt3e"
+    llm_description: "Category (N-id or category URL). e.g. N-5xt3e"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 25."
+    llm_description: "Max items (up to 500) Default: 25."
+    form: llm
+    min: 1
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: featured = Featured, price_low = Price: low to high, price_high = Price: high to low, rating = Highest rated, bestselling = Best selling, newest = Newest"
+    llm_description: "Sort by. Options: featured = Featured, price_low = Price: low to high, price_high = Price: high to low, rating = Highest rated, bestselling = Best selling, newest = Newest"
+    form: llm
+    options:
+      - value: "featured"
+        label:
+          en_US: "featured"
+      - value: "price_low"
+        label:
+          en_US: "price_low"
+      - value: "price_high"
+        label:
+          en_US: "price_high"
+      - value: "rating"
+        label:
+          en_US: "rating"
+      - value: "bestselling"
+        label:
+          en_US: "bestselling"
+      - value: "newest"
+        label:
+          en_US: "newest"
+extra:
+  python:
+    source: tools/run_target_categories_products.py

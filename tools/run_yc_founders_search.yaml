@@ -1,0 +1,80 @@
+identity:
+  name: run_yc_founders_search
+  author: neuralverge
+  label:
+    en_US: "Y Combinator founders search"
+description:
+  human:
+    en_US: "Search the public Y Combinator founders directory by name keyword and filters (batch, title, industry, top company): name, title, company, batches, industries and region. 1 point per returned record."
+  llm: "Search the public Y Combinator founders directory by name keyword and filters (batch, title, industry, top company): name, title, company, batches, industries and region. 1 point per returned record."
+parameters:
+  - name: query
+    type: string
+    required: false
+    label:
+      en_US: "Query"
+    human_description:
+      en_US: "Keyword (optional). e.g. chesky"
+    llm_description: "Keyword (optional). e.g. chesky"
+    form: llm
+  - name: batches
+    type: string
+    required: false
+    label:
+      en_US: "Batches"
+    human_description:
+      en_US: "Batches (comma-separated). e.g. Winter 2024, S23"
+    llm_description: "Batches (comma-separated). e.g. Winter 2024, S23"
+    form: llm
+  - name: titles
+    type: string
+    required: false
+    label:
+      en_US: "Titles"
+    human_description:
+      en_US: "Titles (comma-separated). e.g. CEO, CTO"
+    llm_description: "Titles (comma-separated). e.g. CEO, CTO"
+    form: llm
+  - name: industries
+    type: string
+    required: false
+    label:
+      en_US: "Industries"
+    human_description:
+      en_US: "Industries (comma-separated). e.g. Fintech, B2B"
+    llm_description: "Industries (comma-separated). e.g. Fintech, B2B"
+    form: llm
+  - name: top_company
+    type: boolean
+    required: false
+    label:
+      en_US: "Top company"
+    human_description:
+      en_US: "Top companies"
+    llm_description: "Top companies"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_yc_founders_search.py

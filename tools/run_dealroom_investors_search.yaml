@@ -1,0 +1,111 @@
+identity:
+  name: run_dealroom_investors_search
+  author: neuralverge
+  label:
+    en_US: "Dealroom investors search"
+description:
+  human:
+    en_US: "Search the Dealroom investor index by name keyword, type and country, ordered by Dealroom rank: name, type, country, HQ, portfolio companies, rank and link. With no filters it returns the top of the index. 1 point per returned record."
+  llm: "Search the Dealroom investor index by name keyword, type and country, ordered by Dealroom rank: name, type, country, HQ, portfolio companies, rank and link. With no filters it returns the top of the index. 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: false
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Keyword. e.g. capital"
+    llm_description: "Keyword. e.g. capital"
+    form: llm
+  - name: type
+    type: select
+    required: false
+    label:
+      en_US: "Type"
+    human_description:
+      en_US: "Investor type. Options: Venture Capital = Venture Capital, Pension institution = Pension institution, Corporate = Corporate, Angel = Angel, Private Equity = Private Equity, Government = Government, Fund Of Funds = Fund Of Funds, Other = Other, Pension Fund = Pension Fund, Family Office = Family Office, Accelerator = Accelerator, Sovereign Wealth Fund = Sovereign Wealth Fund, Advisor = Advisor, Angel Fund = Angel Fund, University = University, Fund = Fund"
+    llm_description: "Investor type. Options: Venture Capital = Venture Capital, Pension institution = Pension institution, Corporate = Corporate, Angel = Angel, Private Equity = Private Equity, Government = Government, Fund Of Funds = Fund Of Funds, Other = Other, Pension Fund = Pension Fund, Family Office = Family Office, Accelerator = Accelerator, Sovereign Wealth Fund = Sovereign Wealth Fund, Advisor = Advisor, Angel Fund = Angel Fund, University = University, Fund = Fund"
+    form: llm
+    options:
+      - value: "Venture Capital"
+        label:
+          en_US: "Venture Capital"
+      - value: "Pension institution"
+        label:
+          en_US: "Pension institution"
+      - value: "Corporate"
+        label:
+          en_US: "Corporate"
+      - value: "Angel"
+        label:
+          en_US: "Angel"
+      - value: "Private Equity"
+        label:
+          en_US: "Private Equity"
+      - value: "Government"
+        label:
+          en_US: "Government"
+      - value: "Fund Of Funds"
+        label:
+          en_US: "Fund Of Funds"
+      - value: "Other"
+        label:
+          en_US: "Other"
+      - value: "Pension Fund"
+        label:
+          en_US: "Pension Fund"
+      - value: "Family Office"
+        label:
+          en_US: "Family Office"
+      - value: "Accelerator"
+        label:
+          en_US: "Accelerator"
+      - value: "Sovereign Wealth Fund"
+        label:
+          en_US: "Sovereign Wealth Fund"
+      - value: "Advisor"
+        label:
+          en_US: "Advisor"
+      - value: "Angel Fund"
+        label:
+          en_US: "Angel Fund"
+      - value: "University"
+        label:
+          en_US: "University"
+      - value: "Fund"
+        label:
+          en_US: "Fund"
+  - name: country
+    type: string
+    required: false
+    label:
+      en_US: "Country"
+    human_description:
+      en_US: "Country. e.g. France"
+    llm_description: "Country. e.g. France"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_dealroom_investors_search.py

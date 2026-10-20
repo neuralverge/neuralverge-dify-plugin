@@ -1,0 +1,22 @@
+identity:
+  name: run_trendyol_categories
+  author: neuralverge
+  label:
+    en_US: "Trendyol categories"
+description:
+  human:
+    en_US: "Trendyol category tree: 10 departments with nested subcategories (id, name, alias, parent id, URL). Pass a category id or alias to get just that subtree. 5 point per returned record."
+  llm: "Trendyol category tree: 10 departments with nested subcategories (id, name, alias, parent id, URL). Pass a category id or alias to get just that subtree. 5 point per returned record."
+parameters:
+  - name: category
+    type: string
+    required: false
+    label:
+      en_US: "Category"
+    human_description:
+      en_US: "Category id or alias (optional). e.g. elektronik or 5 — leave empty for the full tree"
+    llm_description: "Category id or alias (optional). e.g. elektronik or 5 — leave empty for the full tree"
+    form: llm
+extra:
+  python:
+    source: tools/run_trendyol_categories.py

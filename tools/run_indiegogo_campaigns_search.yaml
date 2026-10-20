@@ -1,0 +1,140 @@
+identity:
+  name: run_indiegogo_campaigns_search
+  author: neuralverge
+  label:
+    en_US: "Indiegogo campaigns search"
+description:
+  human:
+    en_US: "Search Indiegogo (and Gamefound) projects by keyword and category, phase, benefit, tag, creator and player-count filters: name, tagline, goal, funds raised, backers, phase, dates, creator and link. 1 point per returned record."
+  llm: "Search Indiegogo (and Gamefound) projects by keyword and category, phase, benefit, tag, creator and player-count filters: name, tagline, goal, funds raised, backers, phase, dates, creator and link. 1 point per returned record."
+parameters:
+  - name: term
+    type: string
+    required: false
+    label:
+      en_US: "Term"
+    human_description:
+      en_US: "Keyword. e.g. smart home"
+    llm_description: "Keyword. e.g. smart home"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page (24 per page)"
+    llm_description: "Starting page (24 per page)"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: default = Default, newest = Newest, oldest = Oldest, most_popular = Most popular, most_funded = Most funded, alphabetical_asc = Name A-Z, alphabetical_desc = Name Z-A, ending_soon = Ending soon, most_discussed = Most discussed, recent_updates = Recent updates"
+    llm_description: "Sort by. Options: default = Default, newest = Newest, oldest = Oldest, most_popular = Most popular, most_funded = Most funded, alphabetical_asc = Name A-Z, alphabetical_desc = Name Z-A, ending_soon = Ending soon, most_discussed = Most discussed, recent_updates = Recent updates"
+    form: llm
+    options:
+      - value: "default"
+        label:
+          en_US: "default"
+      - value: "newest"
+        label:
+          en_US: "newest"
+      - value: "oldest"
+        label:
+          en_US: "oldest"
+      - value: "most_popular"
+        label:
+          en_US: "most_popular"
+      - value: "most_funded"
+        label:
+          en_US: "most_funded"
+      - value: "alphabetical_asc"
+        label:
+          en_US: "alphabetical_asc"
+      - value: "alphabetical_desc"
+        label:
+          en_US: "alphabetical_desc"
+      - value: "ending_soon"
+        label:
+          en_US: "ending_soon"
+      - value: "most_discussed"
+        label:
+          en_US: "most_discussed"
+      - value: "recent_updates"
+        label:
+          en_US: "recent_updates"
+  - name: creator_id
+    type: number
+    required: false
+    label:
+      en_US: "Creator id"
+    human_description:
+      en_US: "Creator id"
+    llm_description: "Creator id"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: tags
+    type: string
+    required: false
+    label:
+      en_US: "Tags"
+    human_description:
+      en_US: "Tags (url-names, comma separated). e.g. kitchen, design"
+    llm_description: "Tags (url-names, comma separated). e.g. kitchen, design"
+    form: llm
+  - name: phases
+    type: string
+    required: false
+    label:
+      en_US: "Phases"
+    human_description:
+      en_US: "Phase Comma-separated list (values: Upcoming, Crowdfunding, Preorder, Funded, LatePledge, Store)."
+    llm_description: "Phase Comma-separated list (values: Upcoming, Crowdfunding, Preorder, Funded, LatePledge, Store)."
+    form: llm
+  - name: benefits
+    type: string
+    required: false
+    label:
+      en_US: "Benefits"
+    human_description:
+      en_US: "Benefits Comma-separated list (values: StablePledge, StretchPay)."
+    llm_description: "Benefits Comma-separated list (values: StablePledge, StretchPay)."
+    form: llm
+  - name: player_counts
+    type: string
+    required: false
+    label:
+      en_US: "Player counts"
+    human_description:
+      en_US: "Player count (games) Comma-separated list (values: One, Two, Three, FourAndMore)."
+    llm_description: "Player count (games) Comma-separated list (values: One, Two, Three, FourAndMore)."
+    form: llm
+  - name: categories
+    type: string
+    required: false
+    label:
+      en_US: "Categories"
+    human_description:
+      en_US: "Categories Comma-separated list (values: TechAndInnovation, General, Productivity, TravelAndOutdoors, Home, EnergyAndGreenTech, CameraGear, HealthAndFitness, Transportation, PhonesAndAccessories, FashionAndWearables, FoodAndBeverages, Audio, Education, CreativeWorks, Film, Comics, Music, WritingAndPublishing, DanceAndTheater, Art, WebSeriesAndTVShows, OtherCreations, PodcastsBlogsAndVlogs, Photography, CommunityProjects, Wellness, Culture, LocalBusinesses, OtherCommunityProjects, Environment, HumanRights, GamingCulture, BoardAndCardGames, VideoGames, TTRPG, Accessories, Others)."
+    llm_description: "Categories Comma-separated list (values: TechAndInnovation, General, Productivity, TravelAndOutdoors, Home, EnergyAndGreenTech, CameraGear, HealthAndFitness, Transportation, PhonesAndAccessories, FashionAndWearables, FoodAndBeverages, Audio, Education, CreativeWorks, Film, Comics, Music, WritingAndPublishing, DanceAndTheater, Art, WebSeriesAndTVShows, OtherCreations, PodcastsBlogsAndVlogs, Photography, CommunityProjects, Wellness, Culture, LocalBusinesses, OtherCommunityProjects, Environment, HumanRights, GamingCulture, BoardAndCardGames, VideoGames, TTRPG, Accessories, Others)."
+    form: llm
+extra:
+  python:
+    source: tools/run_indiegogo_campaigns_search.py

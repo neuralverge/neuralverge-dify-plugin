@@ -1,0 +1,22 @@
+identity:
+  name: run_ebay_product
+  author: neuralverge
+  label:
+    en_US: "eBay product"
+description:
+  human:
+    en_US: "Get eBay catalog product details by ePID: brand, model, rating, price range, and specs. Flat 5 points per successful run."
+  llm: "Get eBay catalog product details by ePID: brand, model, rating, price range, and specs. Flat 5 points per successful run."
+parameters:
+  - name: product
+    type: string
+    required: true
+    label:
+      en_US: "Product"
+    human_description:
+      en_US: "ePID or URL. e.g. 1234567890"
+    llm_description: "ePID or URL. e.g. 1234567890"
+    form: llm
+extra:
+  python:
+    source: tools/run_ebay_product.py

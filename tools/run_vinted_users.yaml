@@ -1,0 +1,53 @@
+identity:
+  name: run_vinted_users
+  author: neuralverge
+  label:
+    en_US: "Vinted user"
+description:
+  human:
+    en_US: "Get a Vinted member profile by user id or member URL: location, reputation, feedback and item counts, followers, verification and bundle discounts. Flat 5 points per successful run."
+  llm: "Get a Vinted member profile by user id or member URL: location, reputation, feedback and item counts, followers, verification and bundle discounts. Flat 5 points per successful run."
+parameters:
+  - name: user
+    type: string
+    required: true
+    label:
+      en_US: "User"
+    human_description:
+      en_US: "User ID or profile URL. e.g. 103792107 or https://www.vinted.de/member/103792107-katieronja"
+    llm_description: "User ID or profile URL. e.g. 103792107 or https://www.vinted.de/member/103792107-katieronja"
+    form: llm
+  - name: domain
+    type: select
+    required: false
+    label:
+      en_US: "Domain"
+    human_description:
+      en_US: "Domain. Options: vinted.de = vinted.de, vinted.fr = vinted.fr, vinted.es = vinted.es, vinted.it = vinted.it, vinted.nl = vinted.nl, vinted.pl = vinted.pl, vinted.co.uk = vinted.co.uk Default: vinted.de."
+    llm_description: "Domain. Options: vinted.de = vinted.de, vinted.fr = vinted.fr, vinted.es = vinted.es, vinted.it = vinted.it, vinted.nl = vinted.nl, vinted.pl = vinted.pl, vinted.co.uk = vinted.co.uk Default: vinted.de."
+    form: llm
+    options:
+      - value: "vinted.de"
+        label:
+          en_US: "vinted.de"
+      - value: "vinted.fr"
+        label:
+          en_US: "vinted.fr"
+      - value: "vinted.es"
+        label:
+          en_US: "vinted.es"
+      - value: "vinted.it"
+        label:
+          en_US: "vinted.it"
+      - value: "vinted.nl"
+        label:
+          en_US: "vinted.nl"
+      - value: "vinted.pl"
+        label:
+          en_US: "vinted.pl"
+      - value: "vinted.co.uk"
+        label:
+          en_US: "vinted.co.uk"
+extra:
+  python:
+    source: tools/run_vinted_users.py

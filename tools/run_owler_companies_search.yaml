@@ -1,0 +1,33 @@
+identity:
+  name: run_owler_companies_search
+  author: neuralverge
+  label:
+    en_US: "Owler companies search"
+description:
+  human:
+    en_US: "Search Owler companies by name (the site's own suggestion list): company id, name, logo and profile link. 1 point per returned record."
+  llm: "Search Owler companies by name (the site's own suggestion list): company id, name, logo and profile link. 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: true
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Company name. e.g. uber"
+    llm_description: "Company name. e.g. uber"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+extra:
+  python:
+    source: tools/run_owler_companies_search.py

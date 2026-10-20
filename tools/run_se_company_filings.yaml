@@ -1,0 +1,44 @@
+identity:
+  name: run_se_company_filings
+  author: neuralverge
+  label:
+    en_US: "Sweden company filings"
+description:
+  human:
+    en_US: "List the most recent registry cases of a Sweden company (Bolagsverket) by organisation number or registry URL, newest first: case number, type (annual report, interim report, register update...), status, arrival and registration dates, financial period. 1 point per returned record."
+  llm: "List the most recent registry cases of a Sweden company (Bolagsverket) by organisation number or registry URL, newest first: case number, type (annual report, interim report, register update...), status, arrival and registration dates, financial period. 1 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "Organisation number or registry URL. e.g. 556012-5790"
+    llm_description: "Organisation number or registry URL. e.g. 556012-5790"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_se_company_filings.py

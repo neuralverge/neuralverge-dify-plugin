@@ -1,0 +1,44 @@
+identity:
+  name: run_indiehackers_ideas_search
+  author: neuralverge
+  label:
+    en_US: "Indie Hackers ideas search"
+description:
+  human:
+    en_US: "Browse the Indie Hackers Ideas database, optionally by category: company, one-line idea, categories and MRR. 1 point per returned record."
+  llm: "Browse the Indie Hackers Ideas database, optionally by category: company, one-line idea, categories and MRR. 1 point per returned record."
+parameters:
+  - name: category
+    type: string
+    required: false
+    label:
+      en_US: "Category"
+    human_description:
+      en_US: "Category (Optional). e.g. SaaS"
+    llm_description: "Category (Optional). e.g. SaaS"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page (50 ideas per page)"
+    llm_description: "Starting page (50 ideas per page)"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_indiehackers_ideas_search.py

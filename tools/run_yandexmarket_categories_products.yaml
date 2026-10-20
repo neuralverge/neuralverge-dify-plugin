@@ -1,0 +1,146 @@
+identity:
+  name: run_yandexmarket_categories_products
+  author: neuralverge
+  label:
+    en_US: "Yandex Market category products"
+description:
+  human:
+    en_US: "List Yandex Market products in a catalog category by id or URL, with sort, price, condition, payment, rating and brand filters. 1 point per returned record."
+  llm: "List Yandex Market products in a catalog category by id or URL, with sort, price, condition, payment, rating and brand filters. 1 point per returned record."
+parameters:
+  - name: category
+    type: string
+    required: true
+    label:
+      en_US: "Category"
+    human_description:
+      en_US: "Category (ID or URL). e.g. 26992150"
+    llm_description: "Category (ID or URL). e.g. 26992150"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: dpop = Popularity, aprice = Price: low to high, dprice = Price: high to low, rating = Rating, date = Newest, discount_p = Biggest discount"
+    llm_description: "Sort by. Options: dpop = Popularity, aprice = Price: low to high, dprice = Price: high to low, rating = Rating, date = Newest, discount_p = Biggest discount"
+    form: llm
+    options:
+      - value: "dpop"
+        label:
+          en_US: "dpop"
+      - value: "aprice"
+        label:
+          en_US: "aprice"
+      - value: "dprice"
+        label:
+          en_US: "dprice"
+      - value: "rating"
+        label:
+          en_US: "rating"
+      - value: "date"
+        label:
+          en_US: "date"
+      - value: "discount_p"
+        label:
+          en_US: "discount_p"
+  - name: condition
+    type: select
+    required: false
+    label:
+      en_US: "Condition"
+    human_description:
+      en_US: "Condition. Options: new = New, resale = Resale / used"
+    llm_description: "Condition. Options: new = New, resale = Resale / used"
+    form: llm
+    options:
+      - value: "new"
+        label:
+          en_US: "new"
+      - value: "resale"
+        label:
+          en_US: "resale"
+  - name: price_min
+    type: number
+    required: false
+    label:
+      en_US: "Price min"
+    human_description:
+      en_US: "Min price (RUB)"
+    llm_description: "Min price (RUB)"
+    form: llm
+  - name: price_max
+    type: number
+    required: false
+    label:
+      en_US: "Price max"
+    human_description:
+      en_US: "Max price (RUB)"
+    llm_description: "Max price (RUB)"
+    form: llm
+  - name: payment
+    type: select
+    required: false
+    label:
+      en_US: "Payment"
+    human_description:
+      en_US: "Payment method. Options: online = Online, card_courier = Card to courier, cash_courier = Cash to courier, postpaid_pickup = Pay at pickup point"
+    llm_description: "Payment method. Options: online = Online, card_courier = Card to courier, cash_courier = Cash to courier, postpaid_pickup = Pay at pickup point"
+    form: llm
+    options:
+      - value: "online"
+        label:
+          en_US: "online"
+      - value: "card_courier"
+        label:
+          en_US: "card_courier"
+      - value: "cash_courier"
+        label:
+          en_US: "cash_courier"
+      - value: "postpaid_pickup"
+        label:
+          en_US: "postpaid_pickup"
+  - name: high_rating
+    type: boolean
+    required: false
+    label:
+      en_US: "High rating"
+    human_description:
+      en_US: "Highly rated only"
+    llm_description: "Highly rated only"
+    form: llm
+  - name: vendor_id
+    type: number
+    required: false
+    label:
+      en_US: "Vendor id"
+    human_description:
+      en_US: "Brand (vendor ID)"
+    llm_description: "Brand (vendor ID)"
+    form: llm
+extra:
+  python:
+    source: tools/run_yandexmarket_categories_products.py

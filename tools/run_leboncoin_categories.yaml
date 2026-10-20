@@ -1,0 +1,31 @@
+identity:
+  name: run_leboncoin_categories
+  author: neuralverge
+  label:
+    en_US: "leboncoin Categories"
+description:
+  human:
+    en_US: "Get the leboncoin category tree (id, name, slug, parent and nested subcategories). With include_filters enabled, the first category also carries the full catalog of search filters and their enum values. 5 point per returned record."
+  llm: "Get the leboncoin category tree (id, name, slug, parent and nested subcategories). With include_filters enabled, the first category also carries the full catalog of search filters and their enum values. 5 point per returned record."
+parameters:
+  - name: category
+    type: string
+    required: false
+    label:
+      en_US: "Category"
+    human_description:
+      en_US: "Category (optional). e.g. Category id or slug, e.g. 2 or voitures (empty = whole tree)"
+    llm_description: "Category (optional). e.g. Category id or slug, e.g. 2 or voitures (empty = whole tree)"
+    form: llm
+  - name: include_filters
+    type: boolean
+    required: false
+    label:
+      en_US: "Include filters"
+    human_description:
+      en_US: "Include the search filters catalog (first category)"
+    llm_description: "Include the search filters catalog (first category)"
+    form: llm
+extra:
+  python:
+    source: tools/run_leboncoin_categories.py

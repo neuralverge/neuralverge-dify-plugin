@@ -1,0 +1,22 @@
+identity:
+  name: run_uk_companies
+  author: neuralverge
+  label:
+    en_US: "United Kingdom company"
+description:
+  human:
+    en_US: "Get one company from the United Kingdom registry (Companies House) by registration number or registry URL: name, status, registration date, address and legal form. Flat 30 points per successful run."
+  llm: "Get one company from the United Kingdom registry (Companies House) by registration number or registry URL: name, status, registration date, address and legal form. Flat 30 points per successful run."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "Registration number or registry URL. e.g. 00445790"
+    llm_description: "Registration number or registry URL. e.g. 00445790"
+    form: llm
+extra:
+  python:
+    source: tools/run_uk_companies.py

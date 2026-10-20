@@ -1,0 +1,60 @@
+identity:
+  name: run_poshmark_users_following
+  author: neuralverge
+  label:
+    en_US: "Poshmark user following"
+description:
+  human:
+    en_US: "Users a Poshmark closet follows (handle, name, avatar), by username or URL. 1 point per returned record."
+  llm: "Users a Poshmark closet follows (handle, name, avatar), by username or URL. 1 point per returned record."
+parameters:
+  - name: user
+    type: string
+    required: true
+    label:
+      en_US: "User"
+    human_description:
+      en_US: "Username or closet URL. e.g. Username or closet URL, e.g. najescloset"
+    llm_description: "Username or closet URL. e.g. Username or closet URL, e.g. najescloset"
+    form: llm
+  - name: domain
+    type: select
+    required: false
+    label:
+      en_US: "Domain"
+    human_description:
+      en_US: "Domain. Options: poshmark.com = poshmark.com, poshmark.ca = poshmark.ca Default: poshmark.com."
+    llm_description: "Domain. Options: poshmark.com = poshmark.com, poshmark.ca = poshmark.ca Default: poshmark.com."
+    form: llm
+    options:
+      - value: "poshmark.com"
+        label:
+          en_US: "poshmark.com"
+      - value: "poshmark.ca"
+        label:
+          en_US: "poshmark.ca"
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max following (up to 500) Default: 25."
+    llm_description: "Max following (up to 500) Default: 25."
+    form: llm
+    min: 1
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_poshmark_users_following.py

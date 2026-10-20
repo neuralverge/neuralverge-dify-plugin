@@ -1,0 +1,49 @@
+identity:
+  name: run_poshmark_items_likes
+  author: neuralverge
+  label:
+    en_US: "Poshmark item likes"
+description:
+  human:
+    en_US: "Users who liked a Poshmark listing (handle, name, avatar), by listing id or URL. 1 point per returned record."
+  llm: "Users who liked a Poshmark listing (handle, name, avatar), by listing id or URL. 1 point per returned record."
+parameters:
+  - name: item
+    type: string
+    required: true
+    label:
+      en_US: "Item"
+    human_description:
+      en_US: "Listing. e.g. Listing id or URL, e.g. 6865651dd6c0dc3f3fdfc8ea"
+    llm_description: "Listing. e.g. Listing id or URL, e.g. 6865651dd6c0dc3f3fdfc8ea"
+    form: llm
+  - name: domain
+    type: select
+    required: false
+    label:
+      en_US: "Domain"
+    human_description:
+      en_US: "Domain. Options: poshmark.com = poshmark.com, poshmark.ca = poshmark.ca Default: poshmark.com."
+    llm_description: "Domain. Options: poshmark.com = poshmark.com, poshmark.ca = poshmark.ca Default: poshmark.com."
+    form: llm
+    options:
+      - value: "poshmark.com"
+        label:
+          en_US: "poshmark.com"
+      - value: "poshmark.ca"
+        label:
+          en_US: "poshmark.ca"
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max likes (up to 500) Default: 25."
+    llm_description: "Max likes (up to 500) Default: 25."
+    form: llm
+    min: 1
+    max: 500
+extra:
+  python:
+    source: tools/run_poshmark_items_likes.py

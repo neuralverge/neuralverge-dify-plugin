@@ -1,0 +1,44 @@
+identity:
+  name: run_leboncoin_sellers_reviews
+  author: neuralverge
+  label:
+    en_US: "leboncoin Seller Reviews"
+description:
+  human:
+    en_US: "Get the curated customer reviews leboncoin shows for a professional store (author, rating, text, date, source: Google Maps / Opinion System). 1 point per returned record."
+  llm: "Get the curated customer reviews leboncoin shows for a professional store (author, rating, text, date, source: Google Maps / Opinion System). 1 point per returned record."
+parameters:
+  - name: seller
+    type: string
+    required: true
+    label:
+      en_US: "Seller"
+    human_description:
+      en_US: "Store ID, seller UUID or store URL. e.g. 51895"
+    llm_description: "Store ID, seller UUID or store URL. e.g. 51895"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 100) Default: 10."
+    llm_description: "Max items (up to 100) Default: 10."
+    form: llm
+    min: 1
+    max: 100
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page Default: 1."
+    llm_description: "Starting page Default: 1."
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_leboncoin_sellers_reviews.py

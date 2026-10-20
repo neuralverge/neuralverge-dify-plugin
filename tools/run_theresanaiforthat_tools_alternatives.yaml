@@ -1,0 +1,33 @@
+identity:
+  name: run_theresanaiforthat_tools_alternatives
+  author: neuralverge
+  label:
+    en_US: "There's An AI For That tool alternatives"
+description:
+  human:
+    en_US: "Alternatives and similar tools of one There's An AI For That tool (top alternatives and \"if you liked\" recommendations): name, short description, task, price, rating, views and link. 1 point per returned record."
+  llm: "Alternatives and similar tools of one There's An AI For That tool (top alternatives and \"if you liked\" recommendations): name, short description, task, price, rating, views and link. 1 point per returned record."
+parameters:
+  - name: tool
+    type: string
+    required: true
+    label:
+      en_US: "Tool"
+    human_description:
+      en_US: "Tool slug or There's An AI For That URL. e.g. gling"
+    llm_description: "Tool slug or There's An AI For That URL. e.g. gling"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+extra:
+  python:
+    source: tools/run_theresanaiforthat_tools_alternatives.py

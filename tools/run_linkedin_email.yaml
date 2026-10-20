@@ -1,0 +1,22 @@
+identity:
+  name: run_linkedin_email
+  author: neuralverge
+  label:
+    en_US: "LinkedIn Profile + Email Lookup"
+description:
+  human:
+    en_US: "Looks up a LinkedIn profile by its full profile URL and returns contact details, including an email address when available."
+  llm: "Looks up a LinkedIn profile by its full profile URL and returns contact details, including an email address when available."
+parameters:
+  - name: username
+    type: string
+    required: true
+    label:
+      en_US: "Username"
+    human_description:
+      en_US: "Full LinkedIn profile URL, e.g. https://www.linkedin.com/in/john-doe/"
+    llm_description: "Full LinkedIn profile URL, e.g. https://www.linkedin.com/in/john-doe/"
+    form: llm
+extra:
+  python:
+    source: tools/run_linkedin_email.py

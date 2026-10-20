@@ -1,0 +1,22 @@
+identity:
+  name: run_gleif_companies
+  author: neuralverge
+  label:
+    en_US: "GLEIF company"
+description:
+  human:
+    en_US: "Get one LEI record from the Global LEI Index by LEI code or search.gleif.org link, with the Current Data tab of the page: names, legal form, registration authority, categories, BIC/ISIN codes, addresses, registration and issuer details, fund and branch relationships, and direct and ultimate parents. 5 point per returned record."
+  llm: "Get one LEI record from the Global LEI Index by LEI code or search.gleif.org link, with the Current Data tab of the page: names, legal form, registration authority, categories, BIC/ISIN codes, addresses, registration and issuer details, fund and branch relationships, and direct and ultimate parents. 5 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "LEI or search.gleif.org link. e.g. HWUPKR0MPOU8FGXBT394"
+    llm_description: "LEI or search.gleif.org link. e.g. HWUPKR0MPOU8FGXBT394"
+    form: llm
+extra:
+  python:
+    source: tools/run_gleif_companies.py

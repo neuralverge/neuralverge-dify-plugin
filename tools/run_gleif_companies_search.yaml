@@ -1,0 +1,140 @@
+identity:
+  name: run_gleif_companies_search
+  author: neuralverge
+  label:
+    en_US: "GLEIF companies search"
+description:
+  human:
+    en_US: "Search the Global LEI Index by company name or LEI code: LEI, name, LEI status, address, legal form code, creation date, category, jurisdiction, registration dates and managing issuer. Filter by active or inactive LEI, exact LEI status, entity category and country. 1 point per returned record."
+  llm: "Search the Global LEI Index by company name or LEI code: LEI, name, LEI status, address, legal form code, creation date, category, jurisdiction, registration dates and managing issuer. Filter by active or inactive LEI, exact LEI status, entity category and country. 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: true
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Company name or LEI. e.g. Apple"
+    llm_description: "Company name or LEI. e.g. Apple"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: status
+    type: select
+    required: false
+    label:
+      en_US: "Status"
+    human_description:
+      en_US: "Active or inactive LEI. Options: active = Active, inactive = Inactive / dissolved"
+    llm_description: "Active or inactive LEI. Options: active = Active, inactive = Inactive / dissolved"
+    form: llm
+    options:
+      - value: "active"
+        label:
+          en_US: "active"
+      - value: "inactive"
+        label:
+          en_US: "inactive"
+  - name: reg_status
+    type: select
+    required: false
+    label:
+      en_US: "Reg status"
+    human_description:
+      en_US: "LEI status (exact). Options: ISSUED = Issued, LAPSED = Lapsed, ANNULLED = Annulled, RETIRED = Retired, MERGED = Merged, DUPLICATE = Duplicate, PENDING_TRANSFER = Pending transfer, PENDING_ARCHIVAL = Pending archival, PENDING_NAME_TRANSFER = Pending name transfer, PENDING_NAME_TRANSFER_MERGER = Pending name transfer (merger), PENDING_VALIDATION = Pending validation"
+    llm_description: "LEI status (exact). Options: ISSUED = Issued, LAPSED = Lapsed, ANNULLED = Annulled, RETIRED = Retired, MERGED = Merged, DUPLICATE = Duplicate, PENDING_TRANSFER = Pending transfer, PENDING_ARCHIVAL = Pending archival, PENDING_NAME_TRANSFER = Pending name transfer, PENDING_NAME_TRANSFER_MERGER = Pending name transfer (merger), PENDING_VALIDATION = Pending validation"
+    form: llm
+    options:
+      - value: "ISSUED"
+        label:
+          en_US: "ISSUED"
+      - value: "LAPSED"
+        label:
+          en_US: "LAPSED"
+      - value: "ANNULLED"
+        label:
+          en_US: "ANNULLED"
+      - value: "RETIRED"
+        label:
+          en_US: "RETIRED"
+      - value: "MERGED"
+        label:
+          en_US: "MERGED"
+      - value: "DUPLICATE"
+        label:
+          en_US: "DUPLICATE"
+      - value: "PENDING_TRANSFER"
+        label:
+          en_US: "PENDING_TRANSFER"
+      - value: "PENDING_ARCHIVAL"
+        label:
+          en_US: "PENDING_ARCHIVAL"
+      - value: "PENDING_NAME_TRANSFER"
+        label:
+          en_US: "PENDING_NAME_TRANSFER"
+      - value: "PENDING_NAME_TRANSFER_MERGER"
+        label:
+          en_US: "PENDING_NAME_TRANSFER_MERGER"
+      - value: "PENDING_VALIDATION"
+        label:
+          en_US: "PENDING_VALIDATION"
+  - name: category
+    type: select
+    required: false
+    label:
+      en_US: "Category"
+    human_description:
+      en_US: "Entity category. Options: GENERAL = General, FUND = Fund, BRANCH = Branch, SOLE_PROPRIETOR = Sole proprietor, INTERNATIONAL_ORGANIZATION = International organization, RESPONSIBLE_ENTITY = Responsible entity"
+    llm_description: "Entity category. Options: GENERAL = General, FUND = Fund, BRANCH = Branch, SOLE_PROPRIETOR = Sole proprietor, INTERNATIONAL_ORGANIZATION = International organization, RESPONSIBLE_ENTITY = Responsible entity"
+    form: llm
+    options:
+      - value: "GENERAL"
+        label:
+          en_US: "GENERAL"
+      - value: "FUND"
+        label:
+          en_US: "FUND"
+      - value: "BRANCH"
+        label:
+          en_US: "BRANCH"
+      - value: "SOLE_PROPRIETOR"
+        label:
+          en_US: "SOLE_PROPRIETOR"
+      - value: "INTERNATIONAL_ORGANIZATION"
+        label:
+          en_US: "INTERNATIONAL_ORGANIZATION"
+      - value: "RESPONSIBLE_ENTITY"
+        label:
+          en_US: "RESPONSIBLE_ENTITY"
+  - name: country
+    type: string
+    required: false
+    label:
+      en_US: "Country"
+    human_description:
+      en_US: "Country (2-letter code). e.g. DE"
+    llm_description: "Country (2-letter code). e.g. DE"
+    form: llm
+extra:
+  python:
+    source: tools/run_gleif_companies_search.py

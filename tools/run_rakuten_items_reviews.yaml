@@ -1,0 +1,44 @@
+identity:
+  name: run_rakuten_items_reviews
+  author: neuralverge
+  label:
+    en_US: "Rakuten item reviews"
+description:
+  human:
+    en_US: "Customer reviews of a Rakuten Ichiba item by shop_code/item_code or URL: rating, text, author, dates, helpful count, purpose tags, SKU, media and shop replies. 1 point per returned record."
+  llm: "Customer reviews of a Rakuten Ichiba item by shop_code/item_code or URL: rating, text, author, dates, helpful count, purpose tags, SKU, media and shop replies. 1 point per returned record."
+parameters:
+  - name: item
+    type: string
+    required: true
+    label:
+      en_US: "Item"
+    human_description:
+      en_US: "Item (shop_code/item_code) or URL. e.g. sawaicoffee-tea/ac-sale-1960"
+    llm_description: "Item (shop_code/item_code) or URL. e.g. sawaicoffee-tea/ac-sale-1960"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 10."
+    llm_description: "Max items (up to 500) Default: 10."
+    form: llm
+    min: 1
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page Default: 1."
+    llm_description: "Starting page Default: 1."
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_rakuten_items_reviews.py

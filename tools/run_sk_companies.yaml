@@ -1,0 +1,22 @@
+identity:
+  name: run_sk_companies
+  author: neuralverge
+  label:
+    en_US: "Slovakia company"
+description:
+  human:
+    en_US: "Get one company from the Slovakia Commercial Register (Obchodný register SR) by IČO or registry URL: name, status, registration date, address, legal form, activities and board, with full history. 10 point per returned record."
+  llm: "Get one company from the Slovakia Commercial Register (Obchodný register SR) by IČO or registry URL: name, status, registration date, address, legal form, activities and board, with full history. 10 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "IČO or registry URL. e.g. 31322832"
+    llm_description: "IČO or registry URL. e.g. 31322832"
+    form: llm
+extra:
+  python:
+    source: tools/run_sk_companies.py

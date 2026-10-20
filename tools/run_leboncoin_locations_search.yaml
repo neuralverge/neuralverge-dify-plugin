@@ -1,0 +1,44 @@
+identity:
+  name: run_leboncoin_locations_search
+  author: neuralverge
+  label:
+    en_US: "leboncoin Locations Search"
+description:
+  human:
+    en_US: "Resolve a French place name or postcode into leboncoin location objects: label, city, zipcode, department/region id and coordinates. 1 point per returned record."
+  llm: "Resolve a French place name or postcode into leboncoin location objects: label, city, zipcode, department/region id and coordinates. 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: true
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Search term. e.g. Bordeaux"
+    llm_description: "Search term. e.g. Bordeaux"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 50) Default: 25."
+    llm_description: "Max items (up to 50) Default: 25."
+    form: llm
+    min: 1
+    max: 50
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page Default: 1."
+    llm_description: "Starting page Default: 1."
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_leboncoin_locations_search.py

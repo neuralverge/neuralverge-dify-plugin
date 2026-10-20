@@ -1,0 +1,104 @@
+identity:
+  name: run_wefunder_companies_search
+  author: neuralverge
+  label:
+    en_US: "WeFunder companies search"
+description:
+  human:
+    en_US: "Browse WeFunder campaigns by status, instrument and industry / highlight tags: name, tagline, raise progress, investors, valuation terms, founder and link. 1 point per returned record."
+  llm: "Browse WeFunder campaigns by status, instrument and industry / highlight tags: name, tagline, raise progress, investors, valuation terms, founder and link. 1 point per returned record."
+parameters:
+  - name: status
+    type: select
+    required: false
+    label:
+      en_US: "Status"
+    human_description:
+      en_US: "Status. Options: fundraising = Fundraising, funded = Funded"
+    llm_description: "Status. Options: fundraising = Fundraising, funded = Funded"
+    form: llm
+    options:
+      - value: "fundraising"
+        label:
+          en_US: "fundraising"
+      - value: "funded"
+        label:
+          en_US: "funded"
+  - name: security
+    type: select
+    required: false
+    label:
+      en_US: "Security"
+    human_description:
+      en_US: "Instrument. Options: equity = Equity, safe = SAFE, revenue_share = Revenue share, debt = Debt (convertible note)"
+    llm_description: "Instrument. Options: equity = Equity, safe = SAFE, revenue_share = Revenue share, debt = Debt (convertible note)"
+    form: llm
+    options:
+      - value: "equity"
+        label:
+          en_US: "equity"
+      - value: "safe"
+        label:
+          en_US: "safe"
+      - value: "revenue_share"
+        label:
+          en_US: "revenue_share"
+      - value: "debt"
+        label:
+          en_US: "debt"
+  - name: industries
+    type: string
+    required: false
+    label:
+      en_US: "Industries"
+    human_description:
+      en_US: "Industries (comma-separated). e.g. technology, b2b"
+    llm_description: "Industries (comma-separated). e.g. technology, b2b"
+    form: llm
+  - name: highlights
+    type: string
+    required: false
+    label:
+      en_US: "Highlights"
+    human_description:
+      en_US: "Highlights (comma-separated). e.g. venture_backed, repeat_founder"
+    llm_description: "Highlights (comma-separated). e.g. venture_backed, repeat_founder"
+    form: llm
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort. Options: trending = Trending"
+    llm_description: "Sort. Options: trending = Trending"
+    form: llm
+    options:
+      - value: "trending"
+        label:
+          en_US: "trending"
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_wefunder_companies_search.py

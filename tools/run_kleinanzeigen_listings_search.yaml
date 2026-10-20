@@ -1,0 +1,196 @@
+identity:
+  name: run_kleinanzeigen_listings_search
+  author: neuralverge
+  label:
+    en_US: "Kleinanzeigen listings search"
+description:
+  human:
+    en_US: "Search live Kleinanzeigen ads by keyword with category, price, condition, seller type, shipping and sort filters. 1 point per returned record."
+  llm: "Search live Kleinanzeigen ads by keyword with category, price, condition, seller type, shipping and sort filters. 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: true
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Search term. e.g. fahrrad"
+    llm_description: "Search term. e.g. fahrrad"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 25."
+    llm_description: "Max items (up to 500) Default: 25."
+    form: llm
+    min: 1
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page Default: 1."
+    llm_description: "Starting page Default: 1."
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: newest = Newest, price_asc = Price: low to high, price_desc = Price: high to low, distance = Distance"
+    llm_description: "Sort by. Options: newest = Newest, price_asc = Price: low to high, price_desc = Price: high to low, distance = Distance"
+    form: llm
+    options:
+      - value: "newest"
+        label:
+          en_US: "newest"
+      - value: "price_asc"
+        label:
+          en_US: "price_asc"
+      - value: "price_desc"
+        label:
+          en_US: "price_desc"
+      - value: "distance"
+        label:
+          en_US: "distance"
+  - name: condition
+    type: select
+    required: false
+    label:
+      en_US: "Condition"
+    human_description:
+      en_US: "Condition. Options: new_with_tag = New with tag, new = New, like_new = Like new, good = Good, ok = OK, defect = Defective"
+    llm_description: "Condition. Options: new_with_tag = New with tag, new = New, like_new = Like new, good = Good, ok = OK, defect = Defective"
+    form: llm
+    options:
+      - value: "new_with_tag"
+        label:
+          en_US: "new_with_tag"
+      - value: "new"
+        label:
+          en_US: "new"
+      - value: "like_new"
+        label:
+          en_US: "like_new"
+      - value: "good"
+        label:
+          en_US: "good"
+      - value: "ok"
+        label:
+          en_US: "ok"
+      - value: "defect"
+        label:
+          en_US: "defect"
+  - name: offer_type
+    type: select
+    required: false
+    label:
+      en_US: "Offer type"
+    human_description:
+      en_US: "Offer type. Options: offer = Offers (for sale), wanted = Wanted ads"
+    llm_description: "Offer type. Options: offer = Offers (for sale), wanted = Wanted ads"
+    form: llm
+    options:
+      - value: "offer"
+        label:
+          en_US: "offer"
+      - value: "wanted"
+        label:
+          en_US: "wanted"
+  - name: seller_type
+    type: select
+    required: false
+    label:
+      en_US: "Seller type"
+    human_description:
+      en_US: "Seller type. Options: private = Private, commercial = Commercial"
+    llm_description: "Seller type. Options: private = Private, commercial = Commercial"
+    form: llm
+    options:
+      - value: "private"
+        label:
+          en_US: "private"
+      - value: "commercial"
+        label:
+          en_US: "commercial"
+  - name: shipping
+    type: select
+    required: false
+    label:
+      en_US: "Shipping"
+    human_description:
+      en_US: "Shipping. Options: shipping = Shipping available, pickup = Pickup only"
+    llm_description: "Shipping. Options: shipping = Shipping available, pickup = Pickup only"
+    form: llm
+    options:
+      - value: "shipping"
+        label:
+          en_US: "shipping"
+      - value: "pickup"
+        label:
+          en_US: "pickup"
+  - name: carrier
+    type: select
+    required: false
+    label:
+      en_US: "Carrier"
+    human_description:
+      en_US: "Carrier. Options: dhl = DHL, hermes = Hermes"
+    llm_description: "Carrier. Options: dhl = DHL, hermes = Hermes"
+    form: llm
+    options:
+      - value: "dhl"
+        label:
+          en_US: "dhl"
+      - value: "hermes"
+        label:
+          en_US: "hermes"
+  - name: min_price
+    type: number
+    required: false
+    label:
+      en_US: "Min price"
+    human_description:
+      en_US: "Min price (EUR)"
+    llm_description: "Min price (EUR)"
+    form: llm
+    min: 0
+  - name: max_price
+    type: number
+    required: false
+    label:
+      en_US: "Max price"
+    human_description:
+      en_US: "Max price (EUR)"
+    llm_description: "Max price (EUR)"
+    form: llm
+    min: 0
+  - name: category_id
+    type: string
+    required: false
+    label:
+      en_US: "Category id"
+    human_description:
+      en_US: "Category ID. e.g. 217"
+    llm_description: "Category ID. e.g. 217"
+    form: llm
+  - name: buy_now
+    type: boolean
+    required: false
+    label:
+      en_US: "Buy now"
+    human_description:
+      en_US: "Buy Now only"
+    llm_description: "Buy Now only"
+    form: llm
+extra:
+  python:
+    source: tools/run_kleinanzeigen_listings_search.py

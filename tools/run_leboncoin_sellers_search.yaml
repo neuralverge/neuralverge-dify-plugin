@@ -1,0 +1,84 @@
+identity:
+  name: run_leboncoin_sellers_search
+  author: neuralverge
+  label:
+    en_US: "leboncoin Sellers Search"
+description:
+  human:
+    en_US: "Browse leboncoin's professional-stores directory by activity sector: id, name, activity sector, city, department and region. 1 point per returned record."
+  llm: "Browse leboncoin's professional-stores directory by activity sector: id, name, activity sector, city, department and region. 1 point per returned record."
+parameters:
+  - name: sector
+    type: select
+    required: false
+    label:
+      en_US: "Sector"
+    human_description:
+      en_US: "Activity sector. Options: immobilier = Real estate, vehicules = Vehicles, materiel_professionnel = Professional equipment, electronique = Electronics, maison_jardin = Home & garden, mode = Fashion, loisirs = Leisure, locations_de_vacances = Holiday rentals, emploi = Jobs, services = Services"
+    llm_description: "Activity sector. Options: immobilier = Real estate, vehicules = Vehicles, materiel_professionnel = Professional equipment, electronique = Electronics, maison_jardin = Home & garden, mode = Fashion, loisirs = Leisure, locations_de_vacances = Holiday rentals, emploi = Jobs, services = Services"
+    form: llm
+    options:
+      - value: "immobilier"
+        label:
+          en_US: "immobilier"
+      - value: "vehicules"
+        label:
+          en_US: "vehicules"
+      - value: "materiel_professionnel"
+        label:
+          en_US: "materiel_professionnel"
+      - value: "electronique"
+        label:
+          en_US: "electronique"
+      - value: "maison_jardin"
+        label:
+          en_US: "maison_jardin"
+      - value: "mode"
+        label:
+          en_US: "mode"
+      - value: "loisirs"
+        label:
+          en_US: "loisirs"
+      - value: "locations_de_vacances"
+        label:
+          en_US: "locations_de_vacances"
+      - value: "emploi"
+        label:
+          en_US: "emploi"
+      - value: "services"
+        label:
+          en_US: "services"
+  - name: category
+    type: string
+    required: false
+    label:
+      en_US: "Category"
+    human_description:
+      en_US: "Category slug. e.g. toutes_categories"
+    llm_description: "Category slug. e.g. toutes_categories"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 300) Default: 30."
+    llm_description: "Max items (up to 300) Default: 30."
+    form: llm
+    min: 1
+    max: 300
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_leboncoin_sellers_search.py

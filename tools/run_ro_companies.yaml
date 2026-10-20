@@ -1,0 +1,22 @@
+identity:
+  name: run_ro_companies
+  author: neuralverge
+  label:
+    en_US: "Romania company"
+description:
+  human:
+    en_US: "Get one company from the Romania registry data (Ministry of Finance / ONRC) by CUI (CIF): name, status and registration date, address, trade register number, authorization act, phone/fax, tax registrations (profit tax, VAT, social contributions, ...) and the latest filed financial indicators (assets, debts, equity, turnover, profit, employees). 15 point per returned record."
+  llm: "Get one company from the Romania registry data (Ministry of Finance / ONRC) by CUI (CIF): name, status and registration date, address, trade register number, authorization act, phone/fax, tax registrations (profit tax, VAT, social contributions, ...) and the latest filed financial indicators (assets, debts, equity, turnover, profit, employees). 15 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "CUI (CIF). e.g. 2816464"
+    llm_description: "CUI (CIF). e.g. 2816464"
+    form: llm
+extra:
+  python:
+    source: tools/run_ro_companies.py

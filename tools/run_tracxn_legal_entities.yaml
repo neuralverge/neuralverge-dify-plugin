@@ -1,0 +1,22 @@
+identity:
+  name: run_tracxn_legal_entities
+  author: neuralverge
+  label:
+    en_US: "Tracxn legal entity"
+description:
+  human:
+    en_US: "Get one registered legal entity from Tracxn by URL or id token: CIN, status, type, incorporation date, registrar, capital, address, brands, business activity, recent filings, directors and signatories. Flat 5 points per successful run."
+  llm: "Get one registered legal entity from Tracxn by URL or id token: CIN, status, type, incorporation date, registrar, capital, address, brands, business activity, recent filings, directors and signatories. Flat 5 points per successful run."
+parameters:
+  - name: entity
+    type: string
+    required: true
+    label:
+      en_US: "Entity"
+    human_description:
+      en_US: "Legal entity URL or id token. e.g. https://tracxn.com/d/legal-entities/india/supermarket-grocery-supplies-private-limited/__wkVBPMIeXFNcyh1StR0AqxcuG_kTfnVohmvVAUSR0jw"
+    llm_description: "Legal entity URL or id token. e.g. https://tracxn.com/d/legal-entities/india/supermarket-grocery-supplies-private-limited/__wkVBPMIeXFNcyh1StR0AqxcuG_kTfnVohmvVAUSR0jw"
+    form: llm
+extra:
+  python:
+    source: tools/run_tracxn_legal_entities.py

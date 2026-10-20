@@ -1,0 +1,238 @@
+identity:
+  name: run_poshmark_items_search
+  author: neuralverge
+  label:
+    en_US: "Poshmark items search"
+description:
+  human:
+    en_US: "Search live Poshmark listings by keyword with department, category, brand, size, color, price, condition, shipping, availability and sort filters. 1 point per returned record."
+  llm: "Search live Poshmark listings by keyword with department, category, brand, size, color, price, condition, shipping, availability and sort filters. 1 point per returned record."
+parameters:
+  - name: query
+    type: string
+    required: false
+    label:
+      en_US: "Query"
+    human_description:
+      en_US: "Search term (optional). e.g. nike shoes"
+    llm_description: "Search term (optional). e.g. nike shoes"
+    form: llm
+  - name: domain
+    type: select
+    required: false
+    label:
+      en_US: "Domain"
+    human_description:
+      en_US: "Domain. Options: poshmark.com = poshmark.com, poshmark.ca = poshmark.ca Default: poshmark.com."
+    llm_description: "Domain. Options: poshmark.com = poshmark.com, poshmark.ca = poshmark.ca Default: poshmark.com."
+    form: llm
+    options:
+      - value: "poshmark.com"
+        label:
+          en_US: "poshmark.com"
+      - value: "poshmark.ca"
+        label:
+          en_US: "poshmark.ca"
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 25."
+    llm_description: "Max items (up to 500) Default: 25."
+    form: llm
+    min: 1
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: relevance = Relevance, just_in = Just in, price_low_to_high = Price: low to high, price_high_to_low = Price: high to low"
+    llm_description: "Sort by. Options: relevance = Relevance, just_in = Just in, price_low_to_high = Price: low to high, price_high_to_low = Price: high to low"
+    form: llm
+    options:
+      - value: "relevance"
+        label:
+          en_US: "relevance"
+      - value: "just_in"
+        label:
+          en_US: "just_in"
+      - value: "price_low_to_high"
+        label:
+          en_US: "price_low_to_high"
+      - value: "price_high_to_low"
+        label:
+          en_US: "price_high_to_low"
+  - name: availability
+    type: select
+    required: false
+    label:
+      en_US: "Availability"
+    human_description:
+      en_US: "Availability. Options: all = All, available = Available, available_and_dropping_soon = Available and dropping soon, dropping_soon = Dropping soon, sold = Sold, not_for_sale = Not for sale"
+    llm_description: "Availability. Options: all = All, available = Available, available_and_dropping_soon = Available and dropping soon, dropping_soon = Dropping soon, sold = Sold, not_for_sale = Not for sale"
+    form: llm
+    options:
+      - value: "all"
+        label:
+          en_US: "all"
+      - value: "available"
+        label:
+          en_US: "available"
+      - value: "available_and_dropping_soon"
+        label:
+          en_US: "available_and_dropping_soon"
+      - value: "dropping_soon"
+        label:
+          en_US: "dropping_soon"
+      - value: "sold"
+        label:
+          en_US: "sold"
+      - value: "not_for_sale"
+        label:
+          en_US: "not_for_sale"
+  - name: department
+    type: select
+    required: false
+    label:
+      en_US: "Department"
+    human_description:
+      en_US: "Department. Options: Women = Women, Men = Men, Kids = Kids, Home = Home, Electronics = Electronics, Pets = Pets, Beauty & Wellness = Beauty & Wellness"
+    llm_description: "Department. Options: Women = Women, Men = Men, Kids = Kids, Home = Home, Electronics = Electronics, Pets = Pets, Beauty & Wellness = Beauty & Wellness"
+    form: llm
+    options:
+      - value: "Women"
+        label:
+          en_US: "Women"
+      - value: "Men"
+        label:
+          en_US: "Men"
+      - value: "Kids"
+        label:
+          en_US: "Kids"
+      - value: "Home"
+        label:
+          en_US: "Home"
+      - value: "Electronics"
+        label:
+          en_US: "Electronics"
+      - value: "Pets"
+        label:
+          en_US: "Pets"
+      - value: "Beauty & Wellness"
+        label:
+          en_US: "Beauty & Wellness"
+  - name: condition
+    type: select
+    required: false
+    label:
+      en_US: "Condition"
+    human_description:
+      en_US: "Condition. Options: all = All conditions, nwt = New with tags (NWT)"
+    llm_description: "Condition. Options: all = All conditions, nwt = New with tags (NWT)"
+    form: llm
+    options:
+      - value: "all"
+        label:
+          en_US: "all"
+      - value: "nwt"
+        label:
+          en_US: "nwt"
+  - name: category
+    type: string
+    required: false
+    label:
+      en_US: "Category"
+    human_description:
+      en_US: "Category. e.g. Shoes, Dresses, Bags"
+    llm_description: "Category. e.g. Shoes, Dresses, Bags"
+    form: llm
+  - name: subcategory
+    type: string
+    required: false
+    label:
+      en_US: "Subcategory"
+    human_description:
+      en_US: "Subcategory. e.g. Athletic Shoes, Sneakers"
+    llm_description: "Subcategory. e.g. Athletic Shoes, Sneakers"
+    form: llm
+  - name: brand
+    type: string
+    required: false
+    label:
+      en_US: "Brand"
+    human_description:
+      en_US: "Brand. e.g. Nike, Coach"
+    llm_description: "Brand. e.g. Nike, Coach"
+    form: llm
+  - name: size
+    type: string
+    required: false
+    label:
+      en_US: "Size"
+    human_description:
+      en_US: "Sizes (comma separated). e.g. 8, M"
+    llm_description: "Sizes (comma separated). e.g. 8, M"
+    form: llm
+  - name: price_min
+    type: number
+    required: false
+    label:
+      en_US: "Price min"
+    human_description:
+      en_US: "Min price"
+    llm_description: "Min price"
+    form: llm
+    min: 0
+  - name: price_max
+    type: number
+    required: false
+    label:
+      en_US: "Price max"
+    human_description:
+      en_US: "Max price"
+    llm_description: "Max price"
+    form: llm
+    min: 0
+  - name: shipping
+    type: select
+    required: false
+    label:
+      en_US: "Shipping"
+    human_description:
+      en_US: "Shipping. Options: free = Free shipping, discounted = Discounted shipping"
+    llm_description: "Shipping. Options: free = Free shipping, discounted = Discounted shipping"
+    form: llm
+    options:
+      - value: "free"
+        label:
+          en_US: "free"
+      - value: "discounted"
+        label:
+          en_US: "discounted"
+  - name: color
+    type: string
+    required: false
+    label:
+      en_US: "Color"
+    human_description:
+      en_US: "Colors Comma-separated list (values: Red, Pink, Orange, Yellow, Green, Blue, Purple, Gold, Silver, Black, Gray, White, Cream, Brown, Tan)."
+    llm_description: "Colors Comma-separated list (values: Red, Pink, Orange, Yellow, Green, Blue, Purple, Gold, Silver, Black, Gray, White, Cream, Brown, Tan)."
+    form: llm
+extra:
+  python:
+    source: tools/run_poshmark_items_search.py

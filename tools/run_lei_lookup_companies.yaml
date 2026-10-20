@@ -1,0 +1,22 @@
+identity:
+  name: run_lei_lookup_companies
+  author: neuralverge
+  label:
+    en_US: "LEI Lookup company"
+description:
+  human:
+    en_US: "Get one Legal Entity Identifier record by LEI code or lei-lookup.com link: name, entity and LEI status, registration and renewal dates, managing issuer, legal form, registration authority, legal and headquarters addresses, parent companies and the number of subsidiaries. 5 point per returned record."
+  llm: "Get one Legal Entity Identifier record by LEI code or lei-lookup.com link: name, entity and LEI status, registration and renewal dates, managing issuer, legal form, registration authority, legal and headquarters addresses, parent companies and the number of subsidiaries. 5 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "LEI or lei-lookup.com link. e.g. HWUPKR0MPOU8FGXBT394"
+    llm_description: "LEI or lei-lookup.com link. e.g. HWUPKR0MPOU8FGXBT394"
+    form: llm
+extra:
+  python:
+    source: tools/run_lei_lookup_companies.py

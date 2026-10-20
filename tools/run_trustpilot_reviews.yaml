@@ -1,0 +1,33 @@
+identity:
+  name: run_trustpilot_reviews
+  author: neuralverge
+  label:
+    en_US: "Trustpilot reviews"
+description:
+  human:
+    en_US: "Get customer reviews for a Trustpilot business by domain or URL: rating, text, and author. 1 point per returned record."
+  llm: "Get customer reviews for a Trustpilot business by domain or URL: rating, text, and author. 1 point per returned record."
+parameters:
+  - name: business
+    type: string
+    required: true
+    label:
+      en_US: "Business"
+    human_description:
+      en_US: "Business domain or Trustpilot URL. e.g. hubspot.com"
+    llm_description: "Business domain or Trustpilot URL. e.g. hubspot.com"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 300) Default: 10."
+    llm_description: "Max items (up to 300) Default: 10."
+    form: llm
+    min: 1
+    max: 300
+extra:
+  python:
+    source: tools/run_trustpilot_reviews.py

@@ -1,0 +1,240 @@
+identity:
+  name: run_olx_offers_search
+  author: neuralverge
+  label:
+    en_US: "OLX offers search"
+description:
+  human:
+    en_US: "Search live OLX ads by keyword with category, price, condition, seller type, location, delivery and sort. 1 point per returned record."
+  llm: "Search live OLX ads by keyword with category, price, condition, seller type, location, delivery and sort. 1 point per returned record."
+parameters:
+  - name: domain
+    type: select
+    required: false
+    label:
+      en_US: "Domain"
+    human_description:
+      en_US: "Marketplace. Options: olx.pl = olx.pl (Poland), olx.ua = olx.ua (Ukraine), olx.ro = olx.ro (Romania), olx.bg = olx.bg (Bulgaria), olx.pt = olx.pt (Portugal), olx.kz = olx.kz (Kazakhstan), olx.uz = olx.uz (Uzbekistan) Default: olx.pl."
+    llm_description: "Marketplace. Options: olx.pl = olx.pl (Poland), olx.ua = olx.ua (Ukraine), olx.ro = olx.ro (Romania), olx.bg = olx.bg (Bulgaria), olx.pt = olx.pt (Portugal), olx.kz = olx.kz (Kazakhstan), olx.uz = olx.uz (Uzbekistan) Default: olx.pl."
+    form: llm
+    options:
+      - value: "olx.pl"
+        label:
+          en_US: "olx.pl"
+      - value: "olx.ua"
+        label:
+          en_US: "olx.ua"
+      - value: "olx.ro"
+        label:
+          en_US: "olx.ro"
+      - value: "olx.bg"
+        label:
+          en_US: "olx.bg"
+      - value: "olx.pt"
+        label:
+          en_US: "olx.pt"
+      - value: "olx.kz"
+        label:
+          en_US: "olx.kz"
+      - value: "olx.uz"
+        label:
+          en_US: "olx.uz"
+  - name: keyword
+    type: string
+    required: false
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Search term. e.g. iphone"
+    llm_description: "Search term. e.g. iphone"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 25."
+    llm_description: "Max items (up to 500) Default: 25."
+    form: llm
+    min: 1
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page (50 offers per page, up to 20)"
+    llm_description: "Starting page (50 offers per page, up to 20)"
+    form: llm
+    min: 1
+    max: 20
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: relevance = Relevance, newest = Newest, oldest = Oldest, price_asc = Price: low to high, price_desc = Price: high to low"
+    llm_description: "Sort by. Options: relevance = Relevance, newest = Newest, oldest = Oldest, price_asc = Price: low to high, price_desc = Price: high to low"
+    form: llm
+    options:
+      - value: "relevance"
+        label:
+          en_US: "relevance"
+      - value: "newest"
+        label:
+          en_US: "newest"
+      - value: "oldest"
+        label:
+          en_US: "oldest"
+      - value: "price_asc"
+        label:
+          en_US: "price_asc"
+      - value: "price_desc"
+        label:
+          en_US: "price_desc"
+  - name: condition
+    type: select
+    required: false
+    label:
+      en_US: "Condition"
+    human_description:
+      en_US: "Condition. Options: new = New, almost-new = Almost new, used = Used, refurbished = Refurbished, outlet = Outlet, damaged = Damaged, others = Others"
+    llm_description: "Condition. Options: new = New, almost-new = Almost new, used = Used, refurbished = Refurbished, outlet = Outlet, damaged = Damaged, others = Others"
+    form: llm
+    options:
+      - value: "new"
+        label:
+          en_US: "new"
+      - value: "almost-new"
+        label:
+          en_US: "almost-new"
+      - value: "used"
+        label:
+          en_US: "used"
+      - value: "refurbished"
+        label:
+          en_US: "refurbished"
+      - value: "outlet"
+        label:
+          en_US: "outlet"
+      - value: "damaged"
+        label:
+          en_US: "damaged"
+      - value: "others"
+        label:
+          en_US: "others"
+  - name: owner_type
+    type: select
+    required: false
+    label:
+      en_US: "Owner type"
+    human_description:
+      en_US: "Seller type. Options: private = Private sellers, business = Business sellers"
+    llm_description: "Seller type. Options: private = Private sellers, business = Business sellers"
+    form: llm
+    options:
+      - value: "private"
+        label:
+          en_US: "private"
+      - value: "business"
+        label:
+          en_US: "business"
+  - name: category_id
+    type: number
+    required: false
+    label:
+      en_US: "Category id"
+    human_description:
+      en_US: "Category ID"
+    llm_description: "Category ID"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: min_price
+    type: number
+    required: false
+    label:
+      en_US: "Min price"
+    human_description:
+      en_US: "Min price (marketplace currency)"
+    llm_description: "Min price (marketplace currency)"
+    form: llm
+  - name: max_price
+    type: number
+    required: false
+    label:
+      en_US: "Max price"
+    human_description:
+      en_US: "Max price (marketplace currency)"
+    llm_description: "Max price (marketplace currency)"
+    form: llm
+  - name: region_id
+    type: number
+    required: false
+    label:
+      en_US: "Region id"
+    human_description:
+      en_US: "Region ID"
+    llm_description: "Region ID"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: city_id
+    type: number
+    required: false
+    label:
+      en_US: "City id"
+    human_description:
+      en_US: "City ID"
+    llm_description: "City ID"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: district_id
+    type: number
+    required: false
+    label:
+      en_US: "District id"
+    human_description:
+      en_US: "District ID"
+    llm_description: "District ID"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: distance
+    type: number
+    required: false
+    label:
+      en_US: "Distance"
+    human_description:
+      en_US: "Distance (km around the city)"
+    llm_description: "Distance (km around the city)"
+    form: llm
+    min: 0
+    max: 9007199254740991
+  - name: user_id
+    type: number
+    required: false
+    label:
+      en_US: "User id"
+    human_description:
+      en_US: "Seller user ID"
+    llm_description: "Seller user ID"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: has_delivery
+    type: boolean
+    required: false
+    label:
+      en_US: "Has delivery"
+    human_description:
+      en_US: "OLX delivery only"
+    llm_description: "OLX delivery only"
+    form: llm
+extra:
+  python:
+    source: tools/run_olx_offers_search.py

@@ -1,0 +1,33 @@
+identity:
+  name: run_capterra_category_products
+  author: neuralverge
+  label:
+    en_US: "Capterra category products"
+description:
+  human:
+    en_US: "List Capterra products within a software category, ranked as Capterra ranks them. 1 point per returned record."
+  llm: "List Capterra products within a software category, ranked as Capterra ranks them. 1 point per returned record."
+parameters:
+  - name: category
+    type: string
+    required: true
+    label:
+      en_US: "Category"
+    human_description:
+      en_US: "Category alias or URL. e.g. customer-relationship-management-software"
+    llm_description: "Category alias or URL. e.g. customer-relationship-management-software"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 10."
+    llm_description: "Max items (up to 500) Default: 10."
+    form: llm
+    min: 1
+    max: 500
+extra:
+  python:
+    source: tools/run_capterra_category_products.py

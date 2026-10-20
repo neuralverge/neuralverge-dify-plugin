@@ -1,0 +1,22 @@
+identity:
+  name: run_lu_companies
+  author: neuralverge
+  label:
+    en_US: "Luxembourg company"
+description:
+  human:
+    en_US: "Get one company from the Luxembourg registry (LBR / RCS) by RCS number or registry link: name, status (radiée / en faillite), registration and deletion date, address, legal form, trade names, NACE code, and EUID. 5 point per returned record."
+  llm: "Get one company from the Luxembourg registry (LBR / RCS) by RCS number or registry link: name, status (radiée / en faillite), registration and deletion date, address, legal form, trade names, NACE code, and EUID. 5 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "RCS number or registry URL. e.g. B82454"
+    llm_description: "RCS number or registry URL. e.g. B82454"
+    form: llm
+extra:
+  python:
+    source: tools/run_lu_companies.py

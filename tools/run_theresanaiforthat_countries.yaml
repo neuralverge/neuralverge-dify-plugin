@@ -1,0 +1,53 @@
+identity:
+  name: run_theresanaiforthat_countries
+  author: neuralverge
+  label:
+    en_US: "There's An AI For That countries"
+description:
+  human:
+    en_US: "AI ecosystem ranking of countries from There's An AI For That: region, AI market cap, population, AI investment per capita and the number of companies, organizations, investors, tools, models, papers, devices, robots and fundraises. Optional region filter. Flat 5 points per successful run."
+  llm: "AI ecosystem ranking of countries from There's An AI For That: region, AI market cap, population, AI investment per capita and the number of companies, organizations, investors, tools, models, papers, devices, robots and fundraises. Optional region filter. Flat 5 points per successful run."
+parameters:
+  - name: area
+    type: select
+    required: false
+    label:
+      en_US: "Area"
+    human_description:
+      en_US: "Region. Options: Central Asia = Central Asia, East Asia = East Asia, Europe = Europe, LATAM = LATAM, MENA = MENA, North America = North America, Oceania = Oceania, South Asia = South Asia, Southeast Asia = Southeast Asia, Sub-Saharan Africa = Sub-Saharan Africa"
+    llm_description: "Region. Options: Central Asia = Central Asia, East Asia = East Asia, Europe = Europe, LATAM = LATAM, MENA = MENA, North America = North America, Oceania = Oceania, South Asia = South Asia, Southeast Asia = Southeast Asia, Sub-Saharan Africa = Sub-Saharan Africa"
+    form: llm
+    options:
+      - value: "Central Asia"
+        label:
+          en_US: "Central Asia"
+      - value: "East Asia"
+        label:
+          en_US: "East Asia"
+      - value: "Europe"
+        label:
+          en_US: "Europe"
+      - value: "LATAM"
+        label:
+          en_US: "LATAM"
+      - value: "MENA"
+        label:
+          en_US: "MENA"
+      - value: "North America"
+        label:
+          en_US: "North America"
+      - value: "Oceania"
+        label:
+          en_US: "Oceania"
+      - value: "South Asia"
+        label:
+          en_US: "South Asia"
+      - value: "Southeast Asia"
+        label:
+          en_US: "Southeast Asia"
+      - value: "Sub-Saharan Africa"
+        label:
+          en_US: "Sub-Saharan Africa"
+extra:
+  python:
+    source: tools/run_theresanaiforthat_countries.py

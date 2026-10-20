@@ -1,0 +1,131 @@
+identity:
+  name: run_ebay_item_search
+  author: neuralverge
+  label:
+    en_US: "eBay item search"
+description:
+  human:
+    en_US: "Search active eBay listings by keyword: title, price, condition, and seller summary. 1 point per returned record."
+  llm: "Search active eBay listings by keyword: title, price, condition, and seller summary. 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: true
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Search term. e.g. wireless mouse"
+    llm_description: "Search term. e.g. wireless mouse"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 25."
+    llm_description: "Max items (up to 500) Default: 25."
+    form: llm
+    min: 1
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page Default: 1."
+    llm_description: "Starting page Default: 1."
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: ending_soonest = Ending soonest, newly_listed = Newly listed, price_low = Price: low to high, price_high = Price: high to low"
+    llm_description: "Sort by. Options: ending_soonest = Ending soonest, newly_listed = Newly listed, price_low = Price: low to high, price_high = Price: high to low"
+    form: llm
+    options:
+      - value: "ending_soonest"
+        label:
+          en_US: "ending_soonest"
+      - value: "newly_listed"
+        label:
+          en_US: "newly_listed"
+      - value: "price_low"
+        label:
+          en_US: "price_low"
+      - value: "price_high"
+        label:
+          en_US: "price_high"
+  - name: condition
+    type: select
+    required: false
+    label:
+      en_US: "Condition"
+    human_description:
+      en_US: "Condition. Options: new = New, open_box = Open box, used = Used, parts = For parts / not working"
+    llm_description: "Condition. Options: new = New, open_box = Open box, used = Used, parts = For parts / not working"
+    form: llm
+    options:
+      - value: "new"
+        label:
+          en_US: "new"
+      - value: "open_box"
+        label:
+          en_US: "open_box"
+      - value: "used"
+        label:
+          en_US: "used"
+      - value: "parts"
+        label:
+          en_US: "parts"
+  - name: buying_format
+    type: select
+    required: false
+    label:
+      en_US: "Buying format"
+    human_description:
+      en_US: "Buying format. Options: auction = Auction, buy_it_now = Buy It Now"
+    llm_description: "Buying format. Options: auction = Auction, buy_it_now = Buy It Now"
+    form: llm
+    options:
+      - value: "auction"
+        label:
+          en_US: "auction"
+      - value: "buy_it_now"
+        label:
+          en_US: "buy_it_now"
+  - name: category_id
+    type: string
+    required: false
+    label:
+      en_US: "Category id"
+    human_description:
+      en_US: "Category ID. e.g. 58058"
+    llm_description: "Category ID. e.g. 58058"
+    form: llm
+  - name: min_price
+    type: number
+    required: false
+    label:
+      en_US: "Min price"
+    human_description:
+      en_US: "Min price"
+    llm_description: "Min price"
+    form: llm
+  - name: max_price
+    type: number
+    required: false
+    label:
+      en_US: "Max price"
+    human_description:
+      en_US: "Max price"
+    llm_description: "Max price"
+    form: llm
+extra:
+  python:
+    source: tools/run_ebay_item_search.py

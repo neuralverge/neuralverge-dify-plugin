@@ -1,0 +1,124 @@
+identity:
+  name: run_mercari_items_search
+  author: neuralverge
+  label:
+    en_US: "Mercari Items Search"
+description:
+  human:
+    en_US: "Search Mercari (Japan) items by keyword with category, sort, status and price filters. Returns items with id, URL, name, price (JPY), status, thumbnail and photo. 1 point per returned record."
+  llm: "Search Mercari (Japan) items by keyword with category, sort, status and price filters. Returns items with id, URL, name, price (JPY), status, thumbnail and photo. 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: true
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Search term. e.g. iphone 15"
+    llm_description: "Search term. e.g. iphone 15"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 500) Default: 25."
+    llm_description: "Max items (up to 500) Default: 25."
+    form: llm
+    min: 1
+    max: 500
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: sort
+    type: select
+    required: false
+    label:
+      en_US: "Sort"
+    human_description:
+      en_US: "Sort by. Options: score = Relevance, created_time = Newest, price = Price, num_likes = Most liked"
+    llm_description: "Sort by. Options: score = Relevance, created_time = Newest, price = Price, num_likes = Most liked"
+    form: llm
+    options:
+      - value: "score"
+        label:
+          en_US: "score"
+      - value: "created_time"
+        label:
+          en_US: "created_time"
+      - value: "price"
+        label:
+          en_US: "price"
+      - value: "num_likes"
+        label:
+          en_US: "num_likes"
+  - name: order
+    type: select
+    required: false
+    label:
+      en_US: "Order"
+    human_description:
+      en_US: "Order. Options: desc = Descending, asc = Ascending"
+    llm_description: "Order. Options: desc = Descending, asc = Ascending"
+    form: llm
+    options:
+      - value: "desc"
+        label:
+          en_US: "desc"
+      - value: "asc"
+        label:
+          en_US: "asc"
+  - name: status
+    type: string
+    required: false
+    label:
+      en_US: "Status"
+    human_description:
+      en_US: "Status Comma-separated list (values: on_sale, sold_out, trading)."
+    llm_description: "Status Comma-separated list (values: on_sale, sold_out, trading)."
+    form: llm
+  - name: category_id
+    type: number
+    required: false
+    label:
+      en_US: "Category id"
+    human_description:
+      en_US: "Category ID"
+    llm_description: "Category ID"
+    form: llm
+    min: 1
+    max: 9007199254740991
+  - name: price_min
+    type: number
+    required: false
+    label:
+      en_US: "Price min"
+    human_description:
+      en_US: "Min price (JPY)"
+    llm_description: "Min price (JPY)"
+    form: llm
+    min: 0
+    max: 9007199254740991
+  - name: price_max
+    type: number
+    required: false
+    label:
+      en_US: "Price max"
+    human_description:
+      en_US: "Max price (JPY)"
+    llm_description: "Max price (JPY)"
+    form: llm
+    min: 0
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_mercari_items_search.py

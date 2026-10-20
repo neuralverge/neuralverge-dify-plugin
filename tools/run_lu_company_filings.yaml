@@ -1,0 +1,44 @@
+identity:
+  name: run_lu_company_filings
+  author: neuralverge
+  label:
+    en_US: "Luxembourg company publications"
+description:
+  human:
+    en_US: "List the RESA publications of one Luxembourg company (LBR / RCS), newest first: publication number, date, type, details and consult mode. 1 point per returned record."
+  llm: "List the RESA publications of one Luxembourg company (LBR / RCS), newest first: publication number, date, type, details and consult mode. 1 point per returned record."
+parameters:
+  - name: company
+    type: string
+    required: true
+    label:
+      en_US: "Company"
+    human_description:
+      en_US: "RCS number or registry URL. e.g. B82454"
+    llm_description: "RCS number or registry URL. e.g. B82454"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_lu_company_filings.py

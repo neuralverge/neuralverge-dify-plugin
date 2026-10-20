@@ -1,0 +1,49 @@
+identity:
+  name: run_search
+  author: neuralverge
+  label:
+    en_US: "Run Web Search"
+description:
+  human:
+    en_US: "Runs a synchronous web search and returns a structured list of ranked results (title, url, snippet) immediately, without polling."
+  llm: "Runs a synchronous web search and returns a structured list of ranked results (title, url, snippet) immediately, without polling."
+parameters:
+  - name: query
+    type: string
+    required: true
+    label:
+      en_US: "Query"
+    human_description:
+      en_US: "Search query."
+    llm_description: "Search query."
+    form: llm
+  - name: settings_country
+    type: string
+    required: false
+    label:
+      en_US: "Settings country"
+    human_description:
+      en_US: "Search settings: country."
+    llm_description: "Search settings: country."
+    form: llm
+  - name: settings_language
+    type: string
+    required: false
+    label:
+      en_US: "Settings language"
+    human_description:
+      en_US: "Search settings: language."
+    llm_description: "Search settings: language."
+    form: llm
+  - name: settings_max_results
+    type: number
+    required: false
+    label:
+      en_US: "Settings max results"
+    human_description:
+      en_US: "Search settings: max results."
+    llm_description: "Search settings: max results."
+    form: llm
+extra:
+  python:
+    source: tools/run_search.py

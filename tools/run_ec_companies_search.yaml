@@ -1,0 +1,33 @@
+identity:
+  name: run_ec_companies_search
+  author: neuralverge
+  label:
+    en_US: "Ecuador companies search"
+description:
+  human:
+    en_US: "Search the Ecuador company registry (Superintendencia de Compañías) by company name: expediente number, RUC and name (the registry returns up to 15 matches per search). 1 point per returned record."
+  llm: "Search the Ecuador company registry (Superintendencia de Compañías) by company name: expediente number, RUC and name (the registry returns up to 15 matches per search). 1 point per returned record."
+parameters:
+  - name: keyword
+    type: string
+    required: true
+    label:
+      en_US: "Keyword"
+    human_description:
+      en_US: "Company name. e.g. pronaca"
+    llm_description: "Company name. e.g. pronaca"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 15) Default: 15."
+    llm_description: "Max items (up to 15) Default: 15."
+    form: llm
+    min: 1
+    max: 15
+extra:
+  python:
+    source: tools/run_ec_companies_search.py

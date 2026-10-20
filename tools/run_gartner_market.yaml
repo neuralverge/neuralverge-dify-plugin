@@ -1,0 +1,22 @@
+identity:
+  name: run_gartner_market
+  author: neuralverge
+  label:
+    en_US: "Gartner market"
+description:
+  human:
+    en_US: "Get a Gartner Peer Insights market profile by alias or URL: features, research, and lessons learned. Flat 5 points per successful run."
+  llm: "Get a Gartner Peer Insights market profile by alias or URL: features, research, and lessons learned. Flat 5 points per successful run."
+parameters:
+  - name: market
+    type: string
+    required: true
+    label:
+      en_US: "Market"
+    human_description:
+      en_US: "Market alias or URL. e.g. data-loss-prevention"
+    llm_description: "Market alias or URL. e.g. data-loss-prevention"
+    form: llm
+extra:
+  python:
+    source: tools/run_gartner_market.py

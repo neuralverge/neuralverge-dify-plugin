@@ -1,0 +1,44 @@
+identity:
+  name: run_pitchwall_products_search
+  author: neuralverge
+  label:
+    en_US: "PitchWall products search"
+description:
+  human:
+    en_US: "List the newest PitchWall products, or the products of one topic (tag): name, tagline, website, topics, publish date and link. The topic is optional. 1 point per returned record."
+  llm: "List the newest PitchWall products, or the products of one topic (tag): name, tagline, website, topics, publish date and link. The topic is optional. 1 point per returned record."
+parameters:
+  - name: topic
+    type: string
+    required: false
+    label:
+      en_US: "Topic"
+    human_description:
+      en_US: "Topic (tag). e.g. ai"
+    llm_description: "Topic (tag). e.g. ai"
+    form: llm
+  - name: max_items
+    type: number
+    required: false
+    label:
+      en_US: "Max items"
+    human_description:
+      en_US: "Max items (up to 250) Default: 25."
+    llm_description: "Max items (up to 250) Default: 25."
+    form: llm
+    min: 1
+    max: 250
+  - name: start_page
+    type: number
+    required: false
+    label:
+      en_US: "Start page"
+    human_description:
+      en_US: "Starting page"
+    llm_description: "Starting page"
+    form: llm
+    min: 1
+    max: 9007199254740991
+extra:
+  python:
+    source: tools/run_pitchwall_products_search.py
