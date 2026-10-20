@@ -1,6 +1,23 @@
 # NeuralVerge for Dify
 
-Structured, cited, real-world data from 300+ sources and the open web for your Dify agents and workflows.
+NeuralVerge is the data layer for agentic AI.
+
+Ask a question in plain language and get a structured, cited answer drawn from 300+ sources — e-commerce marketplaces, corporate registries, company intelligence, enrichment and social — plus the open web. Connect over MCP or REST.
+
+**What's inside**
+
+- **E-commerce & marketplaces** — 128 sources: Amazon, eBay, Walmart, AliExpress, Alibaba, Shopify, Target, Zalando, Rakuten, Flipkart and more
+- **Corporate registries** — 95: UK, France, Spain, the Netherlands, Sweden, Norway, Poland, Brazil, Canada, Australia and more
+- **Startup & funding data** — 93: Dealroom, PitchBook, Tracxn, Owler, Product Hunt, Y Combinator, Wellfound, Kickstarter, Indiegogo, Seedrs and more
+- **Company intelligence** — 16: Crunchbase, Gartner Peer Insights, Capterra, Trustpilot
+- **B2B data** — 7: Company and people search, Company and people profiles, Company employees
+- **Enrichment:** Email lookup, Phone lookup, LinkedIn Finder, Email finder
+
+Teams use NeuralVerge for agentic products, go-to-market, outbound, market research, competitor analysis, brand monitoring, public procurement, e-commerce intelligence, due diligence, KYC/KYB and recruiting. Works with Claude, ChatGPT, Gemini, Cursor and any MCP client.
+
+→ [neuralverge.ai](https://neuralverge.ai)
+
+## About this plugin
 
 This plugin exposes the [NeuralVerge](https://neuralverge.ai) API as 342 Dify tools:
 

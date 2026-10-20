@@ -4,7 +4,7 @@ identity:
   label:
     en_US: "NeuralVerge"
   description:
-    en_US: "Structured, cited, real-world data from 300+ sources and the open web: web search, AI page extraction, company registries, marketplaces, reviews and more."
+    en_US: "NeuralVerge is the data layer for agentic AI. Ask a question in plain language and get a structured, cited answer drawn from 300+ sources — e-commerce marketplaces, corporate registries, company intelligence, enrichment and social — plus the open web. Connect over MCP or REST."
   icon: "icon.svg"
   icon_dark: "icon-dark.svg"
   tags:
